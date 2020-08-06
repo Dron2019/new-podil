@@ -1,0 +1,75 @@
+mixin testCard(link, src, title, descr)
+	a(href=link).card-item
+		img.card-item__img(src=src alt='foto-1' title="title-foto")
+		h2.card-item__title=title
+		p.card-item__descr=descr
+
+mixin icon(icon, condition)
+	if(condition)
+		svg(class= icon  role="presentation")&attributes(attributes)
+			use(xlink:href="#"+ icon + "")
+	else
+		span(class='svg-wrap')&attributes(attributes)
+			svg(class="svg-icon icon--"+ icon + ""  role="presentation")
+				use(xlink:href="#"+ icon + "")
+mixin svg(icon)
+		svg(class="icon--"+ icon + ""  role="presentation")&attributes(attributes)
+			use(xlink:href="#icon-"+ icon + "")
+
+mixin link-blank(href)
+	a(herf=href rel="nofollow" target="_blank")
+mixin img(src)
+	img(src='./assets/images/'+src+''  alt="foto")&attributes(attributes)
+mixin lazyImg(src,mob)
+	if mob===undefined
+		img(data-src='./assets/images/'+src+'' alt="foto")&attributes(attributes)
+	else
+		img(data-src='./assets/images/'+src+'' alt="foto" data-mob_src='./assets/images/'+mob+'')&attributes(attributes)
+
+
+- var phoneNumber = `+38 (096) 165-30-30 `;
+- var phoneNumberHref = phoneNumber.replace(/\D/g,'');
+
+
+mixin SelectBox(name, options)
+	.select-box
+		.select-box__current(tabindex="1")
+			each option, index in options
+				if (index == 0)
+					.select-box__value
+					input.select-box__input(type="radio" id=index value=option.value name=name checked)
+				else 
+					.select-box__value
+					input.select-box__input(type="radio" id=index value=option.value name=name )
+				label.select-box__input-text(for=name) #{option.name}
+			img.select-box__icon(src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true")
+		ul.select-box__list
+			each option, index in options
+				li
+					label.select-box__option(for=index aria-hidden) #{option.name}
+
+
+mixin SelectBox(name, options,class1)
+	.select-box(data-name=name data-number=dataNumber class=class1)
+		.select-box__current(tabindex="1")
+			each option, index in options
+				if (index == 0)
+					.select-box__value
+					input.select-box__input(type="radio" id=name+index value=option.value name=name checked)
+				else 
+					.select-box__value
+					input.select-box__input(type="radio" id=name+index value=option.value name=name )
+				label.select-box__input-text(for=name+index) #{option.name}
+			//- img.select-box__icon(src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true")
+			<svg class="select-box__icon" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M1 1L10 10L19 0.999999" />
+			</svg>
+			//- <svg class="select-box__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+			//- <g><path d="M500,775.4L10,287.2l64.4-62.6L500,650.2l425.6-425.6l64.4,62.6L500,775.4z"/></g>
+			//- </svg>
+		ul.select-box__list
+			each option, index in options
+				li
+					label.select-box__option(for=name+index aria-hidden) #{option.name}
+
+

@@ -1,0 +1,300 @@
+#location {
+    .page__content {
+        margin-top: var(--header-height);
+    }
+    .title {
+        padding-left: 0;
+        padding-bottom: 0;
+        max-width: none;
+    }
+    .breadcrumbs-block {
+        padding-left: var(--side-fields);
+        padding-right: var(--side-fields);
+        margin-top: 23px;
+        position: relative;
+        z-index: 2;
+    }
+    --breadcrumbs-height: 73px;
+    @include from(1720px) {
+        --breadcrumbs-height: 94px;
+    }
+    @include to(768px) {
+        .breadcrumbs-block {
+            margin-top: 0;
+            padding-top: 20px;
+        }
+    }
+    @include to(575px) {
+        .breadcrumbs-block {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+.location-first-section {
+    --padding-for-icons: 80px;
+    background: url(../images/developers/bg.png) left no-repeat, url(../images/location/bg-image.jpg) right no-repeat;
+    background-size: 55vw, auto 100%;
+    min-height: 560px;
+    margin-top: calc(var(--header-height) - (var(--header-height) * 2) - 1px);
+    padding-top: var(--header-height);
+    @include shift-padding-right(8);
+    @include shift-padding-left(1);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    .subtitle {
+        margin-bottom: 25px;
+    }
+    .subtitle:before,
+    .text-standart:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .subtitle:before {
+        background-image: url("data:image/svg+xml,%3Csvg width='50' height='63' viewBox='0 0 50 63' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 0C11.2158 0 0.000254512 11.1477 0.000254512 24.833C-0.0903696 44.8515 24.05 61.4503 25 62.1212C25 62.1212 50.0904 44.8515 49.9998 24.8485C49.9998 11.1477 38.7842 0 25 0Z' fill='%230085FF'/%3E%3Cpath d='M20.6293 15.2073C21.7672 15.3747 22.3661 15.7095 20.0305 15.9327C19.4915 15.9885 15.4191 16.4348 14.5807 16.5464C13.2632 16.7138 14.2214 16.9928 15.5389 17.3834C16.557 17.7181 19.4316 18.3877 22.7254 19.1688V15.7653C22.7254 15.0957 20.3299 15.1515 20.3299 15.1515C20.4497 15.1515 20.5695 15.2073 20.6293 15.2073ZM37.6973 22.6281C39.3741 22.9629 39.5538 23.8556 36.6792 24.86C30.8701 26.9244 28.3548 27.7613 23.5638 29.2678C22.3661 29.6584 22.4859 30.1605 23.6237 30.5511C30.391 32.8387 38.895 34.5684 40.1526 34.8474V23.7998C40.1526 22.6839 37.6374 22.5723 37.3379 22.5723C37.4577 22.5723 37.5775 22.6281 37.6973 22.6281ZM13.0835 28.2077C15.4191 27.4823 23.0847 25.6411 28.9537 24.302C31.1096 23.7998 30.5108 23.4093 29.2531 23.0745C21.7672 21.4006 13.3231 18.8898 10.2089 17.7181C10.0892 17.7181 9.96938 17.6623 9.84961 17.6065V29.3794C9.84961 30.6069 12.4847 31.1091 12.4847 31.1091C9.78972 29.8816 11.3468 28.7656 13.0835 28.2077Z' fill='white'/%3E%3C/svg%3E%0A");
+        width: 49px;
+        height: 62px;
+        display: inline-block;
+    }
+    .text-standart:before {
+        background-image: url("data:image/svg+xml,%3Csvg width='42' height='16' viewBox='0 0 42 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M42 10C21 10 21 1 1.5154e-06 1' stroke='%230085FF' stroke-width='2'/%3E%3Cpath d='M42 15C21 15 21 6 1.5154e-06 6' stroke='%230085FF' stroke-width='2'/%3E%3C/svg%3E%0A");
+        width: 60px;
+        height: 20px;
+    }
+    .subtitle,
+    .text-standart {
+        position: relative;
+        padding-left: var(--padding-for-icons);
+    }
+    @include from(1720px) {
+        min-height: 703px;
+        .subtitle {
+            margin-bottom: 10px;
+        }
+    }
+    @include to(1100px) {
+        @include shift-padding-right(7);
+        @include shift-padding-left(1);
+    }
+    @include from-to(576px,
+    768px) {
+        min-height: 100vh;
+        background: url(../images/location/bg-image-tablet.jpg) bottom no-repeat;
+        background-size: auto 70vh;
+        background-position: center bottom;
+        @include shift-padding(2);
+        padding-top: calc(var(--breadcrumbs-height) + 50px);
+        justify-content: flex-start;
+    }
+    @include to(575px) {
+        --padding-for-icons: 60px;
+        width: 100%;
+        background: url(../images/location/bg-image-tablet.jpg) bottom no-repeat;
+        background-size: auto 45vh;
+        background-position: center bottom;
+        min-height: 85vh;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+        /*Пиксели - отступ блока по макету*/
+        padding-top: calc(var(--breadcrumbs-height) + 20px);
+        justify-content: flex-start;
+        .subtitle {
+            margin-bottom: 10px;
+        }
+        .subtitle:before {
+            width: 42px;
+            height: 52px;
+        }
+        .text-standart:before {
+            width: 42px;
+            height: 14px;
+        }
+    }
+    @include to(360px) {
+        min-height: 100vh;
+    }
+}
+
+.location-separator-block {
+    padding: 80px 0;
+    background: url(../images/about/separator-bg.png) center no-repeat, linear-gradient(180deg, rgba(253, 241, 211, 0) 0%, #FDF1D3 100%), linear-gradient(90deg, #F7F5FB 0%, rgba(255, 255, 255, 0) 100%), url(../images/about/separator-wave.png) right no-repeat;
+    // background-size: cover, cover, 50vw;
+    background-size: cover, auto, cover, auto;
+    display: flex;
+    justify-content: space-around;
+    --vertical-padding: 80px;
+    &__text {
+        position: relative;
+        background-color: var(--white);
+        padding-top: var(--vertical-padding);
+        padding-bottom: var(--vertical-padding);
+        @include size(8);
+        @include shift(2);
+        @include shift-padding(1);
+    }
+    &__text {
+        --text-left-padding: 27px;
+        padding-left: calc(100px + var(--text-left-padding));
+        position: relative;
+    }
+    &__text:before {
+        content: '';
+        position: absolute;
+        background-image: url("data:image/svg+xml,%3Csvg width='9' height='36' viewBox='0 0 9 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 0C8 18 0.999999 18 0.999998 36' stroke='%230085FF' stroke-width='2'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        background-repeat: no-repeat;
+        left: 100px;
+        top: var(--vertical-padding);
+        width: 7px;
+        height: 36px;
+    }
+    .subtitle {
+        margin-bottom: 1.3em;
+        line-height: 1.5em;
+    }
+    &__text.no-wave:before {
+        display: none;
+        padding-left: 0;
+    }
+    @include from(1720px) {
+        --vertical-padding: 60px;
+        padding: 75px 0 75px 0;
+        &__text {
+            --text-left-padding: 33px;
+        }
+        &__text:before {
+            width: 13px;
+            height: 60px;
+        }
+    }
+    @include to(1024px) {
+        &__text {
+            @include size(9);
+            @include shift(1.5);
+            // @include shift-padding(1);
+        }
+    }
+    @include to(768px) {
+        --vertical-padding: 55px;
+        padding: var(--vertical-padding) 0;
+        &__text {
+            @include size(10);
+            @include shift(1);
+            @include shift-padding(1);
+        }
+        &__text:before {
+            left: 50px;
+        }
+        .subtitle.second {
+            margin-top: 1.5em;
+        }
+    }
+    @include to(575px) {
+        --vertical-padding: 30px;
+        padding: 30px 0;
+        &__text {
+            --text-left-padding: 25px;
+        }
+        &__text {
+            @include size(12);
+            margin-left: 0;
+            margin-right: 0;
+            @include shift-padding-left(1.25);
+            @include shift-padding-right(1);
+        }
+        &__text:before {
+            left: calc(16.66% / 2);
+        }
+    }
+}
+
+.location-last-section {
+    min-height: 500px;
+    background: url(../images/location/second-bg-image.jpg) center no-repeat;
+    background-size: cover;
+    // display: flex;
+    // align-items: center;
+    // flex-direction: column;
+    // justify-content: center;
+    // flex-wrap: wrap;
+    // align-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, max-content);
+    row-gap: 20px;
+    align-content: center;
+    .subtitle {
+        position: relative;
+    }
+    .subtitle:before {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='60' viewBox='0 0 17 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 60C2 30 15 30 15 -5.30044e-07' stroke='%230085FF' stroke-width='4'/%3E%3C/svg%3E%0A");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 13px;
+        height: 60px;
+        position: absolute;
+        right: calc(100% + 15px);
+        top: 0;
+    }
+    @include shift-padding-left(8);
+    @include shift-padding-right(1);
+    @include from(1720px) {
+        min-height: 703px;
+    }
+    @include to(1100px) {
+        @include shift-padding-left(7);
+        @include shift-padding-right(0.5);
+    }
+    @include to(768px) {
+        background: url(../images/location/second-bg-image-tablet.jpg) center no-repeat;
+        background-size: cover;
+        min-height: 100vh;
+        row-gap: 10px;
+        padding-top: 60vh;
+        width: 100%;
+        @include shift-padding(1);
+        .subtitle:before {
+            display: none;
+        }
+    }
+    @include to(575px) {
+        min-height: 100vh;
+        padding-top: calc(60vh + 10px);
+        padding-bottom: 35px;
+        background: url(../images/location/bg-image-mob.jpg) center no-repeat;
+        background-size: 100vw 60vh;
+        background-position: top left;
+        padding-left: var(--side-padding);
+        padding-right: var(--side-padding);
+    }
+}
+
+.navigator-link {
+    background: url(../images/location/navigator-link-bg.jpg) center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 10%;
+    box-shadow: -4px 30px 50px -46px rgba(0, 0, 0, 0.75);
+    .link {
+        line-height: 1.25em;
+        padding-right: 0;
+    }
+    svg {
+        width: 54px;
+        height: 67px;
+        margin-right: 30px;
+    }
+}

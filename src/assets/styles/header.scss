@@ -1,0 +1,188 @@
+.preload-num::after {
+    content: '%';
+}
+
+header.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--black);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    padding: 12px var(--side-fields) 12px var(--side-fields);
+    // background-color: var(--blue);
+    background-color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    line-height: 1em;
+    justify-content: space-between;
+    transition: background-color .5s;
+    height: var(--header-height);
+    transition: .7s;
+    .header-group {
+        display: flex;
+        height: 100%;
+    }
+    .header-group>a:not(:last-child),
+    .header-group>div:not(:last-child) {
+        margin-right: 20px;
+    }
+    @include from(769px) {
+        &.main-screen-position {
+            height: calc(var(--header-height) + 19px);
+            padding: 31px var(--side-fields) 12px var(--side-fields);
+            background-color: transparent;
+        }
+    }
+    @include from(1720px) {
+        font-size: 24px;
+        // padding: 20px 80px 20px 80px;
+    }
+    @include to(768px) {
+        font-size: 16px;
+    }
+    @include to(480px) {
+        padding: 10px var(--side-fields) 10px var(--side-fields);
+        flex-wrap: wrap;
+        width: 100vw;
+        background-color: var(--blue);
+    }
+}
+
+.header-telephone {
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    line-height: 0.87em;
+}
+
+.form-call-button {
+    position: relative;
+    --pseudo-width: 36px;
+    padding-right: calc(var(--pseudo-width) + 10px);
+    cursor: pointer;
+    @include from-to(769px, 1719px) {
+        font-size: 18px;
+    }
+    &:hover:after {
+        width: calc(var(--pseudo-width) * 1.2);
+    }
+    &:after {
+        content: '';
+        transition: .5s;
+        width: var(--pseudo-width);
+        position: absolute;
+        right: 0;
+        top: calc(50% - 1px);
+        height: 2px;
+        background-color: var(--white);
+    }
+}
+
+.slide-wrapper {
+    display: none;
+}
+
+.menu-button {
+    cursor: pointer;
+    & path {
+        transition: .5s;
+    }
+    &:hover .open-svg path {
+        transform: matrix(1, -0.2, 0, 1, 0, 2);
+    }
+    @include to(768px) {
+        align-self: center;
+    }
+}
+
+.lang-block {
+    width: 74px;
+    min-height: 36px;
+    height: 36px;
+    padding-right: 13px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 18px;
+    transition: 0;
+    cursor: pointer;
+    &:hover:after {
+        transform: rotate(-90deg);
+        transform-origin: center;
+        margin-bottom: auto;
+    }
+    .birdy {
+        transform-origin: center;
+        transform-box: view-box;
+        transition: transform .7s;
+        margin-left: auto;
+    }
+    .langs {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 18px 0px 0px 18px;
+        margin-top: auto;
+        background-color: var(--blue-light);
+        position: relative;
+    }
+    .langs:after {
+        content: '';
+        position: absolute;
+        border-radius: 0px 18px 18px 0px;
+        background-color: var(--blue);
+        width: 40px;
+        height: 100%;
+        left: 100%;
+        top: 0;
+        z-index: -1;
+    }
+    .langs li {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 19px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+    }
+    .langs li a {
+        color: var(--white);
+    }
+    &:hover .active {}
+    &:hover:after,
+    &:hover .birdy {
+        // transform: rotate(180deg);
+        transform: rotate(180deg);
+        margin-top: 15px;
+        margin-bottom: auto;
+    }
+    &:hover {
+        transition: .5s;
+        margin-top: auto;
+        height: calc(36px * 3);
+        // overflow: visible;
+    }
+}
+
+.header-logo {
+    width: 56px;
+    height: 45px;
+    margin: 0 10px;
+}
+
+.logo-block {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    @include from(769px) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
