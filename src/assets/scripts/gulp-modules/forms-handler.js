@@ -20,6 +20,7 @@ function checkRequiredFields(form) {
     sendObject.metka = window.location.href || '';
     inputs.forEach(input => {
         let inputGroup = input.closest('.input-group');
+        console.log(inputGroup);
         if (input.dataset.required === 'true' && input.value.length === 0) {
             inputGroup.classList.add('unfilled')
         } else {

@@ -63,6 +63,7 @@ function throttle(func, ms) {
 function checkHeader() {
     let scrollTop = document.documentElement.scrollTop,
         header = document.querySelector('header');
+    // scrollTop > +getComputedStyle(header).height.replace(/px/, '') ?
     scrollTop > +getComputedStyle(header).height.replace(/px/, '') ?
         header.classList.remove('main-screen-position') :
         header.classList.add('main-screen-position');
@@ -71,65 +72,52 @@ checkHeader = throttle(checkHeader, 100);
 window.addEventListener('scroll', function(evt) {
     checkHeader();
 });
+checkHeader();
 
 
-
-
-
-const FPS = 60;
-const $body = $('body');
-const $window = $(window);
-
-let scroll = () => {
-    let currentS = 0;
-    let lastS = 0;
-    let lastTime = 0;
-    let liheight = 450;
-    let windowHeight = $(window).height();
-    let windowWidth = $(window).width();
-
-    let top = (windowHeight - liheight) / 2;
-    let factor = windowHeight / liheight;
-    let maxScroll = ($('.main-scroller1').height() - windowHeight) / factor;
-
-    let isScrolling = false;
-    // debugger
-    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-        $body.css('position', 'fixed');
-
-
-        let smoothScroll = function(event) {
-            event.preventDefault();
-            if (!isScrolling) isScrolling = true;
-            let norm = normalizeWheel(event);
-            currentS += norm.spinY * 50;
-            if (currentS < 0) currentS = 0;
-            if (currentS > maxScroll) currentS = maxScroll;
-            // const ease_1 = BezierEasing(1, 1, 1, 1);
-            const ease_1 = BezierEasing(.17, 1.04, .62, .96);
-            TweenLite.to('.main-scroller1', 1.5, {
-                ease: ease_1,
-                y: -currentS * factor,
-                overwrite: 3, // preexisting
-                onComplete: function(e) {
-                    // if (-currentS * factor < -400) gsap.to(document.querySelector(triggerSelectors[0]), { y: '0%', duration: 1.3, opacity: 1 })
-                    // console.log(-currentS * factor);
-                    isScrolling = false;
-                },
-                onUpdate: (ebb) => {
-                    // let translateTop = getComputedStyle(document.querySelector('.main-scroller1')).transform.replace(/matrix\(|\)/g, '');
-                    // translateTop = translateTop.split(',');
-                    // console.log(-currentS * factor);
-                    // animateOnCustomScrollByGsap(objectToAnim, +translateTop[5] - this.documentElement.clientHeight * 1.1)
-                },
-            });
-        };
-        smoothScroll = throttle(smoothScroll, 1000 / FPS);
-        document.addEventListener('wheel', smoothScroll);
-    }
-};
-if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    // scroll();
-}
 
 const $sections = document.querySelectorAll('section');
+let scrollController = new ScrollMagic.Controller();
+$sections.forEach(section => {
+    let scene = new ScrollMagic.Scene({
+            triggerElement: section,
+            tweenChanges: true,
+            duration: getHeight(section),
+            triggerHook: 1, // the scene should last for a scroll distance of 100px
+            offset: -200 // start this scene after scrolling for 50px
+        })
+        .addTo(scrollController);
+    let anim1 = gsap.timeline();
+    let paragraphAnim = TweenMax.staggerFromTo(section.querySelectorAll('.home-second-screen__text p'), 1, {
+        skewX: 2,
+        skewY: 20,
+        scale: 1.2,
+        opacity: 0,
+
+    }, {
+        skewX: 0,
+        skewY: 0,
+        scale: 1,
+        opacity: 1,
+        ease: Quart.easeOut
+    }, .1, );
+    paragraphAnim.pause();
+
+    anim1.from(section.querySelectorAll('.home-block, .main-screen__block-pattern, .slogan'), { y: function(e, target) { return getHeight(target) }, }, );
+    // anim1.from(section.querySelectorAll('.home-second-screen__text'), { skewX: 30, opacity: 0 })
+    scene.addIndicators({});
+    scene.setTween(anim1);
+
+});
+
+
+
+
+function getHeight(el) {
+    return +getComputedStyle(el).height.replace(/px/, '');
+};
+
+
+const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
+
+gsap.from('.home-second-screen__image path', 1.2, { x: 150, ease: ease_1, autoAlpha: 0, s

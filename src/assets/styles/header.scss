@@ -126,10 +126,11 @@ header.header {
     .langs {
         padding-left: 10px;
         padding-right: 10px;
-        border-radius: 18px 0px 0px 18px;
+        border-radius: 18px 0px 18px 18px;
         margin-top: auto;
         background-color: var(--blue-light);
         position: relative;
+        height: 36px;
     }
     .langs:after {
         content: '';
@@ -160,6 +161,9 @@ header.header {
         transform: rotate(180deg);
         margin-top: 15px;
         margin-bottom: auto;
+    }
+    &:hover .langs {
+        height: calc(36px * 3);
     }
     &:hover {
         transition: .5s;

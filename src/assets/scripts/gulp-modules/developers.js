@@ -1,3 +1,16 @@
-// gsap.from(document.querySelectorAll('.developers-first-block-sector'), { opacity: 0, delay: 2.5, stagger: 0.3 });
-// gsap.from(document.querySelector('.developers-first-block'), { backgroundPositionX: '-100vw', delay: 0.5 });
-// gsap.from(document.querySelector('.developer-logo'), { opacity: '0', delay: 1.5 });
+$('.saga-slider-js').slick({
+    slidesToShow: 5,
+    nextArrow: $('.saga-slider-js')[0].closest('.developers-page-block__slider-wrapp').querySelector('.next'),
+    prevArrow: $('.saga-slider-js')[0].closest('.developers-page-block__slider-wrapp').querySelector('.prev')
+
+});
+$('.perfect-slider-js').slick({
+    slidesToShow: 5,
+    nextArrow: $('.perfect-slider-js')[0].closest('.developers-page-block__slider-wrapp').querySelector('.next'),
+    prevArrow: $('.perfect-slider-js')[0].closest('.developers-page-block__slider-wrapp').querySelector('.prev')
+
+});
+
+
+
+console.log($('.saga-slider-js')[0].closest('.developers-page-block__slider-wrapp').querySelector('.next'));

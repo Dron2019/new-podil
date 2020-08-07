@@ -42,6 +42,7 @@ a[href] {
     font-weight: 500;
     text-transform: uppercase;
     color: var(--yellow);
+    text-align: center;
 }
 
 .main-screen {
@@ -182,6 +183,10 @@ a[href] {
 
 .screen {
     padding: 0 var(--side-fields);
+}
+
+section {
+    overflow: hidden;
 }
 
 .home-second-screen {

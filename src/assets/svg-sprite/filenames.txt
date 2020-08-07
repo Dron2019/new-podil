@@ -1,0 +1,11 @@
+arrow.svg
+close-symbol.svg
+facebook-icon.svg
+filenames.txt
+insta-icon.svg
+marker.svg
+scroll-marker.svg
+sprite
+video-play.svg
+wave-pattern.svg
+youtube.svg

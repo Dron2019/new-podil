@@ -1,0 +1,97 @@
+extends ../layout/main
+block variable
+    -pageName = 'developers';
+    - var version = "ua";
+        
+block meta
+    title= 'Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    //- script(defer src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js')
+    //- script(defer src='./assets/scripts/gsap.js')
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    script(defer src="./assets/scripts/developers.js")
+block content
+    h1.page-title.title.white Девелопери проекту
+    .breadcrumbs-block
+        a(href="index.html").breadcrumbs-block__item 
+            span Головна
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Девелопери проекту
+    .developers-page-block
+        +img('developers/perfect-group-white.svg').perfect-logo
+        .developers-page-block__text-wrapp
+            .text-medium 30 компаній ринку нерухомості, які об'єднані під цим брендом, забезпечують повний цикл робот – від початку до повного завершення будівництва.
+            a(target='_blank' href="https://perfect-group.ua").button-std.green.green-light-icon.text-white
+                span Сайт забудовника
+                .button-std__icon 
+                    +svg('arrow')
+        .developers-page-block__slider-wrapp
+            .slider-arrows
+                +svg('slider-arrow').prev.arrow
+                +svg('slider-arrow').next.arrow
+            .perfect-slider-js
+                a(target='_blank' href="https://perfect-group.ua/ru/projects/v-kvartal/")
+                    +img('developers/perf-projects/5kv-1.svg').slide      
+                a(target='_blank' href="https://www.the-garden.com.ua/")
+                    +img('developers/perf-projects/garden-1.svg').slide   
+                a(target='_blank' href="https://kandinsky-residence.com.ua/")
+                    +img('developers/perf-projects/kandinsky-1.svg').slide
+                a(target='_blank' href="https://lebedinyiy.com.ua/ru/")
+                    +img('developers/perf-projects/lebed-1.svg').slide
+                a(target='_blank' href="https://perfect-group.ua/ru/projects/bereginya/")
+                    +img('developers/perf-projects/Logo_vect.svg').slide
+                a(target='_blank' href="https://philadelphia.kiev.ua")
+                    +img('developers/perf-projects/pilla-1.svg').slide
+                a(target='_blank' href="https://rybalsky.com.ua/")
+                    +img('developers/perf-projects/rybalsky_logo_blue-2.svg').slide
+                a(target='_blank' href="https://woodstoria.com.ua/ru/")
+                    +img('developers/perf-projects/woods-1.svg').slide
+    .developers-page-block.with-neg-margins.green 
+        +img('developers/saga-white.svg').saga-logo
+        .developers-page-block__text-wrapp
+            .text-medium Глобальна мета компанії – розвивати міста, спираючись на екосистему партнерства. Втілювати інноваційні та креативні рішення для комфортного життя поколінь.
+            a(target='_blank' href="https://saga-development.com.ua").button-std.blue.blue-light-icon.text-white
+                span Сайт забудовника
+                .button-std__icon 
+                    +svg('arrow')
+        .developers-page-block__slider-wrapp
+            .slider-arrows
+                +svg('slider-arrow').prev.arrow
+                +svg('slider-arrow').next.arrow
+            .saga-slider-js
+                a(target="_blank" href="https://boston-house.kiev.ua")
+                    +img('developers/saga-projects/boston-white.svg').slide(alt="Boston House")
+                a(target="_blank" href="https://bristol.house")
+                    +img('developers/saga-projects/bristol_logo_white.svg').slide(alt="Bristol House")
+                a(target="_blank" href="https://chicago.kiev.ua")
+                    +img('developers/saga-projects/chicago_logo_white.svg').slide(alt="Chicago Central House")
+                a(target="_blank" href="https://einstein.house")
+                    +img('developers/saga-projects/EINSTEIN-logoW.svg').slide(alt="Einstein House")
+                a(target="_blank" href="https://franklin.kiev.ua")
+                    +img('developers/saga-projects/franklin-white.svg').slide(alt="Franklin Concept House")
+                a(target="_blank" href="https://house-happy.com.ua")
+                    +img('developers/saga-projects/happy-house-white.svg').slide(alt="House Happy")
+                a(target="_blank" href="https://home-park.com.ua")
+                    +img('developers/saga-projects/home-park-white.svg').slide(alt="Home & Park")
+                a(target="_blank" href="https://kandinskiy-residence.com.ua")
+                    +img('developers/saga-projects/kandinsky_logo_white.svg').slide(alt="Kandinsky Residence")
+                a(target="_blank" href="https://new-podil.kiev.ua")
+                    +img('developers/saga-projects/new-podil-white.svg').slide(alt="New Podil")
+                a(target="_blank" href="https://new-york.com.ua")
+                    +img('developers/saga-projects/new_york_logo_white.svg').slide(alt="New York Concept House")
+                a(target="_blank" href="https://o2-residence.com.ua")
+                    +img('developers/saga-projects/o2-white.svg').slide(alt="O2 Residence")
+                a(target="_blank" href="https://philadelphia.kiev.ua")
+                    +img('developers/saga-projects/philadelphia-white.svg').slide(alt="Philadelphia Concept House")
+                a(target="_blank" href="https://resident.house")
+                    +img('developers/saga-projects/resident_logo_white.svg').slide(alt="Resident House")
+                a(target="_blank" href="https://saga-city.space")
+                    +img('developers/saga-projects/saga-city-space-white.svg').slide(alt="Saga City Space")
+                a(target="_blank" href="https://sanfrancisco.com.ua")
+                    +img('developers/saga-projects/sanfran_white.svg').slide(alt="San Francisco Creative House")
+                a(target="_blank" href="https://washington.kiev.ua")
+                    +img('developers/saga-projects/washington_white.svg').slide(alt="Washington Concept House")

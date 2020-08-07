@@ -1,0 +1,182 @@
+/*Form in popup*/
+
+.form-popup-wrapper {
+    width: 500px;
+    position: relative;
+    margin: auto;
+    & svg {
+        stroke: var(--yellow) !important;
+    }
+    @include to(480px) {
+        width: calc(100vw - 30px);
+    }
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    padding: 52px 48px 44px 60px;
+    width: 420px;
+    margin-left: auto;
+    margin-top: -70px;
+    background-color: var(--white);
+    font-weight: 500;
+    @include to(480px) {
+        padding: 40px 22px 30px 22px;
+        width: calc(100% - 10px);
+    }
+}
+
+.form-logo {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    z-index: 2;
+    @include to(480px) {
+        right: 5px;
+        width: 70px;
+    }
+}
+
+.common-label {
+    display: none;
+}
+
+.send-button {
+    background: var(--violet1);
+    color: var(--white);
+    border: none;
+    margin-left: auto;
+    margin-top: 40px;
+    border-radius: 50px;
+    height: 50px;
+    line-height: 50px;
+    width: 200px;
+    font-size: 24px;
+    // font-weight: 500;
+    font-family: $default-font;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include to(480px) {
+        margin-top: 20px;
+        width: 120px;
+        height: 40px;
+        font-size: 18px;
+        line-height: 40px;
+    }
+}
+
+.form-legend {
+    font-size: 36px;
+    line-height: 1.3em;
+    // font-weight: 500;
+    color: var(--black);
+    @include to(768px) {}
+    @include to(480px) {}
+}
+
+.common-input {
+    padding-bottom: 12px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--black);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    margin-top: 40px;
+    @include to(480px) {
+        margin-top: 30px;
+    }
+}
+
+.input-group.unfilled .common-input {
+    border-color: red;
+}
+
+.common-input::placeholder {
+    // font-weight: 500;
+}
+
+.form-popup-close-js {
+    position: absolute;
+    top: 89px;
+    right: 19px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.form-bicycle {
+    width: 133px;
+    height: 74px;
+    position: absolute;
+    bottom: -34px;
+    left: 15px;
+    z-index: 3;
+}
+
+.form-boat {
+    position: absolute;
+    bottom: 50%;
+    right: -80px;
+    z-index: 3;
+    width: 127px;
+    @include to(480px) {
+        right: -32px;
+        z-index: 3;
+        width: 75px;
+        display: none;
+    }
+}
+
+.form-border {
+    border: 2px solid var(--white);
+    position: absolute;
+    width: 420px;
+    height: 530px;
+    left: 70px;
+    top: 60px;
+    z-index: 1;
+    pointer-events: none;
+    @include to(480px) {
+        width: calc(100% - 10px);
+        height: 84%;
+        left: 0px;
+    }
+}
+
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: rgba(23, 152, 213, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+    transition: var(--standart-transition);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.input-group {
+    position: relative;
+}
+
+.error-span {
+    // font-weight: 500;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+/*Form in popup end*/
