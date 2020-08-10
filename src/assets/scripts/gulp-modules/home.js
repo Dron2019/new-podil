@@ -70,41 +70,41 @@ checkHeader();
 
 const $sections = document.querySelectorAll('.home-block');
 let scrollController = new ScrollMagic.Controller();
-$sections.forEach(section => {
-    let scene = new ScrollMagic.Scene({
-            triggerElement: section,
-            tweenChanges: true,
-            duration: getHeight(section),
-            triggerHook: 0.7, // the scene should last for a scroll distance of 100px
-            offset: 0 // start this scene after scrolling for 50px
-        })
-        .addTo(scrollController);
-    let anim1 = gsap.timeline();
-    // let paragraphAnim = TweenMax.staggerFromTo(section.querySelectorAll('.home-second-screen__text p'), 1.75, {
-    //     // skewX: 2,
-    //     stagger: 0.025,
-    //     // skewY: 20,
-    //     // scale: 1.2,
-    //     scale: 1.1,
-    //     opacity: 0,
+// $sections.forEach(section => {
+//     let scene = new ScrollMagic.Scene({
+//             triggerElement: section,
+//             tweenChanges: true,
+//             duration: getHeight(section),
+//             triggerHook: 0.7, // the scene should last for a scroll distance of 100px
+//             offset: 0 // start this scene after scrolling for 50px
+//         })
+//         .addTo(scrollController);
+//     let anim1 = gsap.timeline();
+//     // let paragraphAnim = TweenMax.staggerFromTo(section.querySelectorAll('.home-second-screen__text p'), 1.75, {
+//     //     // skewX: 2,
+//     //     stagger: 0.025,
+//     //     // skewY: 20,
+//     //     // scale: 1.2,
+//     //     scale: 1.1,
+//     //     opacity: 0,
 
-    // }, {
-    //     // skewX: 0,
-    //     // skewY: 0,
-    //     // scale: 1,
-    //     opacity: 1,
-    //     ease: Quart.easeOut
-    // }, .1, );
+//     // }, {
+//     //     // skewX: 0,
+//     //     // skewY: 0,
+//     //     // scale: 1,
+//     //     opacity: 1,
+//     //     ease: Quart.easeOut
+//     // }, .1, );
 
-    // anim1.from(section.querySelectorAll('.home-block, .main-screen__block-pattern, .slogan'), { y: function(e, target) { return getHeight(target) }, }, );
-    anim1.from(section.querySelectorAll('svg, div'), {
-            y: 100,
-        }, ).from(section, { backgroundPositionY: '-25px', scaleY: '1.05' }, '<')
-        // anim1.from(section.querySelectorAll('.home-second-screen__text'), { skewX: 30, opacity: 0 })
-    scene.addIndicators({});
-    scene.setTween(anim1);
+//     // anim1.from(section.querySelectorAll('.home-block, .main-screen__block-pattern, .slogan'), { y: function(e, target) { return getHeight(target) }, }, );
+//     anim1.from(section.querySelectorAll('svg, div'), {
+//             y: 100,
+//         }, ).from(section, { backgroundPositionY: '-25px', scaleY: '1.05' }, '<')
+//         // anim1.from(section.querySelectorAll('.home-second-screen__text'), { skewX: 30, opacity: 0 })
+//     scene.addIndicators({});
+//     scene.setTween(anim1);
 
-});
+// });
 
 
 
@@ -127,7 +127,7 @@ const exO = Expo.easeOut;
 
 function secondScreenAnim() {
     const tl = new TimelineMax({ repeat: 0, duration: 0.5, ease: ease_1, paused: true });
-    tl.fromTo('.home-second-screen__image path', 1.75, {
+    tl.fromTo('.home-second-screen__image path,.home-second-screen__image circle', 1.75, {
         ease: ease_2,
         x: function(e, target) {
             // console.log(target);
@@ -143,7 +143,7 @@ function secondScreenAnim() {
     tl.fromTo('.home-second-screen__text p ', { autoAlpha: 0, rotateX: 90, y: -50 }, { autoAlpha: 1, rotateX: 0, y: 0, stagger: 0.025 }, '<')
     return tl;
 }
-secondScreenAnim().play().timeScale(1);
+// secondScreenAnim().play().timeScale(1);
 
 function firstScreenAnim() {
     const tl = new TimelineMax({ repeat: 0, duration: 0.5, ease: ease_1, paused: true });
@@ -165,7 +165,7 @@ firstScreenAnim().play().timeScale(0.6);
 
 
 function thirdScreenAnim() {
-    let tl = new TimelineMax({ duration: 1.25 });
+    let tl = new TimelineMax({ duration: 0.25, repeat: 0, delay: 0, paused: true });
     let textEase = BezierEasing(.14, .97, .51, .96);
     tl.from('.home-third-screen .mask-pattern path', 2, {
             ease: BezierEasing(.14, .97, .25, .98),
@@ -189,7 +189,7 @@ function thirdScreenAnim() {
         })
         .from('.home-third-screen-left .home-third-screen__part', 2, { ease: textEase, stagger: 0.1, autoAlpha: 0, x: -200 }, '<')
         .from('.home-third-screen-right .home-third-screen__part', 2, { ease: textEase, stagger: 0.1, autoAlpha: 0, x: 200 }, '<')
-
+    return tl;
 
 
 
@@ -197,7 +197,7 @@ function thirdScreenAnim() {
     //     .from('.digit-value', 1, { y: -50, x: -50, color: 'rgb(23, 152, 213)' })
     //     .from('.home-third-screen__part .text', 1, { y: -50, x: 50, color: 'rgb(23, 152, 213)', }, '<')
 };
-thirdScreenAnim();
+// thirdScreenAnim();
 
 
 
@@ -221,3 +221,47 @@ homeScreenVideo.addEventListener('click', function(evt) {
     homeScreenVideo.pause();
     homeVideoPlayButton.style.visibility = `visible`;
 });
+
+
+
+
+
+const backgroundStagger = 0.05;
+const scroll_speed = 1200;
+
+let sections = [
+    'section.main-screen',
+    'section.screen.home-second-screen',
+    'section.screem.home-third-screen',
+    'section.screen4',
+    'section.screen5',
+    'section.screen6'
+];
+
+
+
+
+function gridScreensAnim(screenNum) {
+    let tl = new TimelineMax({ duration: 0.5, repeat: 0, paused: true });
+    tl.from(`.screen${screenNum}>div`, { stagger: backgroundStagger, scale: 1.1, y: '-10vh' }, '<')
+    tl.from(`.screen${screenNum}>div svg,.screen${screenNum}>div>div`, { stagger: 0.05, y: 100, autoAlpha: 0 }, '+0.5')
+    return tl;
+}
+let sectionsAnim = [
+    { callback: firstScreenAnim },
+    { callback: secondScreenAnim },
+    { callback: thirdScreenAnim },
+    { callback: gridScreensAnim.bind(null, 4) },
+    { callback: gridScreensAnim.bind(null, 5) },
+    { callback: gridScreensAnim.bind(null, 6) },
+];
+$.scrollify({
+    section: 'section',
+    scrollSpeed: scroll_speed,
+    standardScrollElements: '.screen6',
+    easing: "easeOutExpo",
+    before: function(e, list) {
+        sectionsAnim[e].callback().play();
+    },
+    after: function(e, next) {},
+})
