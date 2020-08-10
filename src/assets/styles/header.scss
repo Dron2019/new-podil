@@ -34,6 +34,10 @@ header.header {
             padding: 31px var(--side-fields) 12px var(--side-fields);
             background-color: transparent;
         }
+        &.main-screen-position .logo-block span,
+        &.main-screen-position .header-telephone {
+            color: var(--white)
+        }
     }
     @include from(1720px) {
         font-size: 24px;

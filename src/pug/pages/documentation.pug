@@ -1,0 +1,41 @@
+extends ../layout/main
+block variable
+    -pageName = 'documentation';
+       
+block meta
+    title= 'Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    //- script(defer src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js')
+    //- script(defer src='./assets/scripts/gsap.js')
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    script(defer src="./assets/scripts/build-progress.js")
+block content
+    h1.page-title.title.white Документація
+    .breadcrumbs-block
+        a(href="index.html").breadcrumbs-block__item 
+            span Головна
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Документація
+    a(target='_blank' href="").document-single
+        +img('documents/test1.jpg')
+        .document-single__name Розпорядження про зeмельну ділянку
+    a(target='_blank' href="").document-single
+        +img('documents/test2.jpg')
+        .document-single__name Дозвіл на будівництво  
+    a(target='_blank' href="").document-single
+        +img('documents/test3.jpg')
+        .document-single__name Зміни до розпорядження "Про присвоєння поштових адрес"
+    a(target='_blank' href="").document-single
+        +img('documents/test3.jpg')
+        .document-single__name Зміни до розпорядження "Про присвоєння поштових адрес"
+    a(target='_blank' href="").document-single
+        +img('documents/test3.jpg')
+        .document-single__name Зміни до розпорядження "Про присвоєння поштових адрес"
+    a(target='_blank' href="").document-single
+        +img('documents/test3.jpg')
+        .document-single__name Зміни до розпорядження "Про присвоєння поштових адрес"
+

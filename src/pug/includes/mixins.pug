@@ -73,3 +73,9 @@ mixin SelectBox(name, options,class1)
 					label.select-box__option(for=name+index aria-hidden) #{option.name}
 
 
+mixin build-construct-progress-bar(value)
+	.progress-bar(style="--completed-status:"+value+"%")
+		.progress-bar__completed-line
+		.progress-bar__completed-digit #{value}
+
+

@@ -43,7 +43,7 @@
 
 .page__content {
     min-height: 100vh;
-    // background-color: var(--violet1);
+    background-color: var(--violet1);
 }
 
 .page__inner:not(#home) .page__content:not(#home) {
@@ -975,6 +975,7 @@ section.forms {
 
 .slider-arrows {
     display: flex;
+    pointer-events: none;
     .next {
         transform: rotate(90deg);
     }
@@ -985,6 +986,8 @@ section.forms {
         width: 30px;
         height: 48px;
         cursor: pointer;
+        transition: .7s;
+        pointer-events: auto;
         fill: var(--white);
     }
     @include from(769px) {

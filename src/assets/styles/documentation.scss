@@ -1,0 +1,28 @@
+.document-single {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 38px;
+    display: inline-block;
+    @include size(3);
+    text-align: center;
+    color: var(--white);
+    vertical-align: top;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    img {
+        @include shift-padding(3.5);
+        margin-bottom: 45px;
+    }
+    @include to(1024px) {
+        img {
+            @include shift-padding(2);
+        }
+    }
+    @include to(768px) {
+        @include size(6);
+    }
+    @include to(575px) {
+        @include size(12);
+    }
+}

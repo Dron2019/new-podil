@@ -1,0 +1,106 @@
+extends ../layout/main
+block variable
+    -pageName = 'build-progress';
+       
+block meta
+    title= 'Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    //- script(defer src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js')
+    //- script(defer src='./assets/scripts/gsap.js')
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    script(defer src="./assets/scripts/build-progress.js")
+block content
+    <svg  preserveAspectRatio="xMinYMin slice" class="build-progress-bg-lines" viewBox="0 0 454 947" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0.5" y1="-2.18557e-08" x2="0.500041" y2="947" stroke="#BCBCBC" stroke-opacity="0.4"/>
+        <line x1="453.5" y1="-2.18557e-08" x2="453.5" y2="947" stroke="#BCBCBC" stroke-opacity="0.4"/>
+        </svg>
+    h1.page-title.title.white Хід будівництва
+    .breadcrumbs-block
+        a(href="index.html").breadcrumbs-block__item 
+            span Головна
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Хід будівництва
+    .build-progress-left
+        .build-progress-subtitle Будинок №1
+        .text Триває підготовка до заливання плити 5-го поверху.
+        .build-progress-subtitle Будинок №2
+        .text Виконується монтаж вертикальних конструкцій підвалу.
+        .build-progress-subtitle Будинок №3
+        .text Виконуються кладкові роботи з газоблоку до 5-го поверху. Монтується каркас тераси на набережній.
+        .build-progress-subtitle Будинок №4
+        .text Триває підготовка до заливання плити 5-го поверху.
+    .build-progress-center
+        .build-progress-subtitle Загальнобудівельні роботи
+        +build-construct-progress-bar(75)
+        .build-progress-subtitle Благоустрій
+        +build-construct-progress-bar(55)
+        .build-progress-subtitle Фасад
+        +build-construct-progress-bar(5)
+        .build-progress-subtitle Мережі
+        +build-construct-progress-bar(0)
+    .build-progress-right
+        .build-progress-subtitle Завершення будівництва
+        .text Будинок №1 - IV квартал 2020 року 
+        .text Будинок №2 - III квартал 2021 року 
+        .text Будинок №3 - IV квартал 2020 року
+        .text  Будинок №4 - III квартал 2021 року
+        a(href="web-camera.html").button-std.green.green-light-icon.text-white
+            span Веб камера
+            .button-std__icon 
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.0036 7.6946C7.4311 7.6946 7.84899 7.57134 8.20444 7.34039C8.55989 7.10944 8.83692 6.78119 9.00052 6.39714C9.16411 6.01309 9.20692 5.59049 9.12352 5.18279C9.04012 4.77508 8.83426 4.40058 8.53198 4.10664C8.22969 3.8127 7.84456 3.61253 7.42528 3.53143C7.006 3.45033 6.5714 3.49195 6.17645 3.65103C5.7815 3.81011 5.44393 4.0795 5.20642 4.42514C4.96892 4.77077 4.84216 5.17713 4.84216 5.59282C4.84216 6.15025 5.06988 6.68485 5.47523 7.07901C5.88058 7.47317 6.43035 7.6946 7.0036 7.6946ZM7.0036 4.89223C7.1461 4.89223 7.2854 4.93332 7.40388 5.0103C7.52236 5.08728 7.61471 5.1967 7.66924 5.32472C7.72377 5.45273 7.73804 5.5936 7.71024 5.7295C7.68244 5.8654 7.61382 5.99024 7.51306 6.08822C7.4123 6.1862 7.28392 6.25292 7.14416 6.27995C7.0044 6.30699 6.85954 6.29311 6.72789 6.24009C6.59623 6.18706 6.48371 6.09726 6.40454 5.98205C6.32538 5.86684 6.28312 5.73139 6.28312 5.59282C6.28312 5.40701 6.35903 5.22882 6.49414 5.09743C6.62926 4.96604 6.81252 4.89223 7.0036 4.89223ZM13.913 11.3097C13.5612 10.1751 12.9192 9.1458 12.047 8.31813C12.5325 7.46485 12.7806 6.50316 12.7669 5.52808C12.7532 4.553 12.4781 3.59827 11.9688 2.75823C11.4594 1.91818 10.7335 1.2219 9.86274 0.738166C8.99196 0.254435 8.00646 0 7.0036 0C6.00074 0 5.01524 0.254435 4.14446 0.738166C3.27369 1.2219 2.54777 1.91818 2.03844 2.75823C1.52912 3.59827 1.254 4.553 1.24028 5.52808C1.22657 6.50316 1.47472 7.46485 1.96023 8.31813C1.0829 9.14306 0.437921 10.1731 0.0869731 11.3097C-0.00681212 11.6213 -0.0250438 11.9499 0.0337091 12.2696C0.0924619 12.5893 0.226601 12.8914 0.4256 13.1522C0.62835 13.4174 0.892545 13.6324 1.19674 13.7797C1.50094 13.9269 1.83656 14.0024 2.17637 13.9999H11.8308C12.1694 14.0013 12.5036 13.9253 12.8065 13.7781C13.1093 13.6308 13.3724 13.4164 13.5744 13.1522C13.7734 12.8914 13.9075 12.5893 13.9663 12.2696C14.025 11.9499 14.0068 11.6213 13.913 11.3097ZM7.0036 1.38926C7.85859 1.38926 8.69438 1.6358 9.40527 2.09769C10.1162 2.55958 10.6702 3.21609 10.9974 3.98419C11.3246 4.75229 11.4102 5.59749 11.2434 6.4129C11.0766 7.22831 10.6649 7.97731 10.0603 8.56519C9.45578 9.15307 8.68552 9.55342 7.84696 9.71561C7.0084 9.87781 6.13921 9.79456 5.3493 9.47641C4.5594 9.15825 3.88425 8.61947 3.40925 7.9282C2.93424 7.23692 2.68071 6.42421 2.68071 5.59282C2.68071 4.47797 3.13616 3.40878 3.94686 2.62046C4.75755 1.83214 5.8571 1.38926 7.0036 1.38926ZM12.4216 12.3115C12.3538 12.4017 12.2649 12.4749 12.1621 12.5248C12.0593 12.5748 11.9457 12.6002 11.8308 12.5988H2.17637C2.06148 12.6002 1.9479 12.5748 1.84513 12.5248C1.74235 12.4749 1.65336 12.4017 1.58558 12.3115C1.52079 12.2247 1.47736 12.1247 1.45862 12.019C1.43989 11.9133 1.44635 11.8049 1.4775 11.702C1.73613 10.8552 2.20074 10.0814 2.83201 9.44609C3.37028 9.99505 4.01755 10.4321 4.7346 10.7307C5.45165 11.0292 6.22357 11.1832 7.0036 11.1832C7.78364 11.1832 8.55556 11.0292 9.27261 10.7307C9.98966 10.4321 10.6369 9.99505 11.1752 9.44609C11.8065 10.0814 12.2711 10.8552 12.5297 11.702C12.5609 11.8049 12.5673 11.9133 12.5486 12.019C12.5298 12.1247 12.4864 12.2247 12.4216 12.3115Z" fill="white"/>
+                </svg>
+    .build-progress-galleries-slider.build-js
+        .slider-arrows
+            +svg('slider-arrow').prev.arrow
+            +svg('slider-arrow').next.arrow
+        a(href="#" data-num="1").slide
+            +img('build-progress/test1.jpg')
+            .date-title 23.08.2020
+        a(href="#" data-num="1").slide
+            +img('build-progress/test2.jpg')
+            .date-title 23.08.2020
+        a(href="#" data-num="1").slide
+            +img('build-progress/test1.jpg')
+            .date-title 23.08.2020
+        a(href="#" data-num="1").slide
+            +img('build-progress/test2.jpg')
+            .date-title 23.08.2020
+        a(href="#").slide
+            +img('bu data-num="1"ild-progress/test1.jpg')
+            .date-title 23.08.2020
+        a(href="#" data-num="1").slide
+            +img('build-progress/test2.jpg')
+            .date-title 23.08.2020
+        a(href="#" data-num="1").slide
+            +img('build-progress/test1.jpg')
+            .date-title 23.08.2020
+        a(href="#" data-num="1").slide
+            +img('build-progress/test2.jpg')
+            .date-title 23.08.2020
+    .build-progress-popup.popup-js
+    .progress-status-popup.hidden.progress-status-js
+        ul.progress-status-popup__build-group
+            li Будинок №1: 
+            li Роботи о відм. 0-100% 
+            li Каркас - 51% 
+            li Цегляна кладка - 0% 
+            li Внутрішнє облаштування - 0%
+        ul.progress-status-popup__build-group
+            li Будинок №1: 
+            li Роботи о відм. 0-100% 
+            li Каркас - 51% 
+            li Цегляна кладка - 0% 
+            li Внутрішнє облаштування - 0%
+        ul.progress-status-popup__build-group
+            li Будинок №1: 
+            li Роботи о відм. 0-100% 
+            li Каркас - 51% 
+            li Цегляна кладка - 0% 
+            li Внутрішнє облаштування - 0%
+
+    .construction-popup
