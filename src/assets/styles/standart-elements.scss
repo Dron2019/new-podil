@@ -1078,3 +1078,12 @@ section.forms {
 
 
 /*На главной и веб камере END*/
+
+
+/*Для страниц без тайтла*/
+
+#no-title {
+    .breadcrumbs-block {
+        margin-top: 40px;
+    }
+}

@@ -37,6 +37,15 @@
         margin-right: auto;
         margin-bottom: 40px;
     }
+    .heart {
+        fill: var(--violet1);
+        transition: .4s;
+        @include from(769px) {
+            &:hover {
+                fill: var(--blue);
+            }
+        }
+    }
 }
 
 .slogan-large {
@@ -102,16 +111,6 @@
 
 
 /*GENPLAN STYLE*/
-
-.heart {
-    fill: var(--violet1);
-    transition: .4s;
-    @include from(769px) {
-        &:hover {
-            fill: var(--blue);
-        }
-    }
-}
 
 .legend-wrapper {
     @include size(6);

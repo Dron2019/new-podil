@@ -58,7 +58,7 @@ var hoverEffect = function(opts) {
     var speedOut = opts.speedOut || 1.2;
     var userHover = (opts.hover === undefined) ? true : opts.hover;
     var easing = opts.easing || Expo.easeOut;
-    var otherHoverEl = opts.otherHoverEl || parent;
+    var otherHoverEl = opts.otherHoverEl || undefined;
 
     var mobileAndTabletcheck = function() {
         var check = false;
@@ -162,18 +162,23 @@ var hoverEffect = function(opts) {
         }
         /**Доавление еффекта при наведении на другой елемент */
 
-        otherHoverEl.addEventListener(evtIn, function(e) {
-            touchClicker += 1;
-            if (touchClicker > 1) touchClicker = 0;
-            console.log(touchClicker);
-            switchSecond();
-        });
-        otherHoverEl.addEventListener(evtOut, function(e) {
-            if (touchClicker === 1) return false;
-            if (e.target.tagName === 'A') return false;
-            switchFirst();
-        });
-        /**Доавление еффекта при наведении на другой елемент END */
+
+        if (otherHoverEl !== undefined) {
+
+            otherHoverEl.addEventListener(evtIn, function(e) {
+                touchClicker += 1;
+                if (touchClicker > 1) touchClicker = 0;
+                console.log(touchClicker);
+                switchSecond();
+            });
+            otherHoverEl.addEventListener(evtOut, function(e) {
+                if (touchClicker === 1) return false;
+                if (e.target.tagName === 'A') return false;
+                switchFirst();
+            });
+            /**Доавление еффекта при наведении на другой елемент END */
+        }
+
     };
 
     if (userHover) {
