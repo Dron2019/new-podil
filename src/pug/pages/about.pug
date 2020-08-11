@@ -1,0 +1,90 @@
+extends ../layout/main
+block variable
+    -pageName = 'about';
+    - var version = "ua";
+        
+block meta
+    title= 'Про комплекс Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    script(defer src="./assets/scripts/about.js")
+block content
+    .front-bg
+        +img('about/about-bg.jpg')
+        .gradient
+    .breadcrumbs-block
+        a(href="index.html").breadcrumbs-block__item 
+            span Головна
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Про комплекс
+    .slogan-large ПОЛІФУНКЦІОНАЛЬНИЙ РАЙОН #БІЛЯ_ДНІПРА
+    .about-front-block-left.about-half-block.text-large НОВИЙ ПОДІЛ — район, який об'єднує в собі безліч необхідних функцій та яскравих життєвих сценаріїв. Він призначений для життя, роботи та відпочинку.
+    .about-front-block-right.about-half-block.text-large Кожен мешканець, бізнес-резидент або відвідувач цього району може взяти участь у його створенні, реалізуючи тут свої ідеї та свої мрії.
+    .genplan-wrapper
+        include ../../assets/images/about/genplan/genplan.svg
+        .legend-wrapper
+            .legend-title.legend-button-js
+                span.text Згорнути
+                +svg('birdy').birdy
+            ul.legend.opened.legend-js
+                li.text 
+                    +img('about/genplan/legend-images/asphalt.svg').legend-icon  
+                    span.text Асфальтове покриття 
+                li 
+                    +img('about/genplan/legend-images/veloroad.svg').legend-icon
+                    span.text Велосипедна доріжка 
+                li 
+                    +img('about/genplan/legend-images/parkplaces-gazon.svg').legend-icon
+                    span.text Паркомісця на газоні 
+                li 
+                    +img('about/genplan/legend-images/parking.svg').legend-icon
+                    span.text Парковка 
+                li 
+                    +img('about/genplan/legend-images/terrace.svg').legend-icon
+                    span.text Тераси 
+                li 
+                    +img('about/genplan/legend-images/transport-stop.svg').legend-icon
+                    span.text Зупинка громадського транспорта 
+                li 
+                    +img('about/genplan/legend-images/field-borders.svg').legend-icon
+                    span.text Межі ділянки 
+                li 
+                    +img('about/genplan/legend-images/under-project-buildings.svg').legend-icon
+                    span.text Будівлі та споруди що проектуються 
+                li 
+                    +svg('pierce').legend-icon 
+                    span.text Набережна 
+                li 
+                    +svg('trees').legend-icon 
+                    span.text Бульвар 
+                li 
+                    +svg('apple-on-books').legend-icon 
+                    span.text Культурний центр 
+                li 
+                    +svg('coach-with-toys').legend-icon 
+                    span.text 2 дитячих садочки 
+                li 
+                    +svg('school-tools').legend-icon 
+                    span.text Школа 
+                li 
+                    +svg('boat').legend-icon 
+                    span.text Причали для яхт 
+                li 
+                    +svg('umbrella').legend-icon 
+                    span.text Міський пляж 
+                li 
+                    +svg('amphitheatre').legend-icon 
+                    span.text Амфітеатр 
+                li 
+                    +svg('ball').legend-icon 
+                    span.text Футбольне поле 
+                li 
+                    +svg('basket').legend-icon 
+                    span.text Баскетбольний майданчик 
+                li 
+                    +svg('tennis-rocket').legend-icon 
+                    span.text Тенісні корти

@@ -1,0 +1,194 @@
+#about {
+    .breadcrumbs-block {
+        margin-top: 30px;
+    }
+    .page__content {
+        font-size: 0;
+    }
+    .front-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 70vh;
+        z-index: 0;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), rgba(131, 82, 155, 0.25);
+            mix-blend-mode: color;
+        }
+    }
+    .slogan-large {
+        position: relative;
+        z-index: 1;
+        margin-top: calc(70vh - var(--header-height) - 1.17em - 80px - 58px);
+        max-width: 20ch;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+    }
+}
+
+.slogan-large {
+    font-size: 36px;
+    line-height: 1.17em;
+    text-transform: uppercase;
+}
+
+.half-blocks-wrapper {
+    width: calc(100% + var(--side-fields) * 2);
+}
+
+.about-half-block {
+    display: inline-flex;
+    width: 50%;
+    height: 30vh;
+    padding-right: 100px;
+    align-items: center;
+    @include from(1680px) {
+        vertical-align: top;
+    }
+}
+
+.about-front-block-left {
+    position: relative;
+    z-index: 1;
+    background-color: var(--violet1);
+}
+
+.about-front-block-right {
+    position: relative;
+    z-index: 1;
+    background-color: var(--violet2);
+    width: calc(50% + 30px);
+    margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
+    padding-left: 50px;
+}
+
+.text-large {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 38px;
+}
+
+.genplan-wrapper {
+    position: relative;
+    z-index: 1;
+    width: calc(100% + var(--side-fields) * 2);
+    margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+    margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
+    &>svg {
+        margin-bottom: -12px;
+    }
+    &>svg path:not(.heart) {
+        pointer-events: none;
+    }
+    @include from(1680px) {
+        &>svg {
+            margin-bottom: -20px;
+        }
+    }
+}
+
+
+/*GENPLAN STYLE*/
+
+.heart {
+    fill: var(--violet1);
+    transition: .4s;
+    @include from(769px) {
+        &:hover {
+            fill: var(--blue);
+        }
+    }
+}
+
+.legend-wrapper {
+    @include size(6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    .text {
+        color: var(--violet1);
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 32px;
+    }
+    .legend-title {
+        width: 150px;
+        // background-color: var(--white);
+        background-color: var(--white);
+        color: var(--violet1);
+        padding-left: var(--side-fields);
+        height: 50px;
+        display: flex;
+        align-items: center;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    .birdy {
+        width: 10px;
+        height: 5px;
+        fill: none;
+        margin-left: 10px;
+        transition: .7s;
+    }
+    .legend-icon {
+        width: 25px;
+        height: 25px;
+        margin-right: 23px;
+    }
+    @include from(769px) {
+        .legend-title:hover svg {
+            transform: rotate(180deg);
+        }
+    }
+    .legend {
+        background-color: var(--white);
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: var(--side-fields);
+        column-count: 2;
+        break-inside: avoid;
+        transition: height .5s;
+    }
+    .legend.closed {
+        padding: 0;
+        height: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+    .legend li {
+        display: flex;
+        align-items: center;
+    }
+    @include to(1068px) {
+        @include size(8);
+        .legend {
+            column-count: 3;
+        }
+    }
+    @include to(950px) {
+        width: 100%;
+    }
+}
+
+.legend-icon-popup {
+    position: fixed;
+    background-color: var(--blue);
+    color: var(--white);
+    z-index: 5;
+    transition: opacity .5s ease-in;
+    padding: 4px 16px;
+}

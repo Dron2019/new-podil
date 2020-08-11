@@ -60,6 +60,9 @@ header.header {
     align-items: center;
     font-size: 18px;
     line-height: 0.87em;
+    @include to(1120px) {
+        display: none;
+    }
 }
 
 .form-call-button {
