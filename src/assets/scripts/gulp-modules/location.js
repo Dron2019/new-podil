@@ -1,41 +1,22 @@
-gsap.fromTo('.location-first-section', { opacity: 0 }, {
-    opacity: 1,
-    duration: 1
+/* beautify preserve:start */
+@@include('gsap.js')
+@@include('location-google-map.js')
+/* beautify preserve:end */
+    /**Imported GSAP END */
+;;;;;;;;;
+let legendButton = document.querySelector('.legend-button-js'),
+    legend = document.querySelector('.legend-js');
+legendButton.addEventListener('click', function(evt) {
+    legend.classList.toggle('closed');
+    if (!legend.classList.contains('closed')) animateLegendIcons();
+
 });
-// gsap.from('.location-first-section', { backgroundPosition: '100vw', delay: 1, duration: 1.2 });
-gsap.from('.location-first-section>div', { y: '100%', opacity: 0, stagger: 0.5, delay: 0.2 });
-var options = {
-    threshold: 0.2,
-    root: null,
+
+
+
+
+
+function animateLegendIcons() {
+    gsap.from(legend.querySelectorAll('li'), { clearProps: 'all', autoAlpha: 0, y: 15, stagger: 0.01 });
+    // gsap.to(legend, { height: '500px' });
 }
-var callback = function(entries, observer) {
-    console.log(entries[0]);
-    if (entries[0].isIntersecting) {
-        gsap.from(`.${entries[0].target.classList[0]} div`, { y: '100%', opacity: 0 });
-        observer.unobserve(entries[0].target);
-    }
-};
-var observer = new IntersectionObserver(callback, options);
-observer.observe(document.querySelector('.location-last-section'));
-
-
-
-let start = function() {
-    incrementor = 0;
-    return function(incrementor) {
-
-        setTimeout(() => {
-            console.log('reg');
-            window.requestAnimationFrame(start);
-
-
-
-        }, 1000 / 25);
-    }
-
-
-
-};
-
-
-start();
