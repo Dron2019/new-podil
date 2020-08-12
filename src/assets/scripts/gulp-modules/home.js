@@ -146,16 +146,16 @@ function secondScreenAnim() {
 // secondScreenAnim().play().timeScale(1);
 
 function firstScreenAnim() {
-    const tl = new TimelineMax({ repeat: 0, duration: 0.5, ease: ease_1, paused: true });
-    tl.from('.main-screen .main-screen__block:nth-child(1) .main-screen__block__bg-image', 0.8, { ease: ease_2, scale: 1.5 });
+    const tl = new TimelineMax({ clearProps: 'all', repeat: 0, duration: 0.5, ease: ease_1, paused: true });
+    tl.from('.main-screen .main-screen__block:nth-child(1) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 });
     tl.from('.main-screen .main-screen__block:nth-child(1) svg ,.main-screen .main-screen__block:nth-child(1) .home-block-title, .main-screen .main-screen__block:nth-child(1) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(2) .main-screen__block__bg-image', 0.8, { ease: ease_2, scale: 1.5 }, '<0.05');
+    tl.from('.main-screen .main-screen__block:nth-child(2) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<0.05');
     tl.from('.main-screen .main-screen__block:nth-child(2) svg ,.main-screen .main-screen__block:nth-child(2) .home-block-title, .main-screen .main-screen__block:nth-child(2) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(3) .main-screen__block__bg-image', 0.8, { ease: ease_2, scale: 1.5 }, '<0.05');
+    tl.from('.main-screen .main-screen__block:nth-child(3) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<0.05');
     tl.from('.main-screen .main-screen__block:nth-child(3) svg ,.main-screen .main-screen__block:nth-child(3) .home-block-title, .main-screen .main-screen__block:nth-child(3) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(4) .main-screen__block__bg-image', 0.8, { ease: ease_2, scale: 1.5 }, '<0.05');
+    tl.from('.main-screen .main-screen__block:nth-child(4) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<0.05');
     tl.from('.main-screen .main-screen__block:nth-child(4) svg ,.main-screen .main-screen__block:nth-child(4) .home-block-title, .main-screen .main-screen__block:nth-child(4) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen  .hover-gradient', 1, { ease: ex, opacity: 1 });
+    tl.from('.main-screen  .hover-gradient', 0.2, { clearProps: 'all', ease: ex, opacity: 1 });
     return tl;
 }
 

@@ -84,7 +84,7 @@ var hoverEffect = function(opts) {
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(0xffffff, 0.0);
+    renderer.setClearColor(0xffffff, 1);
     renderer.setSize(parent.offsetWidth, parent.offsetHeight);
     parent.appendChild(renderer.domElement);
 

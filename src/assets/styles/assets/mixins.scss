@@ -15,3 +15,12 @@
     $remSize: $size / 14px;
     @return #{$remSize}rem;
 }
+
+
+/*Вводишь пиксели , выводит в EM*/
+
+@mixin fontSizeLhToEm($font,
+$lineHeight) {
+    font-size: #{$font}px;
+    line-height: #{($lineHeight * 100 / $font)/100}em;
+}

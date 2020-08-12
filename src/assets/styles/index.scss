@@ -60,7 +60,9 @@ a[href] {
         flex-direction: column;
         position: relative;
         overflow: hidden;
-        &-title {}
+        &-title {
+            transition: .5s;
+        }
         &-pattern {
             margin-bottom: 20px;
         }
@@ -171,6 +173,9 @@ a[href] {
     @include from(769px) {
         &__block:hover .hover-gradient {
             opacity: 1;
+        }
+        &__block:hover &__block-title {
+            color: var(--white);
         }
     }
 }

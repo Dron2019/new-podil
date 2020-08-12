@@ -82,6 +82,7 @@
     width: calc(50% + 30px);
     margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
     padding-left: 50px;
+    vertical-align: bottom;
 }
 
 .text-large {
