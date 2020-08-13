@@ -19,6 +19,18 @@
         transition: .7s ease-out;
         cursor: pointer;
     }
+    .legend-wrapper .legend li.active .text {
+        color: var(--blue);
+    }
+    .legend-wrapper .legend li.active {
+        transform: translateX(10%);
+    }
+    .legend-wrapper .legend li.active path[stroke] {
+        stroke: var(--blue) !important;
+    }
+    .legend-wrapper .legend li.active path[fill] {
+        fill: var(--blue) !important;
+    }
     @include from(769px) {
         .legend-wrapper .legend li:hover .text {
             color: var(--blue);
@@ -48,6 +60,7 @@
     margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
     margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
     position: relative;
+    margin-top: 90px;
 }
 
 .location-distances-list {
@@ -56,7 +69,8 @@
     position: relative;
     z-index: 1;
     li {
-        padding: 0 calc(var(--side-fields) + 4%) 0 28px;
+        // padding: 0 calc(var(--side-fields) + 4%) 0 28px;
+        padding: 0 calc(var(--side-fields)) 0 28px;
         height: calc(100vh / 5);
         display: flex;
         flex-wrap: wrap;
@@ -86,6 +100,7 @@
     }
     li svg {
         margin-right: 30px;
+        max-width: 40px;
     }
     .distance-text-block {
         width: calc(100% - 90px);
@@ -93,6 +108,20 @@
         flex-direction: column;
         span {
             width: 100%;
+        }
+    }
+    @include to(1200px) {
+        @include size(3.5)
+    }
+    @include to(1100px) {
+        @include size(4);
+        li {
+            padding: 0 calc(var(--side-fields)) 0 28px;
+        }
+    }
+    @include to(1024px) {
+        li svg {
+            margin-right: 10px;
         }
     }
 }

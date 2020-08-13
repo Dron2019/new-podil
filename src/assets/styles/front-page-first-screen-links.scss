@@ -7,75 +7,8 @@
         position: relative;
         z-index: 2;
     }
-    .front-block {
-        height: 100vh;
-        overflow: hidden;
-        position: relative;
-        width: calc(100% + var(--side-fields) * 2);
-        margin-top: calc(var(--breadcrumbs-marginT) + var(--breadcrumbs-height) + var(--header-height) - ((var(--breadcrumbs-marginT) + var(--breadcrumbs-height) + var(--header-height)) * 2));
-        margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
-        margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
-        img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            object-position: top left;
-            z-index: 0;
-            opacity: 0;
-        }
-        canvas {
-            position: absolute;
-            background-color: var(--white);
-            left: 0;
-            top: 0;
-            pointer-events: none;
-        }
-        &__text svg {}
-    }
-    .fron-block__text {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 50px 50px;
-        @include size(4.5);
-        justify-content: center;
-        height: 100%;
-        align-items: flex-start;
-        margin-left: auto;
-    }
-    .fron-block__text.yellow {
-        background: rgba(255, 218, 5, 0.8);
-    }
-    .fron-block__text.blue {
-        background: rgba(23, 152, 213, 0.8);
-    }
-    .fron-block__text.green {
-        background: rgba(175, 190, 45, 0.8);
-    }
-    .front-block__top-pattern {
-        width: 100%;
-        margin-bottom: 12px;
-    }
-    .front-block__bottom-pattern {
-        margin-top: 12px;
-        width: 100%;
-    }
-    .front-block__slogan {
-        text-transform: uppercase;
-        font-weight: normal;
-        font-size: 36px;
-        line-height: 42px;
-    }
-    .front-block__slogan.violet {
-        color: var(--violet1);
-    }
-    .front-block__slogan.yellow {
-        color: var(--yellow);
+    .front-block img {
+        opacity: 0;
     }
 }
 
