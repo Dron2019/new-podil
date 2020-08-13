@@ -1,0 +1,37 @@
+extends ../layout/main
+block variable
+    -pageName = 'gallery';
+    - var version = "ua";
+        
+block meta
+    title= 'Галерея Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    script(defer src="./assets/scripts/gallery.js")
+block content
+    h1.page-title.title.white Галерея
+    .breadcrumbs-block
+        a(href="index.html").breadcrumbs-block__item 
+            span Головна
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Галерея
+    .gallery-slider.gallery-slider-js
+        <svg viewBox="0 0 100 100">
+            <clipPath id="myClip">
+                <path id="heart" d="M10,30 A20,20,0,0,1,50,30 A20,20,0,0,1,90,30 Q90,60,50,90 Q10,60,10,30 Z" />
+                <image id="heart1" x="0" y="0"  height="100" href="./assets/images/gallery/1.jpg" />
+            </clipPath>
+            <use clip-path="url(#myClip)" xlink:href="#heart"  />
+            <use clip-path="url(#myClip)" xlink:href="#heart1"  />
+        </svg>
+        //- +img('gallery/1.jpg').slide
+        //- +img('gallery/1.jpg').slide
+        //- +img('gallery/1.jpg').slide
+        //- +img('gallery/1.jpg').slide
+        //- +img('gallery/1.jpg').slide
+        //- +img('gallery/1.jpg').slide
