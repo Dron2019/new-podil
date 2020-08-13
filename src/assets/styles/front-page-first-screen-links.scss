@@ -60,11 +60,27 @@
         object-fit: cover;
         object-position: center;
     }
+    // v=1
+    // &__text-block {
+    //     position: relative;
+    //     z-index: 2;
+    //     display: flex;
+    //     margin-top: calc(var(--text-block-height) - (var(--text-block-height) * 2));
+    // }
+    // v=1.2
+    position: relative;
     &__text-block {
-        position: relative;
+        position: absolute;
         z-index: 2;
         display: flex;
-        margin-top: calc(var(--text-block-height) - (var(--text-block-height) * 2));
+        margin-top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    &__text-block-text {
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
     &__text-block.three-rows {
         margin-top: calc(var(--text-block-height) - (var(--text-block-height) * 2 + 1.6em));
@@ -173,5 +189,35 @@
     .seafront-screen4 .page-sngl-block {
         grid-row-start: 1;
         grid-row-end: 3;
+    }
+    .boulevard-screen1 .page-sngl-block:nth-child(3) {
+        grid-area: 1/2/3/3;
+    }
+    .boulevard-screen2 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/1;
+    }
+    .for-life-screen1 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/1;
+    }
+    .for-life-screen2 .page-sngl-block:nth-child(3) {
+        grid-area: 1/2/3/3;
+    }
+    .for-life-screen3 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/3;
+    }
+    .for-work-screen1 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/1;
+    }
+    .for-work-screen2 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/3;
+    }
+    .for-sport-screen1 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/1;
+    }
+    .for-sport-screen2 .page-sngl-block:nth-child(3) {
+        grid-area: 1/2/3/3;
+    }
+    .for-sport-screen3 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/3;
     }
 }
