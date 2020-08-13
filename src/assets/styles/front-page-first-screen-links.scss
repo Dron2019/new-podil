@@ -1,4 +1,6 @@
-#front-page-first-screen-links {
+#front-page-first-screen-links,
+#advantages,
+#menu-infra-pages {
     --breadcrumbs-marginT: 30px;
     --breadcrumbs-height: 22px;
     .breadcrumbs-block {
@@ -49,6 +51,9 @@
     &.bg-green &__text-block {
         background-color: rgba(175, 190, 45, 0.8);
     }
+    &.bg-violet1 &__text-block {
+        background-color: rgba(131, 82, 155, 0.8);
+    }
     &__img {
         width: 100%;
         height: 100%;
@@ -61,6 +66,13 @@
         display: flex;
         margin-top: calc(var(--text-block-height) - (var(--text-block-height) * 2));
     }
+    &__text-block.three-rows {
+        margin-top: calc(var(--text-block-height) - (var(--text-block-height) * 2 + 1.6em));
+    }
+    &__text-block.three-rows &__text-block-text {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
     &__text-block-icon {
         width: var(--text-block-height);
         min-height: var(--text-block-height);
@@ -68,6 +80,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 29px;
+        color: var(--violet1);
     }
     &__text-block-icon svg {
         max-width: 50%;
@@ -79,6 +95,33 @@
         align-items: center;
         padding-left: 30px;
         padding-right: 15%;
+    }
+    &.plain-block-no-bg {
+        background-color: var(--green);
+    }
+    &.plain-block-no-bg &__text-block {
+        height: 100%;
+        margin-top: 0%;
+        background-color: transparent;
+    }
+    &.plain-block-no-bg &__text-block-icon {
+        display: none;
+    }
+    &.plain-block-no-bg &__text-block-text {
+        background-color: transparent;
+        width: 100%;
+    }
+    @include to(1180px) {
+        &__text-block-text {
+            padding-right: var(--side-fields);
+        }
+        &__text-block.three-rows {
+            margin-top: calc(var(--text-block-height) - (var(--text-block-height) * 2 + 3.2em));
+        }
+        &__text-block.three-rows &__text-block-text {
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
     }
 }
 
@@ -102,5 +145,33 @@
     }
     .for-dreaming2 .page-sngl-block:nth-child(2) {
         grid-area: 1/2/3/3;
+    }
+    .adv-screen1 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/1;
+    }
+    .adv-screen2 .page-sngl-block:nth-child(2) {
+        grid-area: 1/2/3/3;
+    }
+    .adv-screen3 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/1;
+    }
+    .adv-screen4 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/3;
+    }
+    .seafront-screen1 .page-sngl-block:nth-child(3) {
+        grid-area: 1/2/3/3;
+    }
+    .seafront-screen2 .page-sngl-block:nth-child(1) {
+        grid-area: 1/1/3/1;
+    }
+    .seafront-screen3 .page-sngl-block:nth-child(2) {
+        grid-area: 2/2/3/1;
+    }
+    .seafront-screen3 .page-sngl-block:nth-child(3) {
+        grid-area: 1/2/3/3;
+    }
+    .seafront-screen4 .page-sngl-block {
+        grid-row-start: 1;
+        grid-row-end: 3;
     }
 }

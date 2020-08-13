@@ -5,7 +5,7 @@
                 for (var e = arguments, t = 0; t < arguments.length; t++)
                     if (void 0 !== e[t]) return e[t]
             }
-            console.log("%c Hover effect by Robin Delaporte: https://github.com/robin-dela/hover-effect ", "color: #bada55; font-size: 0.8rem");
+            // console.log("%c Hover effect by Robin Delaporte: https://github.com/robin-dela/hover-effect ", "color: #bada55; font-size: 0.8rem");
             var r = n.parent,
                 o = n.displacementImage,
                 a = n.image1,

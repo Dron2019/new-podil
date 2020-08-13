@@ -12,7 +12,7 @@ block scripts
     script(defer src="./assets/scripts/libs.js")
     script(defer src="./assets/scripts/index.js")
     script(defer src="./assets/scripts/forms-handler.js")
-    //- script(defer src="./assets/scripts/for-work-front-page.js")
+    script(defer src="./assets/scripts/values.js")
 block content
     .breadcrumbs-block
         a(href="index.html").breadcrumbs-block__item 
@@ -106,5 +106,21 @@ block content
                 li.text-semi-large Відкритість місту 
                 li.text-semi-large Відкритість людям 
                 li.text-semi-large Відкритість усьому новому
+    .values-block3 
+        .values-block3__half
+            +img('values/block3-half1.jpg')
+            ul
+                li.text-large РІЗНОМАНІТТЯ
+                li.text-semi-large Архітектурне різноманіття 
+                li.text-semi-large Різноманіття інфраструктури 
+                li.text-semi-large Різноманіття сценаріїв для життя, роботи та відпочинку 
+        .values-block3__half
+            +img('values/block3-half2.jpg')
+            ul
+                li.text-large ЛЮДИНОЦЕНТРИЧНІСТЬ
+                li.text-semi-large У центрі уваги – особистість, її інтереси, потреби, прагнення
+                li.text-semi-large Людиноцентрична архітектура
+                li.text-semi-large Персональні можливості для кожного
+            
 
 
