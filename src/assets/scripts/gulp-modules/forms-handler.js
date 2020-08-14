@@ -14,7 +14,7 @@ submitList.forEach(el => {
 });
 
 function checkRequiredFields(form) {
-    const inputs = form.querySelectorAll('input');
+    const inputs = form.querySelectorAll('input,textarea');
     let sendObject = {};
     sendObject.form_name = form.dataset.name || '';
     sendObject.metka = window.location.href || '';
@@ -56,6 +56,7 @@ function send(object, url, form) {
     }).then(res => {
         if (res.match(/11/)) {
             sendMessageStatus(form, 'Ваше повідомлення відправлено');
+            resetForm(form)
         } else {
             sendMessageStatus(form, 'Помилка відправки');
         }
@@ -65,27 +66,22 @@ function send(object, url, form) {
     })
 };
 
+function resetForm(form) {
+    form.querySelectorAll('input, textarea').forEach(input => {
+        input.value = '';
+    })
+}
+
 function sendMessageStatus(form, status) {
-    // form.style.position = 'relative';
-    // form.innerHTML += `
-    // <span class="send-message" 
-    // style="animation: fadeInLeft 1s 1 ease-in-out ; 
-    //     color:#fff; position:absolute; 
-    //     padding:10px 20px; 
-    //     background:var(--blue);
-    //     left:50%;
-    //     font-size:24px; 
-    //     transform:translateX(-50%)">
-    // ${status}
-    // </span>`;
     let element = document.createElement('span');
     element.style.cssText = `animation: fadeInLeft 1s 1 ease-in-out ; 
              color:#fff; position:absolute; 
              padding:10px 20px; 
              background:var(--blue);
              left:50%;
+             top:50%;
              font-size:24px; 
-             transform:translateX(-50%) `;
+             transform:translateX(-50%) translateY(-50%) `;
     element.innerHTML = status;
     element.classList.add('send-message');
     form.append(element);
@@ -142,85 +138,6 @@ function putCallbackFormInPopup(selector) {
 
 
 ;
-(function() {
-
-    var cmn_script = 'https://callmenow.com.ua/client_site/call_query';
-    var cmn_open_form_script = 'https://callmenow.com.ua/client_site/open_form_event';
-
-    $('.btnRecall, #btnRecall').on('click', function(evt) {
-        evt.preventDefault();
-        console.log('efefefef');
-        var phoneField = this.closest('form').querySelector('input[name=tel]');
-        var userPhone = this.closest('form').querySelector('input[name=tel]').value;
-
-        userPhone = "+" + userPhone.replace(/\D/g, '');
-        // console.log(userPhone);
-        console.log(userPhone);
-        if (userPhone.length < 7) {
-            phoneField.closest('.input-group').classList.add('unfilled');
-            sendMessageStatus(this.closest('form'), 'введите номер телефона');
-        } else {
-            phoneField.closest('.input-group').classList.remove('unfilled');
-            sendCallbackQuery(cmn_script, '597', userPhone, this.closest('form'));
-        }
-
-        // openFormEvent(cmn_open_form_script, '597');
-    });
-
-    /* функция для передачи запроса на звонок
-    параметры: адрес скрипта, айди кабинета, телефон посетителя сайта */
-    function sendCallbackQuery(cmn_script, u_id, phone, form1) { //u_id=605
-        param = { 'u_id': u_id, 'client_phone': phone, 'clientid': getGAClientId() };
-        jQuery.ajax({
-            type: "GET",
-            url: cmn_script,
-            dataType: 'jsonp',
-            data: param,
-            success: function(data) {
-                handleCallQueryResponse(data.msg_text, data.success, data.is_working_time, form1); //
-
-            }
-        });
-    }
-
-    /* функция для обарботки ответа на запрос звонка
-    параметры: текст для посетителя, булевый флаг (true - если заявка принята) */
-    function handleCallQueryResponse(msg_text, success, is_working_time, form) {
-        // тут что-нибудь делаем (выводим сообщение посетителю например)
-        sendMessageStatus(form, msg_text);
-        form.querySelector('input[name=tel]').value = ``;
-        form.querySelector('button').disabled = true;
-        setTimeout(() => {
-            form.querySelector('button').removeAttribute('disabled');
-        }, 5000);
-    }
-
-    /* функция отправляет событие "посетитель открыл форму", событие появится в аналитиксе, если он настроен
-    параметры: адрес скрипта, айди кабинета */
-    function openFormEvent(cmn_open_form_script, u_id) {
-        param = { 'u_id': u_id, 'clientid': getGAClientId() };
-        jQuery.ajax({
-            type: "GET",
-            url: cmn_open_form_script,
-            dataType: 'jsonp',
-            data: param,
-            success: function(data) {
-                // do nothing
-            }
-        });
-    }
-
-    function getGAClientId() {
-        var clientId = "";
-        if (typeof(ga) != undefined && typeof(ga) != "undefined") {
-            ga(function() {
-                var tracker = ga.getAll()[0];
-                clientId = tracker.get('clientId');
-            });
-        }
-        return clientId;
-    }
-})();
 
 
 document.querySelectorAll('.input-group').forEach(icon => {

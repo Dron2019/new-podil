@@ -1,0 +1,65 @@
+extends ../layout/main
+block variable
+    -pageName = 'single-news';
+    - var version = "ua";
+        
+block meta
+    title= 'Головне місце сили, зустрічей і  відпочинку на НОВОМУ ПОДОЛІ. Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    //- script(defer src="./assets/scripts/news.js")
+block content
+    .breadcrumbs-block
+        a(href="index.html" data-hover="Головна").breadcrumbs-block__item  
+            span Головна
+        a(href="news.html" data-hover="Новини").breadcrumbs-block__item 
+            span Новини
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Головне місце сили, зустрічей і  відпочинку на НОВОМУ ПОДОЛІ.
+    .sngl-news-wrapper
+        .sngl-news-heart
+            +svg('news-heart')
+            span 18.09
+            span 2020
+        .sngl-news-title Головне місце сили, зустрічей і  відпочинку на НОВОМУ ПОДОЛІ.
+        p Пропонуємо 10 фактів про те, якою стане перша й єдина набережна для прогулянок у центрі міста. Це головне місце сили, місце зустрічей і місце відпочинку на НОВОМУ ПОДОЛІ. Пропонуємо 10 фактів про те, якою стане перша й єдина набережна для прогулянок у центрі міста: Вздовж набережної ми облаштовуємо зелений бульвар, який стане місцем відпочинку, прогулянок і занять спортом. НОВИЙ ПОДІЛ створений для тих, хто поділяє прогресивні цінності, на яких базується гармонійне життя у сучасному місті: Відкритість, Різноманіття, Людиноцентричність.
+        +img('gallery/1.jpg')
+        .text-large Пропонуємо 10 фактів про те, якою стане перша й єдина набережна для прогулянок у центрі міста:
+        a(href="#") Тестове посилання
+        ul.sngl-news-list
+            li Це головне місце сили, місце зустрічей і місце відпочинку на НОВОМУ ПОДОЛІ.
+            li Пропонуємо 10 фактів про те, якою стане перша й єдина набережна для прогулянок у центрі міста 
+            li Вздовж набережної ми облаштовуємо зелений бульвар, який стане місцем відпочинку, прогулянок і занять спортом
+        .iframe-wrapper
+            <iframe  src="https://www.youtube.com/embed/RjCY8FrsXGk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    .title.similar-news-title Схожі новини
+    .news-wrapper
+        a(href="single-news.html").news-card
+            +img('gallery/1.jpg').news-card__img
+            .news-card__title.text-large Головне місце сили, зустрічей і  відпочинку на НОВОМУ ПОДОЛІ.
+            .news-card__date 
+                +svg('news-heart')
+                span 18.09
+                span 2020
+            .news-card__text.text Пропонуємо 10 фактів про те, якою стане перша й єдина набережна для прогулянок у центрі міста.
+        a(href="single-news.html").news-card
+            +img('gallery/1.jpg').news-card__img
+            .news-card__title.text-large Головне місце сили, зустрічей і  відпочинку на НОВОМУ ПОДОЛІ.
+            .news-card__date 
+                +svg('news-heart')
+                span 18.09
+                span 2020
+            .news-card__text.text Пропонуємо 10 фактів про те, якою стане перша й єдина набережна для прогулянок у центрі міста.
+        a(href="single-news.html").news-card
+            +img('gallery/1.jpg').news-card__img
+            .news-card__title.text-large Головне місце сили, зустрічей і  відпочинку на НОВОМУ ПОДОЛІ.
+            .news-card__date 
+                +svg('news-heart')
+                span 18.09
+                span 2020
+            .news-card__text.text Пропонуємо 10 фактів про те, якою стане перша й єдина набережна для прогулянок у центрі міста.

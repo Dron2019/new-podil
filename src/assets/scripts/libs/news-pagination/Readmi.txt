@@ -1,0 +1,9 @@
+add class 'js-pagination' in a page
+add init function in a page:   
+	(function(){
+ 	   paginationInit({wrap: '.news__pagination',dots: true,dotsAmount: 3,dotsLast: true,arrow: true,extremeArrow: true, elementInPage: 9, el:'.ct-group__element'});
+	})();
+	
+	wrap = обертка элементов
+	el: класс у елементов
+	elementInPage: кол-во эоементов на странице

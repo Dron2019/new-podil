@@ -1,0 +1,145 @@
+#contacts {
+    .page__content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.contact-group {
+    margin-top: 20px;
+    &__title {
+        color: var(--yellow);
+        text-transform: uppercase;
+    }
+    &__text {
+        color: var(--white);
+    }
+}
+
+.heart-mask-video-block {
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        object-fit: cover;
+    }
+}
+
+.icon--marker-in-circle {
+    width: 43px;
+    height: 43px;
+    fill: transparent;
+    stroke: var(--violet1);
+}
+
+.contact-heart-link {
+    font-size: 14px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: var(--violet1);
+    span {
+        margin-top: 10px;
+    }
+}
+
+.contact-form {
+    background-color: var(--blue);
+    font-weight: 500;
+    color: var(--white);
+    @include fontSizeLhToEm(14, 22);
+    padding: 18px 30px 40px 30px;
+    position: relative;
+    legend {
+        color: var(--yellow);
+        font-weight: 500;
+        margin-bottom: 10px;
+        @include fontSizeLhToEm(24, 38);
+    }
+    button {
+        border: none;
+        font-family: $default-font;
+        width: 176px;
+    }
+    input,
+    textarea {
+        background: transparent;
+        border: none;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        color: var(--white);
+    }
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--white);
+    }
+    textarea {
+        resize: none;
+        height: calc(1.6em * 3);
+    }
+    .icon--white-arrow {
+        width: 16px;
+        height: 10px;
+    }
+    .input-group {
+        position: relative;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: flex-start;
+        padding-bottom: 10px;
+    }
+    .input-group svg {
+        width: 12px;
+        height: 12px;
+        margin-right: 20px;
+        align-self: center;
+    }
+    .input-group:last-of-type svg {
+        align-self: flex-start;
+        margin-top: 0.5em;
+    }
+    .input-group:after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background-color: white;
+        left: 0;
+        bottom: 0;
+        transition: .5s;
+    }
+    .input-group.unfilled:after {
+        background-color: red;
+    }
+    [type=submit]:disabled,
+    [type=submit]:disabled .button-std__icon {
+        background-color: var(--gray);
+        pointer-events: none;
+    }
+}
+
+.contact-content-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.contact-content-center {
+    @include size(5)
+}
+
+.contact-content-left,
+.contact-content-right {
+    @include size(3);
+}
+
+.contact-patterns-wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: auto;
+    justify-content: space-between;
+    align-items: flex-end;
+}

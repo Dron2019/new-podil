@@ -4,14 +4,14 @@
 	$telephone =  $_POST['telephone'];
     // $messager = $_POST['message'];
     $form_name = $_POST['form_name'];
-    if (empty($form_name)) 
-    {
-        $form_name = 'undefined';
-        echo 'fail';
-        return;
-    }    
-    // $admin_email = 'dron_2019@ukr.net';
-    $admin_email = 'viralitvinenko@gmail.com';
+    if (empty($form_name)) $form_name = "unknow";
+    // {
+    //     $form_name = 'undefined';
+    //     echo 'fail';
+    //     return;
+    // }    
+    $admin_email = 'dron_2019@ukr.net';
+    // $admin_email = 'viralitvinenko@gmail.com';
 	switch ($form_name) {
         case 'undefined':
             $message = '';
@@ -38,6 +38,9 @@
             $message .= "<p>e-mail: ".$_POST['email']."</p>";
         break;
         default:
+            $message  .= "<h1>Форма";
+            $message .= "<p>Телефон: ".$_POST['tel']."</p>";
+            $message .= "<p>e-mail: ".$_POST['email']."</p>";
             # code...
             break;
     }

@@ -1,0 +1,191 @@
+#news {
+    .fixed-background-heart {
+        display: none;
+    }
+}
+
+.news-card {
+    --date-width: 70px;
+    padding: 20px 20px 35px 20px;
+    border: 1px solid #9975B0;
+    transition: .7s ease-out;
+    font-size: 0;
+    color: var(--white);
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+    .text {
+        color: #E0E0E0;
+    }
+    &__title {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    &__date {
+        position: relative;
+        width: var(--date-width);
+        height: calc(var(--date-width) * 0.78);
+        display: inline-flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 10px;
+        vertical-align: middle;
+    }
+    &__date svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 0;
+    }
+    &__date span {
+        position: relative;
+        z-index: 2;
+        fill: var(--green);
+    }
+    &__text {
+        display: inline-block;
+        width: calc(100% - var(--date-width) - 20px);
+        margin-left: 20px;
+        vertical-align: middle;
+        max-height: calc(1.6em * 3);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &__date,
+    &__text {
+        // margin-top: auto;
+    }
+    &__img {
+        height: 225px;
+    }
+}
+
+.icon--news-heart {
+    fill: var(--green);
+}
+
+@include from(769px) {
+    .icon--news-heart:hover {
+        fill: var(--blue);
+    }
+}
+
+.news-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .news-card {
+        width: calc(33% - 10px);
+        margin-bottom: 20px;
+    }
+    @include to(992px) {
+        .news-card {
+            width: calc(50% - 10px);
+        }
+    }
+    @include to(575px) {
+        .news-card {
+            width: 100%;
+        }
+    }
+}
+
+@include from(769px) {
+    .news-card:hover {
+        background: var(--blue)
+    }
+}
+
+.news-pagination {
+    @include size(4);
+    margin: 30px auto 60px auto;
+    padding: 0 calc(25px + 25px);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    &__item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 39px;
+        margin: 0 5px;
+        display: inline-flex;
+        cursor: pointer;
+        span {
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 22px;
+            pointer-events: none;
+        }
+    }
+    &__item.active .icon--pagination-heart {
+        fill: var(--blue);
+        stroke: var(--blue);
+    }
+    .icon--pagination-heart {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transition: .7s ease-out;
+        fill: var(--violet1);
+        stroke: #9975B0;
+        z-index: 0;
+    }
+    .news-arrows {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    @include from(769px) {
+        .icon--pagination-heart:hover {
+            fill: var(--blue);
+            stroke: var(--blue);
+        }
+    }
+    @include to(1100px) {
+        @include size(6)
+    }
+    @include to(992px) {
+        @include size(8)
+    }
+    @include to(575px) {
+        width: 100%;
+    }
+}
+
+.news-arrows {
+    pointer-events: none;
+    .next,
+    .prev {
+        pointer-events: auto;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .next svg,
+    .prev svg {
+        width: 24px;
+        height: 16px;
+    }
+    .prev {
+        transform: scaleX(-1);
+    }
+}

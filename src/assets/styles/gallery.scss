@@ -22,4 +22,73 @@
         width: 100%;
         object-fit: cover;
     }
+    &:after {
+        content: '';
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.gallery-nav {
+    position: relative;
+    padding: 0 calc(24px + 15px);
+    width: calc((40px * 2) + (130px * 5));
+    margin: 0 auto;
+    margin-bottom: 25px;
+    margin-top: -100px;
+    .nav-slide {
+        width: 100px;
+        height: 80px;
+    }
+    .gallery-arrows {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav-slide {
+        margin: 0 15px;
+        cursor: pointer;
+    }
+    .nav-slide {
+        opacity: 0.5;
+        transition: .7s;
+    }
+    .slick-current {
+        opacity: 1;
+    }
+    @include from(769px) {
+        .nav-slide:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.gallery-arrows {
+    pointer-events: none;
+    .next,
+    .prev {
+        pointer-events: auto;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .next svg,
+    .prev svg {
+        width: 24px;
+        height: 16px;
+    }
+    .prev {
+        transform: scaleX(-1);
+    }
 }
