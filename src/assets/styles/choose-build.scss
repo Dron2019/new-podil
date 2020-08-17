@@ -1,0 +1,101 @@
+#choose-build {
+    .page__content {
+        display: flex;
+        flex-direction: column;
+    }
+    .breadcrumbs-block {
+        margin-bottom: 40px;
+    }
+    .choose-build-button {
+        margin-bottom: calc(var(--icon-width) - (var(--icon-width) * 2 + 25px));
+        margin-left: auto;
+    }
+    .genplan {
+        // margin-top: auto;
+        // margin-bottom: auto;
+    }
+    .genplan-links-block {
+        margin-top: -76px;
+        margin-bottom: 40px;
+        justify-content: center;
+    }
+}
+
+.icon--range-icon {
+    width: 20px;
+    height: 15px;
+}
+
+.genplan {
+    --sidecof: 0.56;
+    width: calc(100% + (var(--side-fields) * 2));
+    height: calc(100vw * var(--sidecof));
+    margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+    margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
+    path {
+        fill: #1798D5;
+        opacity: 0.8;
+        stroke: transparent;
+        transition: .7s ease-out;
+        cursor: pointer;
+    }
+    @include from(769px) {
+        path:hover {
+            fill: #1798D5;
+            opacity: 1;
+        }
+    }
+}
+
+.genplan-popup {
+    background: url(../images/choose-build/genplan-popup-bg.png) center no-repeat;
+    background-size: contain;
+    --popup-width: 107px;
+    --popup-side-coff: 0.79;
+    width: var(--popup-width);
+    height: calc(var(--popup-width) * var(--popup-side-coff));
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__row-value:before {
+        content: ' ';
+    }
+}
+
+.genplan-links-block {
+    display: flex;
+    // border-radius: 25px;
+    display: flex;
+    & li {
+        // font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        padding: 7px 50px;
+    }
+    & li:first-child {
+        border-radius: 25px 0 0 25px;
+    }
+    & li:last-child {
+        border-radius: 0 25px 25px 0;
+    }
+    & li a {
+        color: var(--white);
+    }
+    & li.violet2 {
+        background-color: var(--violet2);
+    }
+    & li.violet1 {
+        background-color: var(--violet1);
+    }
+    & li.green {
+        background-color: var(--green);
+    }
+    & li.blue {
+        background-color: var(--blue);
+    }
+}

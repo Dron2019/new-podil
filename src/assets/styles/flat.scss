@@ -1,0 +1,115 @@
+#flat {
+    --title-height: 98px;
+    --breadcrumbs-height: 61px;
+    .page__content {
+        min-height: auto;
+    }
+    .breadcrumbs-block {
+        margin-bottom: 35px;
+    }
+    .icon--compass {
+        margin: 26px 0;
+    }
+    .flat-right {
+        margin-top: calc(var(--breadcrumbs-height) + var(--title-height) + var(--header-height) - ((var(--header-height) + var(--breadcrumbs-height) + var(--title-height)) * 2));
+        padding-top: calc(var(--breadcrumbs-height) + var(--title-height) + var(--header-height));
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+    @include to(1150px) {
+        .flat-right {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+}
+
+.pdf-link {
+    margin-top: 90px;
+    width: 128px;
+    height: 128px;
+    padding: 5%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 50%;
+    @include fontSizeLhToEm(14, 18);
+    color: var(--white);
+    // font-weight: 500;
+    background-color: var(--green);
+    svg {
+        margin-bottom: 10px;
+    }
+}
+
+.flat-left {
+    @include size(3);
+    &>svg {
+        max-height: 200px;
+        // margin-top: 20px;
+        // margin-right: auto;
+    }
+}
+
+.flat-center {
+    @include size(6);
+    @include shift-padding(0.5);
+    max-height: 600px;
+}
+
+.flat-right {
+    @include size(3.5);
+    background-color: var(--green);
+    margin-left: auto;
+    margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
+    .button-std {
+        margin-top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @include to(1150px) {
+        @include size(4);
+    }
+}
+
+.flat-wrapper {
+    display: flex;
+    .button-std>span {
+        text-align: center;
+        white-space: initial;
+    }
+}
+
+.floor-mini-plan-title {
+    text-align: center;
+}
+
+.main-flat-info {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 38px;
+}
+
+.flat-premises {
+    // font-weight: 500;
+    font-size: 18px;
+    line-height: 29px;
+    margin-top: 20px;
+    li {
+        display: flex;
+        justify-content: space-between;
+    }
+    li span:last-child {
+        width: 9ch;
+        text-align: left;
+    }
+}
+
+.icon--key {
+    width: 16px;
+    height: 16px;
+    fill: transparent;
+}

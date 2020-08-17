@@ -1,32 +1,22 @@
 let popupRows = [{
-        name: 'flats',
-        selectorWithInfo: '#floor a',
-        destinationShowSelector: '.flats-js',
+        name: 'section',
+        selectorWithInfo: '.genplan path',
+        destinationShowSelector: '.section-js',
     },
     {
-        name: 'square',
-        selectorWithInfo: '#floor a',
-        destinationShowSelector: '.tot-square-js',
-    },
-    {
-        name: 'livsquare',
-        selectorWithInfo: '#floor a',
-        destinationShowSelector: '.live-square-js',
-    },
-    {
-        name: 'floor',
-        selectorWithInfo: '#floor a',
-        destinationShowSelector: '.floor-js',
+        name: 'build',
+        selectorWithInfo: '.genplan path',
+        destinationShowSelector: '.build-js',
     },
 ];
-const popup = document.querySelector('.choose-flat-popup-js');
+const popup = document.querySelector('.genplan-popup-js');
 
 popup.style.cssText = `
-position:fixed;
-left:0;
-top:0;
-transition:.3s ease-out;
-opacity:0;
+    position:fixed;
+    left:0;
+    top:0;
+    transition:.3s ease-out;
+    opacity:0;
 `;
 
 popupRows.forEach(row => {
@@ -43,6 +33,8 @@ popupRows.forEach(row => {
 
 
 function positioningPopup(popup, cords, vieved) {
+    // popup.style.left = `${cords.clientX}px`;
+    // popup.style.top = `${cords.clientY}px`;
     if (vieved) {
         popup.style.opacity = `1`;
         popup.style.visibility = `visible`;
@@ -54,6 +46,8 @@ function positioningPopup(popup, cords, vieved) {
     let selfWidth = popup.getBoundingClientRect().width;
     popup.style.transform = `translate(${cords.clientX - (selfWidth / 2)}px, ${cords.clientY - selfHeight - 10}px)`
 
+
+
 };
 
 var positioningPopup = throttle(positioningPopup, 500);
@@ -64,13 +58,17 @@ function throttle(func, ms) {
         savedThis;
 
     function wrapper() {
+
         if (isThrottled) { // (2)
             savedArgs = arguments;
             savedThis = this;
             return;
         }
+
         func.apply(this, arguments); // (1)
+
         isThrottled = true;
+
         setTimeout(function() {
             isThrottled = false; // (3)
             if (savedArgs) {
@@ -82,36 +80,3 @@ function throttle(func, ms) {
 
     return wrapper;
 }
-
-
-/**floor switche config */
-const switcher = document.querySelector('.floor-switcher-js'),
-    switcherPopup = switcher.querySelector('.floor-switcher__popup'),
-    switcherArrows = switcher.querySelectorAll('.next, .prev');
-
-switcherArrows.forEach(arrow => {
-    arrow.addEventListener('mouseenter', function(evt) {
-        console.log(arrow);
-        switcherPopup.style.cssText = `
-        visibility:visible;
-        opacity:1;
-        transform:${popupTransformValues[arrow.classList.value]}
-    `;
-    });
-
-});
-switcherPopup.addEventListener('mouseleave', function(evt) {
-    evt.stopPropagation();
-
-    switcherPopup.style.cssText = `
-        visibility:hidden;
-        opacity:0;
-    `;
-});
-
-let popupTransformValues = {
-    next: 'translateX(15%)',
-    prev: 'translateX(-46%)',
-}
-
-/**floor switche config end */

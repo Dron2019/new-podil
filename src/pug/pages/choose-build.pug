@@ -1,0 +1,45 @@
+extends ../layout/main
+block variable
+    -pageName = 'choose-build';
+    - var version = "ua";
+        
+block meta
+    title= 'Обрати будинок Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    script(defer src="./assets/scripts/choose-build.js")
+block content
+    h1.page-title.title.white Обрати будинок
+    .breadcrumbs-block
+        a(href="index.html").breadcrumbs-block__item 
+            span Головна
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Обрати будинок
+    a(href="filter.html").button-std.text-white.blue.blue-light-icon.form-call-js.choose-build-button
+        span За параметрами
+        .button-std__icon 
+            +svg('range-icon')
+    include ../../assets/images/choose-build/genplan.svg
+    
+    ul.genplan-links-block
+        li.violet2
+            a(href="1-room.html") 1-кімнатні
+        li.green
+            a(href="2-room.html") 2-кімнатні
+        li.blue
+            a(href="3-room.html") 3-кімнатні
+        li.violet1
+            a(href="4-room.html") 4-кімнатні
+    
+    .genplan-popup.genplan-popup-js
+        .genplan-popup__row
+            span.genplan-popup__row-title Будинок
+            span.genplan-popup__row-value.build-js 1 
+        .genplan-popup__row
+            span.genplan-popup__row-title Секція
+            span.genplan-popup__row-value.section-js 2
+

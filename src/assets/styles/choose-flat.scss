@@ -1,0 +1,221 @@
+#choose-flat {
+    .page__content {
+        position: relative;
+    }
+}
+
+.choose-flat-icon-arrow {
+    transform: scaleX(-1);
+}
+
+.icon--compass {
+    width: 50px;
+    height: 63px;
+}
+
+.choose-flat-top-links {
+    .button-std {
+        width: 176px;
+    }
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon--choose-flat-heart {
+    width: 25px;
+    height: 20px;
+}
+
+.icon--choose-flat-heart.violet2 {
+    fill: var(--violet2);
+}
+
+.icon--choose-flat-heart.yellow {
+    fill: var(--yellow);
+}
+
+.icon--choose-flat-heart.blue {
+    fill: var(--blue);
+}
+
+.icon--choose-flat-heart.green {
+    fill: var(--green);
+}
+
+.choose-flat-center,
+.choose-flat-left {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.choose-flat-left {
+    @include size(2);
+    .genplan {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .icon--compass {
+        margin-bottom: 40px;
+    }
+    .mini-genplan-title {
+        margin-bottom: 7px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+.choose-flat-center {
+    @include size(7);
+    @include shift-left(0.5);
+    margin-right: auto;
+    #floor {
+        max-height: 500px;
+    }
+}
+
+.flat-description-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    svg {
+        margin-right: 14px;
+    }
+    li {
+        display: flex;
+        align-items: center;
+    }
+    li:not(:last-child) {
+        margin-bottom: 16px;
+    }
+}
+
+#floor polygon {
+    opacity: 0.8;
+    transition: .5s ease-out;
+}
+
+[data-flats="4"] polygon {
+    fill: var(--blue);
+}
+
+[data-flats="3"] polygon {
+    fill: var(--yellow);
+}
+
+[data-flats="2"] polygon {
+    fill: var(--green);
+}
+
+[data-flats="1"] polygon {
+    fill: var(--violet1);
+}
+
+@include from(769px) {
+    #floor polygon:hover {
+        opacity: 1;
+    }
+}
+
+.choose-flat-pattern {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.choose-flat-popup {
+    display: flex;
+    flex-direction: column;
+    img {
+        width: 72px;
+        height: 56px;
+        margin: 0 auto;
+    }
+    width: 278px;
+    height: 278px;
+    background-color: var(--white);
+    border-radius: 50%;
+    padding: 3%;
+    font-weight: 500;
+    @include fontSizeLhToEm(18, 29);
+    color: #343466;
+    text-align: center;
+    &__row {
+        white-space: nowrap;
+    }
+    &__row-title:after {
+        content: ' ';
+    }
+}
+
+.floor-switcher {
+    display: flex;
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    .current {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 29px;
+        margin: 0 30px;
+    }
+    .prev,
+    .next {
+        width: 16px;
+        height: 24px;
+        display: inline-block;
+    }
+    .next {
+        transform: scaleY(-1);
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+    &__popup {
+        position: absolute;
+        background-color: var(--green);
+        bottom: calc(100% + 13px);
+        transform: translateX(-50%);
+        left: 0;
+        border-radius: 30px;
+        padding: 7px;
+        display: flex;
+        transition: .5s;
+    }
+    &__popup:after {
+        content: '';
+        border: 4px solid transparent;
+        border-top: 4px solid var(--green);
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+    }
+    &__popup a {
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 29px;
+        color: var(--white);
+        transition: .5s ease-in;
+    }
+    &__popup a:not(:last-child) {
+        margin-right: 15px;
+    }
+    @include from(769px) {
+        &__popup a:hover {
+            background-color: var(--yellow);
+            color: #343466;
+        }
+    }
+}
