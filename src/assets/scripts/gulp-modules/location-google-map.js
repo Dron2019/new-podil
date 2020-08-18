@@ -34,7 +34,6 @@ function initMap() {
                 el.setMap(map);
                 el.setAnimation(google.maps.Animation.DROP);
             } else {
-
                 el.setMap(null);
             }
         })

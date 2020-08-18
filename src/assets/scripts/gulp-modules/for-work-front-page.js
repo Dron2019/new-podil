@@ -1,9 +1,8 @@
 /* beautify preserve:start */
-@@include('gsap.js')
-@@include('displacment-hover/imagesloaded.pkgd.min.js')
-@@include('displacment-hover/three.min.js')
+@@include('../libs/displacment-hover/imagesloaded.pkgd.min.js')
+@@include('../libs/displacment-hover/three.min.js')
 ;;;;;;;;;;;;;;;;;;;
-@@include('displacment-hover/hover.umd.js')
+@@include('../libs/displacment-hover/hover.umd.js')
 /* beautify preserve:end */;;;;;;;;;;;;;;
 
 imagesLoaded(document.querySelectorAll('img'), () => {

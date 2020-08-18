@@ -1,3 +1,7 @@
+/* beautify preserve:start */
+@@include('../libs/gsap/gsap.js')
+/* beautify preserve:end */
+
 /**Menu hover Effect */
 const openMenuSelector = '.js-menu-call',
     closeMenuSelector = '.js-menu-close',

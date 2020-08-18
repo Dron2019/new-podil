@@ -1,3 +1,13 @@
+/* beautify preserve:start */
+@@include('../libs/gsap/gsap.js')
+@@include('../libs/scroll-magic/ScrollMagic.min.js')
+@@include('../libs/scroll-magic/plugins/debug.addIndicators.min.js')
+@@include('../libs/scroll-magic/plugins/animation.gsap.min.js')
+@@include('../libs/scrollify/scrollify.js')
+@@include('../libs/count-up/countup.min.js')
+/* @@include('../libs/artem-scroll/scroll.js')*/
+/* beautify preserve:end */
+
 /**
  * Обводка svg елемента 
  */
@@ -146,6 +156,8 @@ function secondScreenAnim() {
 // secondScreenAnim().play().timeScale(1);
 
 function firstScreenAnim() {
+    let mainScreen = document.querySelector('.main-screen');
+    if (mainScreen.played) return new TimelineMax();
     const tl = new TimelineMax({ clearProps: 'all', repeat: 0, duration: 0.5, ease: ease_1, paused: true });
     tl.from('.main-screen .main-screen__block:nth-child(1) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 });
     tl.from('.main-screen .main-screen__block:nth-child(1) svg ,.main-screen .main-screen__block:nth-child(1) .home-block-title, .main-screen .main-screen__block:nth-child(1) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
@@ -156,6 +168,7 @@ function firstScreenAnim() {
     tl.from('.main-screen .main-screen__block:nth-child(4) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<0.05');
     tl.from('.main-screen .main-screen__block:nth-child(4) svg ,.main-screen .main-screen__block:nth-child(4) .home-block-title, .main-screen .main-screen__block:nth-child(4) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
     tl.from('.main-screen  .hover-gradient', 0.2, { clearProps: 'all', ease: ex, opacity: 1 });
+    mainScreen.played = true;
     return tl;
 }
 
@@ -165,6 +178,8 @@ firstScreenAnim().play().timeScale(0.6);
 
 
 function thirdScreenAnim() {
+    let mainScreen = document.querySelector('.home-third-screen');
+    if (mainScreen.played) return new TimelineMax();
     let tl = new TimelineMax({ duration: 0.25, repeat: 0, delay: 0, paused: true });
     let textEase = BezierEasing(.14, .97, .51, .96);
     tl.from('.home-third-screen .mask-pattern path', 2, {
@@ -189,6 +204,7 @@ function thirdScreenAnim() {
         })
         .from('.home-third-screen-left .home-third-screen__part', 2, { ease: textEase, stagger: 0.1, autoAlpha: 0, x: -200 }, '<')
         .from('.home-third-screen-right .home-third-screen__part', 2, { ease: textEase, stagger: 0.1, autoAlpha: 0, x: 200 }, '<')
+    mainScreen.played = true;
     return tl;
 
 
@@ -227,7 +243,7 @@ homeScreenVideo.addEventListener('click', function(evt) {
 
 
 const backgroundStagger = 0.05;
-const scroll_speed = 1200;
+const scroll_speed = 1600;
 
 let sections = [
     'section.main-screen',
@@ -242,9 +258,12 @@ let sections = [
 
 
 function gridScreensAnim(screenNum) {
+    let flagElement = document.querySelector(`.screen${screenNum}`);
+    if (flagElement.played) return new TimelineMax();
     let tl = new TimelineMax({ duration: 0.5, repeat: 0, paused: true });
-    tl.from(`.screen${screenNum}>div`, { stagger: backgroundStagger, scale: 1.1, y: '-10vh' }, '<')
-    tl.from(`.screen${screenNum}>div svg,.screen${screenNum}>div>div`, { stagger: 0.05, y: 100, autoAlpha: 0 }, '+0.5')
+    tl.from(`.screen${screenNum}>a`, { duration: 1, stagger: backgroundStagger, scale: 1.1, y: '-10vh' }, '<');
+    tl.from(`.screen${screenNum}>a svg,.screen${screenNum}>a>div`, { stagger: 0.05, y: 100, autoAlpha: 0 }, '+0.5');
+    flagElement.played = true;
     return tl;
 }
 let sectionsAnim = [

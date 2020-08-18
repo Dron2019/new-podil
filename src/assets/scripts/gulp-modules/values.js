@@ -1,7 +1,3 @@
-/* beautify preserve:start */
-@@include('gsap.js');
-/* beautify preserve:end */
-
 function getHeight(e, target) {
     return -target.getBoundingClientRect().height;
 }

@@ -1,6 +1,7 @@
 #web-camera {
     .page__content {
         // min-height: calc(100vh - var(--header-height));
+        min-height: auto;
         display: flex;
         flex-direction: column;
         align-content: center;

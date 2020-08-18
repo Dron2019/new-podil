@@ -128,12 +128,24 @@
 }
 
 .contact-content-center {
-    @include size(5)
+    @include size(5);
+    @include to(1250px) {
+        @include size(6);
+    }
+    @include to(1052px) {
+        @include size(7);
+    }
 }
 
 .contact-content-left,
 .contact-content-right {
     @include size(3);
+}
+
+.contact-content-left {
+    @include to(1052px) {
+        @include size(2.5);
+    }
 }
 
 .contact-patterns-wrapper {

@@ -35,7 +35,7 @@ nav.menu {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
-        animation: tilt-in-top-2 1s 1 cubic-bezier(0, 0.3, 0, 0.98);
+        animation: fadeIn 1s 1 cubic-bezier(0, 0.3, 0, 0.98);
         transition: opacity 0s;
     }
     .lang-block,

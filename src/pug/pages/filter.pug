@@ -1,0 +1,416 @@
+extends ../layout/main
+block variable
+    -pageName = 'filter';
+    - var version = "ua";
+    -
+        var radiosRange = [
+            {
+                name:'balcony',
+                label:'Балкон',
+                variants: [
+                    'так',
+                    'ні',
+                ],
+            },
+            {
+                name:'terrace',
+                label:'Тераса',
+                variants: [
+                    'так',
+                    'ні',
+                ],
+            },
+            {
+                name:'lodjiya',
+                label:'Лоджія',
+                variants: [
+                    'так',
+                    'ні',
+                ],
+            },
+        ];
+        var db_range = [
+        {
+            id: 'total_square',
+            label: 'Загальна площа',
+            min: 0,
+            max: 100,
+            from : 0,
+            to : 100,
+        },
+        
+        {
+            id: 'life_square',
+            label: 'Житлова площа',
+            min: 0,
+            max: 100,
+            from : 0,
+            to : 100,
+        },
+        {
+            id: 'floor',
+            label: 'Поверх',
+            min: 5,
+            max: 25,
+            from : 5,
+            to : 25,
+        },
+        ];
+        var db_filter = [  
+        {
+            label: 'Кімната 2А',
+            total_square: 33,
+            life_square: 25,
+            room: 4,
+            section: 1,
+            floor : 6,
+            href: '#',
+            build:'1',
+            type:'1',
+            image: './assets/images/temp/0.png',
+
+        },
+        {
+            label: 'Кімната 24А',
+            total_square:30,
+            life_square: 20,
+            room: 3,
+            section: 2,
+            floor : 10,
+            href: '/',
+            build:'2',
+            type:'2',
+            image: './assets/images/temp/0.jpg',
+
+        },
+        {
+            label: 'Кімната 232А',
+            total_square: 60,
+            life_square: 30,
+            room: 3,
+            section: 2,
+            floor : 15,
+            href: '/',
+            build:'3',
+            type:'3',
+            image: './assets/images/temp/0.jpg',
+
+        },
+        {
+            label: 'Кімната 254А',
+            total_square: 50,
+            life_square: 45,
+            room: 2,
+            section: 1,
+            floor : 20,
+            href: '/',
+            build:'4',
+            type:'4',
+            image: './assets/images/temp/0.jpg',
+          //ro : 13,
+
+        },
+        {
+            label: 'Кімната 298А',
+            total_square: 70,
+            life_square: 65,
+            room: 2,
+            section: 2,
+            href: '/',
+            build:'5',
+            type:'5',
+            image: './assets/images/temp/0.jpg',
+            floor : 21,
+        },
+        {
+            label: 'Кімната 112А',
+            total_square: 95,
+            life_square: 88,
+            room: 1,
+            section: 2,
+            floor : 25,
+            href: '/',
+            build:'6',
+            type:'2',
+            image: './assets/images/temp/0.jpg',
+        },
+        {
+            label: 'Кімната 452А',
+            total_square: 60,
+            life_square: 50,
+            room: 1,
+            section: 2,
+            href: '/',
+            build:'7',
+            type:'2',
+            image: './assets/images/temp/0.jpg',
+            floor : 9,
+        },
+        ]
+block meta
+    title= 'Підбір за параметрами Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+    script(defer src="./assets/scripts/filter.js")
+
+block content
+    h1.page-title.title.white Підбір за параметрами
+    .breadcrumbs-block
+        a(href="index.html").breadcrumbs-block__item 
+            span Головна
+        a(href="choose-build.html").breadcrumbs-block__item 
+            span Вибрати будинок
+        a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current  Підбір за параметрами
+    .nav-wrapper
+        .select-group
+            .text Будинок
+            .lang-block.filter-select(data-key="build")
+                ul.langs
+                    li(data-value="0")
+                        a() Усі
+                    li(data-value="1")
+                        a() 1
+                    li(data-value="2")
+                        a() 2
+                    li(data-value="3")
+                        a() 3
+                    li(data-value="4")
+                        a() 4
+                    li(data-value="5")
+                        a() 5
+                    li(data-value="6")
+                        a() 6
+                <svg class="birdy" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+        .text-standart.checkbox-block.range-wrapper
+            .checkbox-block__title.text Кімнати
+            .filter-checkbox(data-name="rooms" data-value="1" data-key="room")
+                input(type="checkbox" value='1' data-key="room").js-room
+            .filter-checkbox(data-name="rooms" data-value="2" data-key="room")
+                input(type="checkbox" value='2' data-key="room").js-room
+            .filter-checkbox(data-name="rooms" data-value="3" data-key="room")
+                input(type="checkbox" value='3' data-key="room").js-room
+            .filter-checkbox( data-value="4" data-key="room")
+                input(type="checkbox" value='4' data-key="room").js-room
+            
+        each v,index in radiosRange
+            .radio-wrapper
+                .radio-wrapper__title #{v.label}
+                each it,index in v.variants 
+                    .styled-input-single
+                        input(type='radio' name=v.name id=v.name+index+1 )
+                        label(for=v.name+index+1) #{it}
+                    //- input(type="radio" name=v.name)
+        .select-group
+            .text Типи планувань
+            .lang-block.filter-select.wide(data-key="type")
+                ul.langs
+                    li(data-value="0") Усі типи
+                    li(data-value="1") 1
+                    li(data-value="2") 2
+                    li(data-value="4") 4
+                    li(data-value="5") 5
+                    li(data-value="6") 6
+                    li(data-value="7") 7
+                    li(data-value="8") 8
+                    li(data-value="9") 9
+                    li(data-value="10") 10
+                <svg class="birdy" width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L6 6L11 1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+        .ranges-wrapper
+            each v in db_range
+                // range item
+                .range-item.js-range-item
+                    h4.range-item__label.text-standart=v.label
+                    input.js-range-init(id= v.id type="hidden" data-from= v.from data-min= v.min data-to= v.to data-max= v.max)
+                    .u-range-item-nav
+                        .u-range-item-nav-wrap
+                            span.u-range-item-nav__text від
+                            input.js-current-min(class= "js_"+v.id+"_min" id= v.id+" " name= v.id+"_min" type="number" min= v.min value= v.min max= v.max)
+                        .u-range-item-nav-wrap
+                            input.js-current-max(class= "js_"+v.id+"_max" id= v.id+"_max" name= v.id+"_max" type="number" min= v.min value= v.max max= v.max)
+                            span.u-range-item-nav__text до
+        .filter-nav-bottom-row
+            .reset-button.js-reset_button 
+                span Скинути параметри
+                +svg('trashcan')
+            .viewed-flats-count За вашими параметрами знайдено  <span class="js-number_flats viewed-flats"></span>квартир
+            a.js-button_search.button-std.text-white.blue.blue-light-icon.button-search
+                span Фільтрувати
+                .button-std__icon 
+                    +svg('range-icon')
+    .empty-results-block.empty-results-block-js
+        .text-large За вашими параметраметрами не знайдено квартир. Зверніться у відділ продажів, який допоможе вам у виборі найкращого для вас планування
+        a().button-std.text-white.green.green-light-icon.form-call-js
+            span Відділ продажу
+            .button-std__icon 
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.23042 5.76858C5.2201 6.75744 6.36672 7.7038 6.81998 7.25062C7.46831 6.60242 7.86844 6.03736 9.29889 7.18686C10.7287 8.33574 9.63025 9.10208 9.00192 9.72965C8.27669 10.4547 5.57334 9.76841 2.90125 7.09748C0.229777 4.42592 -0.454815 1.72311 0.27104 0.99803C0.899364 0.369209 1.6621 -0.728417 2.81122 0.701122C3.96096 2.13066 3.3964 2.53071 2.74682 3.17953C2.29543 3.63271 3.24135 4.77909 4.23042 5.76858Z" fill="white"/>
+                </svg>
+    .cards-wrapper
+        each val, i in db_filter
+            a( href="flat.html" data-build=val.build data-type=val.type data-href= val.href data-image= val.image data-total_square= val.total_square data-life_square= val.life_square data-room= val.room data-floor= val.floor data-section= val.section).js-flat-item.card-filter
+                .card-filter__title.subtitle= val.label
+                .card-filter__img
+                    +img('temp/0.png')
+                ul.card-filter-list.card-filter__list
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Поверх
+                        span.card-filter-list-item__val= val.floor
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Кімнат
+                        span.card-filter-list-item__val= val.room
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Загальна площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.total_square
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Житлова площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.life_square
+                    //- li.card-filter__btn.card-filter-btn
+                    //-     span.card-filter-btn__text.link-standart.arrow-after Детальніше
+        each val, i in db_filter
+            a( href="flat.html" data-build=val.build data-type=val.type data-href= val.href data-image= val.image data-total_square= val.total_square data-life_square= val.life_square data-room= val.room data-floor= val.floor data-section= val.section).js-flat-item.card-filter
+                .card-filter__title.subtitle= val.label
+                .card-filter__img
+                    +img('temp/0.png')
+                ul.card-filter-list.card-filter__list
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Поверх
+                        span.card-filter-list-item__val= val.floor
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Кімнат
+                        span.card-filter-list-item__val= val.room
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Загальна площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.total_square
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Житлова площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.life_square
+                    //- li.card-filter__btn.card-filter-btn
+                    //-     span.card-filter-btn__text.link-standart.arrow-after Детальніше
+        each val, i in db_filter
+            a( href="flat.html" data-build=val.build data-type=val.type data-href= val.href data-image= val.image data-total_square= val.total_square data-life_square= val.life_square data-room= val.room data-floor= val.floor data-section= val.section).js-flat-item.card-filter
+                .card-filter__title.subtitle= val.label
+                .card-filter__img
+                    +img('temp/0.png')
+                ul.card-filter-list.card-filter__list
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Поверх
+                        span.card-filter-list-item__val= val.floor
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Кімнат
+                        span.card-filter-list-item__val= val.room
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Загальна площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.total_square
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Житлова площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.life_square
+                    //- li.card-filter__btn.card-filter-btn
+                    //-     span.card-filter-btn__text.link-standart.arrow-after Детальніше
+        each val, i in db_filter
+            a( href="flat.html" data-build=val.build data-type=val.type data-href= val.href data-image= val.image data-total_square= val.total_square data-life_square= val.life_square data-room= val.room data-floor= val.floor data-section= val.section).js-flat-item.card-filter
+                .card-filter__title.subtitle= val.label
+                .card-filter__img
+                    +img('temp/0.png')
+                ul.card-filter-list.card-filter__list
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Поверх
+                        span.card-filter-list-item__val= val.floor
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Кімнат
+                        span.card-filter-list-item__val= val.room
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Загальна площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.total_square
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Житлова площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.life_square
+                    //- li.card-filter__btn.card-filter-btn
+                    //-     span.card-filter-btn__text.link-standart.arrow-after Детальніше
+        each val, i in db_filter
+            a( href="flat.html" data-build=val.build data-type=val.type data-href= val.href data-image= val.image data-total_square= val.total_square data-life_square= val.life_square data-room= val.room data-floor= val.floor data-section= val.section).js-flat-item.card-filter
+                .card-filter__title.subtitle= val.label
+                .card-filter__img
+                    +img('temp/0.png')
+                ul.card-filter-list.card-filter__list
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Поверх
+                        span.card-filter-list-item__val= val.floor
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Кімнат
+                        span.card-filter-list-item__val= val.room
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Загальна площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.total_square
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Житлова площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.life_square
+                    //- li.card-filter__btn.card-filter-btn
+                    //-     span.card-filter-btn__text.link-standart.arrow-after Детальніше
+        each val, i in db_filter
+            a( href="flat.html" data-build=val.build data-type=val.type data-href= val.href data-image= val.image data-total_square= val.total_square data-life_square= val.life_square data-room= val.room data-floor= val.floor data-section= val.section).js-flat-item.card-filter
+                .card-filter__title.subtitle= val.label
+                .card-filter__img
+                    +img('temp/0.png')
+                ul.card-filter-list.card-filter__list
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Поверх
+                        span.card-filter-list-item__val= val.floor
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Кімнат
+                        span.card-filter-list-item__val= val.room
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Загальна площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.total_square
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Житлова площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.life_square
+                    //- li.card-filter__btn.card-filter-btn
+                    //-     span.card-filter-btn__text.link-standart.arrow-after Детальніше
+        each val, i in db_filter
+            a( href="flat.html" data-build=val.build data-type=val.type data-href= val.href data-image= val.image data-total_square= val.total_square data-life_square= val.life_square data-room= val.room data-floor= val.floor data-section= val.section).js-flat-item.card-filter
+                .card-filter__title.subtitle= val.label
+                .card-filter__img
+                    +img('temp/0.png')
+                ul.card-filter-list.card-filter__list
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Поверх
+                        span.card-filter-list-item__val= val.floor
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key Кімнат
+                        span.card-filter-list-item__val= val.room
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Загальна площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.total_square
+                    li.card-filter-list-item
+                        span.card-filter-list-item__key.square-metres  Житлова площа м
+                            <sub> 2
+                        span.card-filter-list-item__val= val.life_square
+                    //- li.card-filter__btn.card-filter-btn
+                    //-     span.card-filter-btn__text.link-standart.arrow-after Детальніше
+    a.button-std.text-white.blue.blue-light-icon.search-more-button.search-more-button-js
+        span Завантажити же
+        .button-std__icon
+            +svg('birdy-white')
+

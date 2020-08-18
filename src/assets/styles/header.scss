@@ -157,6 +157,7 @@ header.header {
         height: 36px;
         display: flex;
         align-items: center;
+        transition: .5s;
     }
     .langs li a {
         color: var(--white);
@@ -196,4 +197,15 @@ header.header {
         top: 50%;
         transform: translate(-50%, -50%);
     }
+}
+
+.filter-nav-bottom-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.viewed-flats:after {
+    content: ' ';
 }
