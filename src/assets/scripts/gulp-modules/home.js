@@ -8,37 +8,7 @@
 @@include('../libs/animate-numbers/jquery.animateNumber.min.js')
 
 /* @@include('../libs/artem-scroll/scroll.js')*/
-$.fn.countup = function (params) {
-    // make sure dependency is present
-    if (typeof CountUp !== 'function') {
-      console.error('countUp.js is a required dependency of countUp-jquery.js.');
-      return;
-    }
 
-    var defaults = {
-      startVal: 0,
-      decimalPlaces: 0,
-      duration: 2,
-    };
-
-    if (typeof params === 'number') {
-      defaults.endVal = params;
-    }
-    else if (typeof params === 'object') {
-      $.extend(defaults, params);
-    }
-    else {
-      console.error('countUp-jquery requires its argument to be either an object or number');
-      return;
-    }
-
-    this.each(function (i, elem) {
-      var countUp = new CountUp(elem, defaults.endVal, defaults);
-      countUp.start();
-    });
-
-    return this;
-  };
 /* beautify preserve:end */
 
 /**
@@ -234,7 +204,7 @@ function animNum(elem, num, int = null) {
         numberStep: numberStep,
     }, {
         easing: 'swing',
-        duration: 1000,
+        duration: 2500,
     });
 }
 

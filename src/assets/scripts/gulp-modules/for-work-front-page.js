@@ -84,17 +84,14 @@ advBlocks.forEach(e => {
 
 
     let textTween = new TimelineMax({ /*ease: "power4.out"*/ });
-
-    textTween.fromTo(textBlockText, { autoAlpha: 0, y: -100 }, { autoAlpha: 1, y: 0 });
+    textTween.fromTo(textBlockText, { autoAlpha: 0, y: -150 }, { autoAlpha: 1, y: 0 });
     // textTween.fromTo(textBlockIcon, { scaleY: 0, y: -70 }, { scaleY: 1, y: 0 });
-
-
     textScene.setTween(textTween);
     textScene.addTo(controller);
 
     textScene.on('enter', function(e, target) {
         if (e.scrollDirection !== 'REVERSE') {
-            gsap.fromTo(textBlockIcon, { scaleY: 0 }, { delay: 0.25, scaleY: 1 })
+            gsap.fromTo(textBlockIcon, { scaleY: 0 }, { delay: 0.5, scaleY: 1 })
         }
     })
 });
