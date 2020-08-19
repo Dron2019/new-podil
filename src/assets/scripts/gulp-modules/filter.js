@@ -524,6 +524,13 @@ function initFilter() {
 }
 initFilter();
 filterAndRender();
+window.filterMoreCardsCounter = 12;
+window.filteredCardsArray = [];
+document.querySelectorAll('.card-filter[style*=flex]').forEach(el => {
+    window.filteredCardsArray.push(el);
+});
+portionCardOutpup(window.filterMoreCardsCounter, elemsWichMakeFilter.rows);
+
 // document.body.dispatchEvent(filtering);
 
 
@@ -564,12 +571,15 @@ function portionCardOutpup(howManyShow, cardsArray) {
     for (k = howManyShow; k < cardsArray.length; k++) {
         if (cardsArray[k] === undefined) break;
         cardsArray[k].style.display = `none`;
-
+    }
+    let arrayForAnim = [];
+    for (z = (howManyShow - 12); z < howManyShow; z++) {
+        arrayForAnim.push(cardsArray[z]);
     }
     if (howManyShow >= cardsArray.length) {
         document.querySelector('.search-more-button-js').style.display = 'none';
     } else {
-
         document.querySelector('.search-more-button-js').style.display = 'flex';
     }
+    gsap.from(arrayForAnim, 1, { duration: 1, stagger: 0.05, opacity: 0 })
 }

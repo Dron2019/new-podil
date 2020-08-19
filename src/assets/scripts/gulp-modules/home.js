@@ -5,7 +5,40 @@
 @@include('../libs/scroll-magic/plugins/animation.gsap.min.js')
 @@include('../libs/scrollify/scrollify.js')
 @@include('../libs/count-up/countup.min.js')
+@@include('../libs/animate-numbers/jquery.animateNumber.min.js')
+
 /* @@include('../libs/artem-scroll/scroll.js')*/
+$.fn.countup = function (params) {
+    // make sure dependency is present
+    if (typeof CountUp !== 'function') {
+      console.error('countUp.js is a required dependency of countUp-jquery.js.');
+      return;
+    }
+
+    var defaults = {
+      startVal: 0,
+      decimalPlaces: 0,
+      duration: 2,
+    };
+
+    if (typeof params === 'number') {
+      defaults.endVal = params;
+    }
+    else if (typeof params === 'object') {
+      $.extend(defaults, params);
+    }
+    else {
+      console.error('countUp-jquery requires its argument to be either an object or number');
+      return;
+    }
+
+    this.each(function (i, elem) {
+      var countUp = new CountUp(elem, defaults.endVal, defaults);
+      countUp.start();
+    });
+
+    return this;
+  };
 /* beautify preserve:end */
 
 /**
@@ -126,8 +159,6 @@ function getHeight(el) {
 
 const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
 const ease_2 = BezierEasing(.25, .13, .2, 1.02);
-
-
 const ex = Expo.easeInOut;
 const exI = Expo.easeIn;
 const exO = Expo.easeOut;
@@ -168,10 +199,61 @@ function firstScreenAnim() {
     tl.from('.main-screen .main-screen__block:nth-child(4) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<0.05');
     tl.from('.main-screen .main-screen__block:nth-child(4) svg ,.main-screen .main-screen__block:nth-child(4) .home-block-title, .main-screen .main-screen__block:nth-child(4) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
     tl.from('.main-screen  .hover-gradient', 0.2, { clearProps: 'all', ease: ex, opacity: 1 });
+
     mainScreen.played = true;
+    // console.log($('.digit-value span'));
+    // thirdScreenNumberAnimate();
     return tl;
 }
 
+const afterComaCount = x => ~(x + '').indexOf('.') ? (x + '').split('.')[1].length : 0;
+
+function animNum(elem, num, int = null) {
+    var decimal_places = 1;
+    var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
+    let numberStep = '';
+    if (int) { // если число целое тисячи разделяются пробелом
+        numberStep = $.animateNumber.numberStepFactories.separator(' ');
+    } else { // если число с плавающей точкой 
+        numberStep = function(now, tween) {
+            // var floored_number = Math.floor(now) / decimal_factor,
+
+            if (int === null) {
+                var floored_number = now.toFixed(1).toString().replace('.', '.');
+            } else {
+                var floored_number = now.toFixed();
+                return $.animateNumber.numberStepFactories.separator(' ');
+            }
+            var target = $(tween.elem);
+            target.text(floored_number);
+
+        }
+    }
+    elem.animateNumber({
+        number: num,
+        numberStep: numberStep,
+    }, {
+        easing: 'swing',
+        duration: 1000,
+    });
+}
+
+function thirdScreenNumberAnimate() {
+    let digits = document.querySelectorAll('.digit-value span');
+    console.log(digits);
+    var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(' ');
+    var decimal_places = 1;
+    var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
+    digits.forEach(digit => {
+        animNum($(digit), +$(digit)[0].innerHTML.replace(/ /, ''), (function() {
+            if (afterComaCount(+$(digit)[0].innerHTML.replace(/ /, '')) === 0) {
+                return true;
+            } else {
+                return null;
+            }
+        })());
+    })
+}
 firstScreenAnim().play().timeScale(0.6);
 
 
@@ -182,10 +264,9 @@ function thirdScreenAnim() {
     if (mainScreen.played) return new TimelineMax();
     let tl = new TimelineMax({ duration: 0.25, repeat: 0, delay: 0, paused: true });
     let textEase = BezierEasing(.14, .97, .51, .96);
-    tl.from('.home-third-screen .mask-pattern path', 2, {
+    tl.from('.home-third-screen .mask-pattern path', 2.5, {
             ease: BezierEasing(.14, .97, .25, .98),
             autoAlpha: 0,
-
             y: function(e, target, r) {
                 if (target.closest('svg').classList.value.match(/bottom/)) {
                     return target.getBoundingClientRect().width;
@@ -204,11 +285,11 @@ function thirdScreenAnim() {
         })
         .from('.home-third-screen-left .home-third-screen__part', 2, { ease: textEase, stagger: 0.1, autoAlpha: 0, x: -200 }, '<')
         .from('.home-third-screen-right .home-third-screen__part', 2, { ease: textEase, stagger: 0.1, autoAlpha: 0, x: 200 }, '<')
+    tl.add(thirdScreenNumberAnimate, '<');
     mainScreen.played = true;
+
+    // const countUp = new CountUp('.digit-value', 5234, options);
     return tl;
-
-
-
     // .from('.home-third-screen video', 1, { autoAlpha: 0 }, '<')
     //     .from('.digit-value', 1, { y: -50, x: -50, color: 'rgb(23, 152, 213)' })
     //     .from('.home-third-screen__part .text', 1, { y: -50, x: 50, color: 'rgb(23, 152, 213)', }, '<')
@@ -227,11 +308,10 @@ let homeScreenVideo = document.querySelector('video'),
     homeVideoPlayButton = document.querySelector('.video-play-button');
 
 homeVideoPlayButton.addEventListener('click', function(evt) {
-    console.log('ew');
+    // console.log('ew');
     homeScreenVideo.play();
     homeVideoPlayButton.style.visibility = 'hidden';
 });
-
 
 homeScreenVideo.addEventListener('click', function(evt) {
     homeScreenVideo.pause();
@@ -283,4 +363,10 @@ $.scrollify({
         sectionsAnim[e].callback().play();
     },
     after: function(e, next) {},
-})
+});
+
+
+document.querySelector('.scroll-help-icon').addEventListener('click', function(evt) {
+
+    $.scrollify.next();
+});

@@ -33,8 +33,8 @@ popupRows.forEach(row => {
 
 
 function positioningPopup(popup, cords, vieved) {
-    // popup.style.left = `${cords.clientX}px`;
-    // popup.style.top = `${cords.clientY}px`;
+
+
     if (vieved) {
         popup.style.opacity = `1`;
         popup.style.visibility = `visible`;
@@ -44,9 +44,8 @@ function positioningPopup(popup, cords, vieved) {
     }
     let selfHeight = popup.getBoundingClientRect().height;
     let selfWidth = popup.getBoundingClientRect().width;
-    popup.style.transform = `translate(${cords.clientX - (selfWidth / 2)}px, ${cords.clientY - selfHeight - 10}px)`
-
-
+    // popup.style.transform = `translate(${cords.clientX - (selfWidth / 2)}px, ${cords.clientY - selfHeight - 10}px)`
+    popup.style.transform = `translate(${cords.target.getBoundingClientRect().left + (cords.target.getBoundingClientRect().width / 2) - (selfWidth / 2)}px, ${cords.target.getBoundingClientRect().top - selfHeight - 10}px)`
 
 };
 
