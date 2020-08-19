@@ -195,6 +195,11 @@
 
 .range-item {
     @include size(4);
+    &__label {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 500;
+    }
 }
 
 .u-range-item-nav-wrap {
@@ -327,6 +332,9 @@
 
 .styled-input-single label {
     text-transform: capitalize;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
 }
 
 .radio-wrapper {
@@ -334,6 +342,7 @@
     flex-wrap: wrap;
     &__title {
         width: 100%;
+        font-size: 12px;
     }
 }
 

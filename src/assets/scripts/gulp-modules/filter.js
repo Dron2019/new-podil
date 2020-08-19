@@ -581,5 +581,5 @@ function portionCardOutpup(howManyShow, cardsArray) {
     } else {
         document.querySelector('.search-more-button-js').style.display = 'flex';
     }
-    gsap.from(arrayForAnim, 1, { duration: 1, stagger: 0.05, opacity: 0 })
+    gsap.fromTo(arrayForAnim, 1, { duration: 1, stagger: 0.05, opacity: 0 }, { opacity: 1 })
 }
