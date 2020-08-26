@@ -22,6 +22,12 @@
             padding-right: 30px;
         }
     }
+    @include to(1024px) {
+        .flat-right {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
 }
 
 .pdf-link {
@@ -41,6 +47,9 @@
     background-color: var(--green);
     svg {
         margin-bottom: 10px;
+    }
+    @include from-to(769px, 1024px) {
+        padding: 10%;
     }
 }
 
@@ -143,6 +152,11 @@
     li span:last-child {
         width: 9ch;
         text-align: left;
+    }
+    @include from-to(769px, 1024px) {
+        li span:last-child {
+            width: 7ch;
+        }
     }
 }
 

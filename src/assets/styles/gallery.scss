@@ -69,6 +69,12 @@
             opacity: 1;
         }
     }
+    @include to(960px) {
+        width: calc((40px * 2) + (130px * 3));
+    }
+    @include to(575px) {
+        width: calc((20px * 2) + (130px * 2));
+    }
 }
 
 .gallery-arrows {

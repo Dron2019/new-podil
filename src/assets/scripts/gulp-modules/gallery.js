@@ -4,10 +4,10 @@ $('.gallery-slider-js').slick({
     slidesToScroll: 1,
     asNavFor: '.gallery-nav-js',
     easing: 'ease-out',
-    speed: 1500
-        // nextArrow: '.gallery-nav-js .next',
-        // prevArrow: '.gallery-nav-js .prev',
-        // asNavFor: '.gallery-nav-js',
+    speed: 1500,
+    // nextArrow: '.gallery-nav-js .next',
+    // prevArrow: '.gallery-nav-js .prev',
+    // asNavFor: '.gallery-nav-js',
 
 
 })
@@ -21,6 +21,20 @@ $('.gallery-nav-js').slick({
     prevArrow: '.gallery-nav-js .prev',
     centerMode: true,
     focusOnSelect: true,
+    responsive: [{
+            breakpoint: 967,
+            settings: {
+                slidesToShow: 3.3,
+            }
+        },
+        {
+            breakpoint: 575,
+            settings: {
+                slidesToShow: 1.4,
+            }
+        },
+
+    ],
 
     // variableWidth: true,
 

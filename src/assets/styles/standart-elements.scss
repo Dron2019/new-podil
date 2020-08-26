@@ -34,10 +34,10 @@
         --side-padding: 22px;
         --title-size: 36px;
     }
-    @include to(480px) {
+    @include to(575px) {
         --side-padding: 14px;
         --title-size: 24px;
-        --header-height: 42px;
+        --header-height: 40px;
     }
 }
 
@@ -449,8 +449,8 @@
     @include from(1720px) {
         font-size: 18px;
     }
-    @include to(480px) {
-        font-size: 12px;
+    @include to(575px) {
+        font-size: 14px;
     }
     @media screen and (min-height:500px) and (orientation:portrait) {
         // font-size: 16px;
@@ -945,6 +945,12 @@ section.forms {
             width: 100%;
         }
     }
+    @include to(575px) {
+        padding-left: 0;
+        &__icon {
+            display: none;
+        }
+    }
 }
 
 .fixed-background-heart {
@@ -956,6 +962,15 @@ section.forms {
     width: auto;
     height: 100vh;
     pointer-events: none;
+    @include to(575px) {
+        height: auto;
+        width: 200vw;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        .heart-horizontal {
+            display: none;
+        }
+    }
 }
 
 .icon--scroll-marker {
@@ -1134,6 +1149,10 @@ section.forms {
     margin-left: auto;
     @include from(1680px) {
         padding: calc(var(--header-height) + 37px) 73px 50px 73px;
+    }
+    @include to(1024px) {
+        padding: calc(var(--header-height) + 37px) 25px 50px 25px;
+        @include size(5.5);
     }
 }
 

@@ -104,10 +104,16 @@
 
 .build-progress-left {
     @include shift-padding-right(1);
+    @include to(1024px) {
+        @include shift-padding-right(0.5);
+    }
 }
 
 .build-progress-center {
     @include shift-padding(0.5);
+    @include to(1024px) {
+        @include shift-padding(0.25);
+    }
 }
 
 .build-progress-right {
@@ -121,6 +127,10 @@
     }
     .button-std {
         margin-top: 20px;
+    }
+    @include to(1024px) {
+        @include shift-padding-left(0.5);
+        @include shift-padding-right(0.25);
     }
 }
 

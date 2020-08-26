@@ -20,6 +20,9 @@
     margin-top: 45px;
     display: flex;
     justify-content: space-between;
+    @include from-to(769px, 900px) {
+        margin-bottom: 45px;
+    }
 }
 
 .icon--choose-flat-heart {
@@ -65,6 +68,9 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+    }
+    @include to(900px) {
+        @include size(3);
     }
 }
 
@@ -186,6 +192,7 @@
         padding: 7px;
         display: flex;
         transition: .5s;
+        opacity: 0;
     }
     &__popup:after {
         content: '';

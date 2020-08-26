@@ -75,6 +75,7 @@
     align-items: center;
     justify-content: center;
     font-family: $default-font;
+    cursor: pointer;
     &:not(:last-child) {
         margin-right: 12px;
     }
@@ -82,6 +83,7 @@
     input {
         width: 100%;
         height: 100%;
+        cursor: pointer;
         position: absolute;
         top: 0;
         left: 0;
@@ -367,6 +369,13 @@
     cursor: pointer;
     svg {
         margin-left: 10px;
+    }
+}
+
+.viewed-flats-count {
+    @include to(1024px) {
+        text-align: center;
+        padding: 0 15px;
     }
 }
 

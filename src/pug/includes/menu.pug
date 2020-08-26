@@ -33,7 +33,7 @@ nav.menu.closed
             .button-std__icon 
                 +svg('close-symbol')
     .nav-menu
-        .nav-menu__group
+        .nav-menu__group.mobile-hide
             +img('common/logo-in-white-circle.png').nav-menu__logo
         .nav-menu__group.first
             a(href="about.html").nav-menu__group-title Про проект
@@ -68,7 +68,7 @@ nav.menu.closed
                     a(href="for-leisure.html") Для відпочинку 
                 li
                     a(href="for-kids.html") Для дітей
-        .nav-menu__group
+        .nav-menu__group.mobile-hide
             +svg('wave-pattern')
         .nav-menu__group
             .nav-menu__group-title Квартири

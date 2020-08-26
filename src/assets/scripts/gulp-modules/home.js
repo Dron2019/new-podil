@@ -324,16 +324,21 @@ let sectionsAnim = [
     { callback: gridScreensAnim.bind(null, 5) },
     { callback: gridScreensAnim.bind(null, 6) },
 ];
-$.scrollify({
-    section: 'section',
-    scrollSpeed: scroll_speed,
-    standardScrollElements: '.screen6',
-    easing: "easeOutExpo",
-    before: function(e, list) {
-        sectionsAnim[e].callback().play();
-    },
-    after: function(e, next) {},
-});
+
+if (window.screen.width > 769) {
+
+    $.scrollify({
+        section: 'section',
+        scrollSpeed: scroll_speed,
+        standardScrollElements: '.screen6',
+        easing: "easeOutExpo",
+        before: function(e, list) {
+            sectionsAnim[e].callback().play();
+        },
+        after: function(e, next) {},
+    });
+}
+//  $.scrollify.destroy();
 
 
 document.querySelector('.scroll-help-icon').addEventListener('click', function(evt) {

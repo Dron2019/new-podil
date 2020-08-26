@@ -3,6 +3,11 @@
         display: flex;
         flex-direction: column;
     }
+    @include to(1024px) {
+        .fixed-background-heart {
+            display: none;
+        }
+    }
 }
 
 .contact-group {
@@ -125,6 +130,9 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    @include to(1024px) {
+        flex-wrap: wrap;
+    }
 }
 
 .contact-content-center {
@@ -135,11 +143,27 @@
     @include to(1052px) {
         @include size(7);
     }
+    @include to(1024px) {
+        margin: 0 auto;
+    }
+    @include to(950px) {
+        @include size(8);
+    }
 }
 
 .contact-content-left,
 .contact-content-right {
     @include size(3);
+}
+
+.contact-content-right {
+    @include to(1024px) {
+        @include size(6);
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
 }
 
 .contact-content-left {

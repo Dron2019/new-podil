@@ -67,6 +67,9 @@
     @include from(1680px) {
         vertical-align: top;
     }
+    @include to(957px) {
+        padding-right: 50px;
+    }
 }
 
 .about-front-block-left {

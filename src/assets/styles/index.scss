@@ -43,6 +43,11 @@ a[href] {
     text-transform: uppercase;
     color: var(--yellow);
     text-align: center;
+    @include to(575px) {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 24px;
+    }
 }
 
 .main-screen {
@@ -182,6 +187,39 @@ a[href] {
             color: var(--white);
         }
     }
+    @include to(768px) {
+        min-height: 100vh;
+        &__block {
+            width: 100%;
+            height: 25vh;
+        }
+        .scroll-help-icon,
+        &__complex-adress,
+        .developers-block {
+            display: none;
+        }
+    }
+    @include to(575px) {
+        height: calc(100vh - 75px);
+        min-height: auto;
+        &__block {
+            height: 25%;
+            &-pattern {
+                margin-bottom: 5px;
+                max-width: 30px;
+            }
+        }
+    }
+    @media screen and (max-height:575px) and (orientation:landscape) {
+        height: 200vh;
+        &__block {
+            height: 50vh;
+            &-pattern {
+                margin-bottom: 5px;
+                max-width: 30px;
+            }
+        }
+    }
 }
 
 .slogan {
@@ -189,6 +227,11 @@ a[href] {
     font-size: 18px;
     line-height: 29px;
     text-transform: uppercase;
+    @include to(575px) {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+    }
 }
 
 .screen {
@@ -219,6 +262,31 @@ section {
             @include size(6);
         }
     }
+    @include to(768px) {
+        padding-left: var(--side-fields);
+        padding-right: var(--side-fields);
+        &__text {
+            @include size(5);
+        }
+        &__image {
+            @include size(6);
+        }
+    }
+    @include to(575px) {
+        padding-top: 35px;
+        padding-bottom: 35px;
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        &__text {
+            width: 100%;
+            order: 1;
+        }
+        &__image {
+            width: 100%;
+            order: 2;
+            margin-bottom: 35px;
+        }
+    }
 }
 
 .home-third-screen {
@@ -247,6 +315,55 @@ section {
             margin-top: 10px;
         }
     }
+    @include to(1024px) {
+        padding-left: var(--side-fields);
+        padding-right: var(--side-fields);
+    }
+    @include to(768px) {
+        padding-top: 90px;
+        padding-bottom: 90px;
+        &__side {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .heart-mask-video-block-wrapper {
+            @include size(8);
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        &__part {
+            @include size(4);
+        }
+        &__part:not(:last-child) {
+            margin-bottom: 0;
+        }
+    }
+    @include to(575px) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        .heart-mask-video-block-wrapper {
+            width: 100%;
+            margin-bottom: 60px;
+            margin-top: 40px;
+        }
+        &__side {
+            flex-direction: column;
+        }
+        &__part {
+            @include size(10);
+            margin: 0 auto;
+        }
+        &__part .text {
+            font-size: 12px;
+        }
+        &__part:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .digit-value {
@@ -254,11 +371,14 @@ section {
     font-size: 48px;
     line-height: 48px;
     color: var(--white);
+    @include to(575px) {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 24px;
+    }
 }
 
 .screen4 {
-    min-height: 100vh;
-    display: grid;
     grid-template-rows: 50% 50%;
     grid-template-columns: 50% 50%;
     &__block {
@@ -267,6 +387,15 @@ section {
         justify-content: center;
         align-items: center;
         overflow: hidden;
+    }
+    @include from(769px) {
+        display: grid;
+        min-height: 100vh;
+    }
+    @include to(768px) {
+        &__block {
+            height: 25vh;
+        }
     }
 }
 
@@ -310,10 +439,17 @@ section {
 }
 
 .screen5 {
-    min-height: 100vh;
-    display: grid;
     grid-template-rows: 50% 50%;
     grid-template-columns: 50% 50%;
+    @include from(769px) {
+        min-height: 100vh;
+        display: grid;
+    }
+    @include to(768px) {
+        .home-block {
+            height: 25vh;
+        }
+    }
 }
 
 .scr5-contacts {
@@ -329,5 +465,19 @@ section {
         width: 100%;
         // height: 50vh;
         height: 100vh;
+    }
+    @include to(768px) {
+        .home-block {
+            height: 50vh;
+        }
+    }
+    @include to(575px) {
+        .slogan {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 14px;
+            text-transform: none;
+            margin-bottom: 5px;
+        }
     }
 }

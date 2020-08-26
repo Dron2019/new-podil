@@ -25,7 +25,7 @@ popupRows.forEach(row => {
             popup.querySelector(row.destinationShowSelector).innerHTML = rowInfo.dataset[row.name];
             positioningPopup(popup, evt, true);
         });
-        rowInfo.addEventListener('mouseout', (evt) => {
+        rowInfo.closest('g').addEventListener('mouseleave', (evt) => {
             positioningPopup(popup, evt, false);
         });
     })

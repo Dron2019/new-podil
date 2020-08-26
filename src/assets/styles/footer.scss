@@ -405,21 +405,40 @@
         margin-top: 60px;
         margin-bottom: 20px;
         &__group {
-            @include size(3);
+            @include size(4);
+            margin-bottom: 60px;
         }
         &__group-title {
             font-size: 16px;
+        }
+        &__group-links a {
+            white-space: nowrap;
+        }
+    }
+    @include from-to(576px,
+    768px) {
+        &__group:last-child {
+            margin-right: auto;
+            margin-left: 30px;
         }
     }
     @include to(575px) {
         &__group {
             width: 50%;
+            padding-right: 15px;
         }
         &__group:nth-last-child(-n+2) {
             margin-top: 20px;
         }
         &__group-title {
             font-size: 14px;
+        }
+        &__group-links a {
+            line-height: 1.1em;
+            white-space: normal;
+        }
+        &__group-links li {
+            margin-bottom: 10px;
         }
         &__group-links a:after {
             display: none;
@@ -448,6 +467,11 @@
     @include from(769px) {
         &:hover {
             border-color: transparent;
+        }
+    }
+    @include to(575px) {
+        &:not(:last-child) {
+            margin-right: 10px;
         }
     }
 }

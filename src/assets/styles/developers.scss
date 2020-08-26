@@ -55,4 +55,13 @@
             object-fit: contain;
         }
     }
+    @include to(1024px) {
+        @include shift-padding(0.5);
+        .perfect-logo {
+            @include size(3.5);
+        }
+        .saga-logo {
+            @include size(3.5);
+        }
+    }
 }

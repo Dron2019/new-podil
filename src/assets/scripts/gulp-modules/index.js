@@ -16,22 +16,37 @@ document.querySelectorAll(openMenuSelector).forEach(button => {
 });
 document.querySelectorAll(closeMenuSelector).forEach(button => {
     button.addEventListener('click', function(evt) {
-        // menuAnimation(menu, true).play();
-        setTimeout(() => {
 
+        menuCloseAnimation(menu, true).play().add(function() {
             menu.classList.add('closed');
             menu.classList.remove('opened');
-        }, 300);
+        });
+        // setTimeout(() => {
+
+        //     menu.classList.add('closed');
+        //     menu.classList.remove('opened');
+        // }, 300);
 
     });
 });
 
 function menuAnimation(menu, reversedStatus) {
-    let tl = new TimelineMax({ delay: 0.25, ease: BezierEasing(.17, 1.04, .62, .96), paused: true, reverse: reversedStatus });
-    tl.from('.nav-menu__group', { skewX: 10, y: -100, autoAlpha: 0, }, '<')
-    tl.from('.nav-menu__group li, .nav-menu__group-title', { delay: 0.1, autoAlpha: 0, y: -150, }, '<')
-        .from(menu.querySelector('.menu__pattern-wheel'), { y: -500, rotate: 720, }, '<')
-        .from(menu.querySelector('.menu__pattern-bicycle'), { duration: 2, x: '50vw', }, '<');
+    let tl = new TimelineMax({ delay: 0.25, ease: BezierEasing(.17, 1.04, .62, .96), paused: true });
+    tl.fromTo('.nav-menu__group', { skewX: 10, y: -100, autoAlpha: 0, }, { skewX: 0, y: 0, autoAlpha: 1, }, '<')
+    tl.fromTo('.nav-menu__group li, .nav-menu__group-title', { delay: 0.1, autoAlpha: 0, y: -150, }, { delay: 0.1, autoAlpha: 1, y: 0, }, '<')
+        .fromTo(menu.querySelector('.menu__pattern-wheel'), { y: -500, rotate: 720, }, { y: 0, rotate: 0, }, '<')
+        .fromTo(menu.querySelector('.menu__pattern-bicycle'), { duration: 2, x: '50vw', }, { duration: 2, x: 0, }, '<');
+
+    return tl;
+};
+
+function menuCloseAnimation(menu) {
+    let tl = new TimelineMax({ delay: 0.25, ease: BezierEasing(.17, 1.04, .62, .96), paused: true });
+    tl.to('.nav-menu__group', { skewX: 10, y: -100, autoAlpha: 0, }, '<')
+    tl.to('.nav-menu__group li, .nav-menu__group-title', { delay: 0.1, autoAlpha: 0, y: -150, }, '<')
+        .to(menu.querySelector('.menu__pattern-wheel'), { y: -500, rotate: 720, }, '<')
+        .to(menu.querySelector('.menu__pattern-bicycle'), { duration: 2, x: '50vw', }, '<');
+    tl.timeScale(5);
     return tl;
 };
 
