@@ -15,6 +15,14 @@ imagesLoaded(document.querySelectorAll('img'), () => {
     document.body.classList.remove('loading');
 });
 let frontScreenEffect = undefined;
+
+
+function setImagesRatio() {
+    if (window.screen.width < 576) return (320 / 568);
+    if (window.screen.width < 769) return (window.screen.width / window.screen.height);
+    return (9 / 16);
+}
+
 Array.from(document.querySelectorAll('.front-block')).forEach((el) => {
     const img = document.querySelector('.front-block__bg');
     frontScreenEffect = new hoverEffect({
@@ -26,7 +34,8 @@ Array.from(document.querySelectorAll('.front-block')).forEach((el) => {
         speedOut: el.dataset.speedout || undefined,
         easing: el.dataset.easing || undefined,
         hover: el.dataset.hover || undefined,
-        imagesRatio: 9 / 16,
+        // imagesRatio: 9 / 16,
+        imagesRatio: setImagesRatio(),
         image1: img.getAttribute('src'),
         image2: img.getAttribute('src'),
         displacementImage: el.dataset.displacement,

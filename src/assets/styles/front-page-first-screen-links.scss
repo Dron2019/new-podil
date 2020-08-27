@@ -19,13 +19,16 @@
     margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
     margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
     min-height: 100vh;
-    @include from(576px) {
+    @include from(769px) {
         display: grid;
         grid-template-columns: repeat(2, 50%);
         grid-template-rows: repeat(2, 50%);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         height: 100vh;
+    }
+    @include to(768px) {
+        min-height: auto;
     }
 }
 
@@ -140,6 +143,12 @@
             padding-top: 25px;
             padding-bottom: 25px;
         }
+    }
+    @include to(768px) {
+        height: 33vh;
+    }
+    @include to(575px) {
+        height: 50vh;
     }
 }
 

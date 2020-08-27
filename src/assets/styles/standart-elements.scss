@@ -1233,6 +1233,10 @@ section.forms {
         padding: calc(var(--header-height) + 37px) 25px 50px 25px;
         @include size(5.5);
     }
+    @include to(575px) {
+        padding: calc(var(--header-height) + 37px) 14px 50px 14px;
+        @include size(6.5);
+    }
 }
 
 .fron-block__text.yellow {
@@ -1262,6 +1266,11 @@ section.forms {
     font-weight: normal;
     font-size: 36px;
     line-height: 42px;
+    @include to(575px) {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 18px;
+    }
 }
 
 .front-block__slogan.violet {
