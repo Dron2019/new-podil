@@ -91,6 +91,22 @@
             color: var(--white);
         }
     }
+    @include to(768px) {
+        margin-top: 20px;
+        margin-bottom: 85px;
+        @include shift-padding(1);
+        .slide {
+            height: 40vh;
+            margin-right: 0;
+        }
+        .slider-arrows {
+            width: calc(100% - (var(--side-fields) * 2));
+        }
+    }
+    @include to(575px) {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
 }
 
 .build-progress-left,
@@ -107,12 +123,33 @@
     @include to(1024px) {
         @include shift-padding-right(0.5);
     }
+    @include to(768px) {
+        padding-left: 0;
+        padding-right: 10px;
+    }
+    @include to(575px) {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .build-progress-center {
     @include shift-padding(0.5);
     @include to(1024px) {
         @include shift-padding(0.25);
+    }
+    @include to(768px) {
+        padding-left: 0;
+        padding-right: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    @include to(575px) {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
     }
 }
 
@@ -131,6 +168,20 @@
     @include to(1024px) {
         @include shift-padding-left(0.5);
         @include shift-padding-right(0.25);
+    }
+    @include to(768px) {
+        padding-left: 10px;
+        padding-right: 0px;
+    }
+    @include to(575px) {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        .button-std {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }
 

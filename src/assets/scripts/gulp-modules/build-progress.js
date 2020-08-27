@@ -2,6 +2,10 @@ $('.build-js').on('init', function(slick, slick2) {
     // console.log(slick2);
     slick2.$slideTrack[0].style.position = `relative`;
     slick2.$slideTrack[0].style.left = `${slick2.slideWidth*0.5}px`;
+
+    if (window.screen.width < 769) {
+        slick2.$slideTrack[0].style.left = `1px`;
+    }
     slick2.$slideTrack[0].style.transition = `.7s`;
 });
 $('.build-js').slick({
@@ -10,7 +14,13 @@ $('.build-js').slick({
     prevArrow: '.prev.arrow',
     nextArrow: '.next.arrow',
     // centerMode: false,
-    infinite: false
+    infinite: false,
+    responsive: [{
+        breakpoint: 769,
+        settings: {
+            slidesToShow: 1,
+        }
+    }, ],
 });
 $('.build-js').on('beforeChange', function(slick, slick1, slick2, slick3) {
     // console.log(slick);

@@ -10,13 +10,14 @@ const openMenuSelector = '.js-menu-call',
 document.querySelectorAll(openMenuSelector).forEach(button => {
     button.addEventListener('click', function(evt) {
         menu.classList.add('opened');
+        document.body.classList.add('menu-opened');
         menu.classList.remove('closed');
         menuAnimation(menu, false).play();
     });
 });
 document.querySelectorAll(closeMenuSelector).forEach(button => {
     button.addEventListener('click', function(evt) {
-
+        document.body.classList.remove('menu-opened');
         menuCloseAnimation(menu, true).play().add(function() {
             menu.classList.add('closed');
             menu.classList.remove('opened');

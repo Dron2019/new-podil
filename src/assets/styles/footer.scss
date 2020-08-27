@@ -443,6 +443,12 @@
         &__group-links a:after {
             display: none;
         }
+        .button-std {
+            padding-left: 0;
+            .button-std__icon {
+                display: none;
+            }
+        }
     }
 }
 
@@ -512,6 +518,26 @@
             width: 70px;
             height: 28px;
             margin-left: 20px;
+        }
+    }
+    @include to(575px) {
+        padding-top: 20px;
+        padding-bottom: 17px;
+        .saga-logo {
+            width: 45px;
+            height: 45px;
+        }
+        .perfect-logo {
+            width: 89px;
+            height: 40px;
+        }
+        &__text-block {
+            margin-left: auto;
+        }
+        .web-developer-block {
+            margin-left: 0;
+            margin-right: auto;
+            margin-top: 10px;
         }
     }
 }

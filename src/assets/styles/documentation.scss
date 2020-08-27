@@ -27,9 +27,24 @@
         }
     }
     @include to(768px) {
-        @include size(6);
+        @include size(4);
+        img {
+            @include shift-padding(1.5);
+        }
+        &__name {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 29px;
+        }
     }
     @include to(575px) {
-        @include size(12);
+        @include size(6);
+        img {
+            @include shift-padding(1);
+        }
+        &__name {
+            font-size: 14px;
+            line-height: 20px;
+        }
     }
 }

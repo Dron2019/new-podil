@@ -28,14 +28,51 @@
         justify-content: space-between;
         align-items: flex-end;
     }
+    @include to(768px) {
+        .patterns-wrapper {
+            position: static;
+        }
+        .heart-mask-video-block-wrapper {
+            margin-bottom: 0;
+            @include size(8.5);
+        }
+    }
+    @include from-to(576px, 768px) {
+        .heart-mask-video-block-wrapper {
+            margin-top: 125px;
+        }
+    }
+    @include to(575px) {
+        .patterns-wrapper {
+            margin-top: -30px;
+        }
+        .heart-mask-video-block-wrapper {
+            width: 100%;
+            margin-top: 3.4vh;
+        }
+    }
 }
 
 .web-camera-left-pattern {
     width: 335px;
     height: 320px;
+    @include to(768px) {
+        @include size(5);
+        height: auto;
+    }
+    @include to(575px) {
+        width: calc(50% - 5px);
+    }
 }
 
 .web-camera-right-pattern {
     width: 340px;
     height: 356px;
+    @include to(768px) {
+        @include size(5);
+        height: auto;
+    }
+    @include to(575px) {
+        width: calc(50% - 5px);
+    }
 }

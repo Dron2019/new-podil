@@ -1,5 +1,8 @@
 #developers {
     background-color: var(--violet1);
+    .page__content {
+        min-height: auto;
+    }
 }
 
 .developers-page-block {
@@ -62,6 +65,27 @@
         }
         .saga-logo {
             @include size(3.5);
+        }
+    }
+    @include to(768px) {
+        .saga-logo {
+            @include size(2.5);
+        }
+    }
+    @include to(575px) {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 50px;
+        .perfect-logo {
+            @include size(4.5);
+        }
+        &.with-neg-margins {
+            padding: 40px var(--side-fields);
+        }
+        .saga-logo {
+            @include size(4);
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 }

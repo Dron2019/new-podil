@@ -70,11 +70,25 @@ nav.menu {
     .developers-block a:not(:last-child) {
         margin-right: 20px;
     }
+    @include to(768px) {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     @include to(575px) {
-        max-height: 100vh;
+        height: 100vh;
+        width: 100vw;
         overflow-x: hidden;
         overflow-y: scroll;
         padding-top: 10px;
+        padding: 10px var(--side-fields) 10px var(--side-fields);
+        // align-content: center;
+        align-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding-bottom: 70px;
+        &::-webkit-scrollbar {
+            width: 1px;
+        }
         .menu__title {
             font-style: normal;
             font-weight: 500;
@@ -83,6 +97,7 @@ nav.menu {
         }
         .menu__head-block {
             margin-bottom: 0;
+            width: 100%;
         }
         .menu__head-block .button-std {
             overflow: visible;
@@ -93,6 +108,16 @@ nav.menu {
         }
         .menu__head-block .button-std .button-std__icon {
             display: flex;
+        }
+        .menu__pattern-bicycle {
+            position: relative;
+            order: 2;
+            left: 0;
+            left: 61px;
+            margin-top: 0px;
+            z-index: -1;
+            margin-left: 0;
+            margin-right: auto;
         }
     }
 }
@@ -134,7 +159,7 @@ nav.menu {
     &__group-links {
         margin-top: 10px;
         font-size: 18px;
-        line-height: 18px;
+        line-height: 1em;
         color: var(--footer-links-color);
     }
     &__group-links li:not(:last-child) {
@@ -196,10 +221,23 @@ nav.menu {
         margin-top: 60px;
         margin-bottom: 20px;
         &__group {
-            @include size(3);
+            @include size(4);
         }
         &__group-title {
-            font-size: 16px;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1.2em;
+        }
+        &__group-links {
+            font-size: 18px;
+        }
+        .mobile-hide {
+            display: none;
+        }
+    }
+    @include from-to(576px, 768px) {
+        &__group {
+            margin-bottom: 121px;
         }
     }
     @include to(575px) {
@@ -216,6 +254,9 @@ nav.menu {
             margin-bottom: 30px;
         }
         &__group-title {
+            font-size: 14px;
+        }
+        &__group-links {
             font-size: 14px;
         }
         &__group-links a:after {
@@ -250,5 +291,12 @@ nav.menu {
         -webkit-transform: rotateX(70deg);
         transform: rotateX(70deg);
         opacity: 0;
+    }
+}
+
+@include to(575px) {
+    body.menu-opened {
+        height: 100vh;
+        overflow: hidden;
     }
 }

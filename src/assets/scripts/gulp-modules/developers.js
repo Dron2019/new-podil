@@ -9,9 +9,15 @@ $('.saga-slider-js').slick({
             }
         },
         {
-            breakpoint: 768,
+            breakpoint: 769,
             settings: {
                 slidesToShow: 3,
+            }
+        },
+        {
+            breakpoint: 575,
+            settings: {
+                slidesToShow: 2,
             }
         },
 
@@ -28,9 +34,15 @@ $('.perfect-slider-js').slick({
             }
         },
         {
-            breakpoint: 768,
+            breakpoint: 769,
             settings: {
                 slidesToShow: 3,
+            }
+        },
+        {
+            breakpoint: 575,
+            settings: {
+                slidesToShow: 2,
             }
         },
 

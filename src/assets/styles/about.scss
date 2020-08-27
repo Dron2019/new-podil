@@ -46,12 +46,24 @@
             }
         }
     }
+    @include to(575px) {
+        .front-bg {
+            height: 50vh;
+        }
+        .slogan-large {
+            margin-top: calc(50vh - var(--header-height) - 1em - 80px - 58px);
+        }
+    }
 }
 
 .slogan-large {
     font-size: 36px;
     line-height: 1.17em;
     text-transform: uppercase;
+    @include to(575px) {
+        font-size: 24px;
+        line-height: 24px;
+    }
 }
 
 .half-blocks-wrapper {
@@ -70,6 +82,12 @@
     @include to(957px) {
         padding-right: 50px;
     }
+    @include to(575px) {
+        width: 100vw;
+        margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+        padding: 10px var(--side-fields);
+        height: 27vh;
+    }
 }
 
 .about-front-block-left {
@@ -82,16 +100,29 @@
     position: relative;
     z-index: 1;
     background-color: var(--violet2);
-    width: calc(50% + 30px);
+    width: calc(50% + var(--side-fields));
     margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
     padding-left: 50px;
     vertical-align: bottom;
+    @include to(768px) {
+        padding-left: 38px;
+    }
+    @include to(575px) {
+        width: 100vw;
+        margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+        padding: 10px var(--side-fields);
+    }
 }
 
 .text-large {
     font-weight: 500;
     font-size: 24px;
     line-height: 38px;
+    @include to(768px) {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 29px;
+    }
 }
 
 .genplan-wrapper {
@@ -100,7 +131,7 @@
     width: calc(100% + var(--side-fields) * 2);
     margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
     margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
-    &>svg {
+    & .genplan-svg-wrapper>svg {
         margin-bottom: -12px;
     }
     &>svg path:not(.heart) {
@@ -109,6 +140,17 @@
     @include from(1680px) {
         &>svg {
             margin-bottom: -20px;
+        }
+    }
+    @include to(575px) {
+        & .genplan-svg-wrapper>svg {
+            width: auto;
+            height: 100%;
+        }
+        .genplan-svg-wrapper {
+            height: calc(100vh - 90px);
+            width: 100vw;
+            overflow: scroll;
         }
     }
 }
@@ -131,7 +173,7 @@
         line-height: 32px;
     }
     .legend-title {
-        width: 150px;
+        width: 180px;
         // background-color: var(--white);
         background-color: var(--white);
         color: var(--violet1);
@@ -187,6 +229,24 @@
     }
     @include to(950px) {
         width: 100%;
+    }
+    @include to(768px) {
+        position: static;
+        .legend-title {
+            display: none;
+        }
+    }
+    @include to(575px) {
+        position: absolute;
+        .legend-title {
+            display: flex;
+        }
+        .legend {
+            max-height: 300px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            column-count: auto;
+        }
     }
 }
 
