@@ -72,7 +72,7 @@ progressBarBlock.forEach(bar => {
         // console.log(evt.clientX);
         let bounRect = progressPopup.getBoundingClientRect();
         progressPopup.style.left = evt.clientX - bounRect.width * 0.5 + 'px';
-
+        if (window.screen.width < 576) progressPopup.style.left = bar.getBoundingClientRect().left + 'px';
         progressPopup.style.top = evt.clientY - bounRect.height * 1.2 + 'px';
     });
     bar.addEventListener('mouseout', function(evt) {
