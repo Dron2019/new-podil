@@ -72,6 +72,10 @@
     @include to(960px) {
         width: calc((40px * 2) + (130px * 3));
     }
+    @include to(768px) {
+        width: 100%;
+        margin-top: -130px;
+    }
     @include to(575px) {
         width: calc((20px * 2) + (130px * 2));
     }

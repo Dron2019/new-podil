@@ -413,7 +413,8 @@ elemsWichMakeFilter.resetBtn.addEventListener('click', function(e) {
     elemsWichMakeFilter.checkbox.forEach((el) => {
         el.DOMElem.prop('checked', false);
         document.querySelectorAll('.filter-checkbox').forEach(chebox => { chebox.classList.remove('active') });
-        //console.log(el);
+        filter[el.labelKey] = [];
+        console.log(el);
 
         // el.DOMElem.closest('.filter-checkbox').classList.remove('active');
     })

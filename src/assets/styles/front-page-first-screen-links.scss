@@ -149,6 +149,19 @@
     }
     @include to(575px) {
         height: 50vh;
+        font-size: 14px;
+        line-height: 20px;
+        &__text-block-text {
+            padding-left: var(--side-fields);
+        }
+        &__text-block.three-rows &__text-block-text,
+        &__text-block &__text-block-text {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    }
+    @include to(374px) {
+        --text-block-height: 75px;
     }
 }
 

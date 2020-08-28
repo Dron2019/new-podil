@@ -28,6 +28,12 @@ $('.gallery-nav-js').slick({
             }
         },
         {
+            breakpoint: 769,
+            settings: {
+                slidesToShow: 3.4,
+            }
+        },
+        {
             breakpoint: 575,
             settings: {
                 slidesToShow: 1.4,

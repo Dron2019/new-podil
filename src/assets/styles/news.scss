@@ -58,7 +58,7 @@
     }
     &__date,
     &__text {
-        // margin-top: auto;
+        margin-top: auto;
     }
     &__img {
         height: 225px;
@@ -67,6 +67,12 @@
     @include from(1680px) {
         &__img {
             height: 300px;
+        }
+    }
+    @include to(768px) {
+        &__img {
+            height: 185px;
+            object-fit: cover;
         }
     }
 }
@@ -169,6 +175,9 @@
     }
     @include to(992px) {
         @include size(8)
+    }
+    @include to(768px) {
+        width: max-content;
     }
     @include to(575px) {
         width: 100%;

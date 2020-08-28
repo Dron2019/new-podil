@@ -1212,6 +1212,15 @@ section.forms {
         pointer-events: none;
     }
     &__text svg {}
+    @include to(768px) {
+        img {
+            height: 100vh;
+            width: 100vw;
+            top: 0;
+            object-position: 50% 50%;
+            // object-fit: contain;
+        }
+    }
 }
 
 .fron-block__text {

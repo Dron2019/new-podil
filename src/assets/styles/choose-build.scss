@@ -19,6 +19,25 @@
         margin-bottom: 40px;
         justify-content: center;
     }
+    @include to(768px) {
+        .genplan-links-block {
+            position: relative;
+            z-index: 2;
+        }
+    }
+    .choose-build-genplan-wrapper {
+        @include to(768px) {
+            height: calc(100vh - var(--header-height) - 110px);
+            width: 100vw;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+            .genplan {
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
 }
 
 .icon--range-icon {

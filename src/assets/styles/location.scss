@@ -45,6 +45,44 @@
             fill: var(--blue) !important;
         }
     }
+    @include to(768px) {
+        .front-screen-text {
+            margin-left: 20px;
+            vertical-align: top;
+        }
+        .legend-title {
+            display: flex;
+        }
+        .legend-wrapper {
+            position: absolute;
+            /*отступ от  3х блоков с расстояниями */
+            bottom: calc(150px * 3);
+            .legend {
+                max-height: calc(32px * 10 + 50px);
+                overflow-x: hidden;
+                column-count: auto;
+                overflow-y: scroll;
+            }
+        }
+        .front-screen-text {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 29px;
+        }
+    }
+    @include to(575px) {
+        .legend-wrapper {
+            position: absolute;
+            /*отступ от  3х блоков с расстояниями */
+            bottom: calc(100px * 5);
+            .legend {
+                max-height: calc(32px * 8 + 50px);
+                overflow-x: hidden;
+                column-count: auto;
+                overflow-y: scroll;
+            }
+        }
+    }
 }
 
 .location-front-image,
@@ -52,6 +90,9 @@
     display: inline-block;
     vertical-align: middle;
     @include size(2);
+    @include to(768px) {
+        vertical-align: top;
+    }
 }
 
 .map-wrapper {
@@ -61,6 +102,10 @@
     margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
     position: relative;
     margin-top: 90px;
+    @include to(768px) {
+        height: auto;
+        margin-top: 37px;
+    }
 }
 
 .location-distances-list {
@@ -124,6 +169,42 @@
             margin-right: 10px;
         }
     }
+    @include to(768px) {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            height: 150px;
+            svg {
+                max-width: 50px;
+                margin-right: 28px;
+            }
+        }
+        li:not(:last-child) {
+            width: 50%;
+        }
+        li:last-child {
+            width: 100%;
+            .distance-text-block {
+                width: auto;
+            }
+        }
+        .text-large {
+            font-size: 24px;
+            line-height: 38px;
+        }
+    }
+    @include to(575px) {
+        li:last-child,
+        li:not(:last-child) {
+            width: 100%;
+            height: 100px;
+        }
+        .text-large {
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
 }
 
 #map {
@@ -133,4 +214,11 @@
     width: 100%;
     height: 100%;
     z-index: 0;
+    @include to(768px) {
+        height: 50vh;
+        position: static;
+    }
+    @include to(575px) {
+        height: 80vh;
+    }
 }

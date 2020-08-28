@@ -64,12 +64,34 @@
         // margin-top: 20px;
         // margin-right: auto;
     }
+    @include from-to(576px, 768px) {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        .floor-mini-plan-title {
+            margin-top: auto;
+        }
+        .icon--compass {
+            margin-top: auto !important;
+        }
+    }
 }
 
 .flat-center {
     @include size(6);
     @include shift-padding(0.5);
     max-height: 600px;
+    @include from-to(576px, 768px) {
+        display: flex;
+        align-items: flex-start;
+        img {
+            margin-top: calc(63px + 36px);
+        }
+    }
+    @include to(768px) {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
 }
 
 .flat-right {
@@ -85,6 +107,9 @@
     @include to(1150px) {
         @include size(4);
     }
+    @include to(768px) {
+        @include size(4.5);
+    }
 }
 
 .flat-wrapper {
@@ -92,6 +117,9 @@
     .button-std>span {
         text-align: center;
         white-space: initial;
+    }
+    @include from-to(576px, 768px) {
+        min-height: calc(100vh - 260px);
     }
 }
 
@@ -154,6 +182,11 @@
         text-align: left;
     }
     @include from-to(769px, 1024px) {
+        li span:last-child {
+            width: 7ch;
+        }
+    }
+    @include to(768px) {
         li span:last-child {
             width: 7ch;
         }

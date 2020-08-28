@@ -12,6 +12,11 @@
     .news-wrapper {
         margin-bottom: 30px;
     }
+    @include to(768px) {
+        .news-wrapper .news-card:last-child {
+            display: none;
+        }
+    }
 }
 
 .sngl-news-wrapper {

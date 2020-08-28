@@ -46,6 +46,13 @@
             }
         }
     }
+    @include to(768px) {
+        .text-large {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 29px;
+        }
+    }
     @include to(575px) {
         .front-bg {
             height: 50vh;
@@ -118,11 +125,6 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 38px;
-    @include to(768px) {
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 29px;
-    }
 }
 
 .genplan-wrapper {
