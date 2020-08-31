@@ -2,6 +2,18 @@
     .page__content {
         position: relative;
     }
+    @include to(575px) {
+        .breadcrumbs-block {
+            white-space: nowrap;
+            flex-wrap: nowrap;
+        }
+        .breadcrumbs-block__item-current {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            max-inline-size: 100%;
+        }
+    }
 }
 
 .choose-flat-icon-arrow {
@@ -22,6 +34,16 @@
     justify-content: space-between;
     @include from-to(769px, 900px) {
         margin-bottom: 45px;
+    }
+    @include to(575px) {
+        margin-top: 20px;
+        .button-std {
+            padding-left: 0;
+            width: calc(50% - 4px);
+        }
+        .button-std__icon {
+            display: none;
+        }
     }
 }
 
@@ -89,6 +111,36 @@
             margin-top: auto;
         }
     }
+    @include to(575px) {
+        order: 1;
+        width: 100%;
+        margin-bottom: 25px;
+        .flat-description-wrapper {
+            width: 100%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0;
+            li:not(:last-child) {
+                margin-bottom: 0;
+            }
+            span {
+                max-width: 2.4ch;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+        .mini-genplan-title {
+            display: none;
+        }
+        .choose-build-genplan-wrapper {
+            /*26px - маржин елемента*/
+            width: calc(100% - 50px - 26px);
+            margin-left: auto;
+        }
+        display: inline-flex;
+        flex-wrap: wrap;
+    }
 }
 
 .choose-flat-center {
@@ -105,6 +157,14 @@
         justify-content: space-between;
         #floor {
             margin: auto;
+        }
+    }
+    @include to(575px) {
+        order: 1;
+        width: 100%;
+        margin: 25px 0;
+        #floor {
+            max-height: 250px;
         }
     }
 }
@@ -160,6 +220,9 @@
     @include to(768px) {
         width: 191px;
         height: auto
+    }
+    @include to(575px) {
+        display: none;
     }
 }
 
@@ -257,5 +320,10 @@
             background-color: var(--yellow);
             color: #343466;
         }
+    }
+    @include to(575px) {
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 15px;
     }
 }

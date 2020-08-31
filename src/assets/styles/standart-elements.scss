@@ -1246,6 +1246,9 @@ section.forms {
         padding: calc(var(--header-height) + 37px) 14px 50px 14px;
         @include size(6.5);
     }
+    @include to(375px) {
+        @include size(7);
+    }
 }
 
 .fron-block__text.yellow {

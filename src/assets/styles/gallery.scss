@@ -78,6 +78,7 @@
     }
     @include to(575px) {
         width: calc((20px * 2) + (130px * 2));
+        width: calc(100vw - 30px);
     }
 }
 

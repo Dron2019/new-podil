@@ -18,11 +18,24 @@ let frontScreenEffect = undefined;
 
 
 function setImagesRatio() {
-    if (window.screen.width < 576) return (320 / 568);
+    if (window.screen.width < 576) return (568 / 320);
     if (window.screen.width < 769) return (window.screen.width / window.screen.height);
     return (9 / 16);
 }
+console.log();
 
+/**
+ * Подбор картинки для первого єкрана страниц преимуществ
+ * Берется датасет mobile-src, при отсутсвии просто ссылку
+ */
+function getImgForFronBlock() {
+    let desktopImage = document.querySelector('.front-block__bg').getAttribute('src');
+    let mobImage = document.querySelector('.front-block__bg').dataset.mobileSrc;
+    if (mobImage !== undefined && window.screen.width < 576) return mobImage;
+    return desktopImage;
+
+}
+console.log(getImgForFronBlock());
 Array.from(document.querySelectorAll('.front-block')).forEach((el) => {
     const img = document.querySelector('.front-block__bg');
     frontScreenEffect = new hoverEffect({
@@ -36,8 +49,8 @@ Array.from(document.querySelectorAll('.front-block')).forEach((el) => {
         hover: el.dataset.hover || undefined,
         // imagesRatio: 9 / 16,
         imagesRatio: setImagesRatio(),
-        image1: img.getAttribute('src'),
-        image2: img.getAttribute('src'),
+        image1: getImgForFronBlock(),
+        image2: getImgForFronBlock(),
         displacementImage: el.dataset.displacement,
     });
 });

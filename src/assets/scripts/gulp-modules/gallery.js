@@ -36,7 +36,7 @@ $('.gallery-nav-js').slick({
         {
             breakpoint: 575,
             settings: {
-                slidesToShow: 1.4,
+                slidesToShow: 2,
             }
         },
 

@@ -22,6 +22,9 @@
     @include to(768px) {
         width: 33%;
     }
+    @include to(575px) {
+        width: 50%;
+    }
 }
 
 .heart-mask-video-block {
@@ -156,6 +159,13 @@
             margin: 0 auto;
         }
     }
+    @include to(575px) {
+        padding: 18px 18px 40px 18px;
+        button {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 }
 
 .contact-content-wrapper {
@@ -184,6 +194,9 @@
     @include to(768px) {
         @include size(10)
     }
+    @include to(575px) {
+        width: 100%;
+    }
 }
 
 .contact-content-left,
@@ -208,6 +221,9 @@
         margin-top: 30px;
         padding-bottom: 20px;
         background-color: var(--blue);
+    }
+    @include to(575px) {
+        width: 100%;
     }
 }
 
@@ -234,5 +250,8 @@
             width: 186px;
             height: auto;
         }
+    }
+    @include to(575px) {
+        display: none;
     }
 }

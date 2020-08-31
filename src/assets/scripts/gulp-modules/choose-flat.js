@@ -61,9 +61,9 @@ const popup = document.querySelector('.choose-flat-popup-js');
 var birdyLink = `
     <svg class="tablet-birdy" style="
     position:fixed;
-    transition:transform 0.7s;
     top:0;
     left:0;
+    opacity:0;
     padding:7px;
     width:50px; height:50px;
     padding:5px 3px;
@@ -74,21 +74,33 @@ var birdyLink = `
     <path d="M23.8535 7.6465L16.3535 0.146496C16.1582 -0.048832 15.8418 -0.048832 15.6465 0.146496C15.4512 0.341824 15.4512 0.658231 15.6465 0.853512L22.293 7.50001H0.500015C0.22364 7.50001 0 7.72365 0 8.00003C0 8.27641 0.22364 8.50005 0.500015 8.50005H22.293L15.6465 15.1465C15.4512 15.3418 15.4512 15.6582 15.6465 15.8535C15.7441 15.9512 15.8721 16 16 16C16.1279 16 16.2559 15.9512 16.3536 15.8535L23.8535 8.35351C24.0488 8.15823 24.0488 7.84183 23.8535 7.6465Z" fill="#40484E"/>
     </svg>`;
 popup.style.cssText = `
-position:fixed;
-left:0;
-top:0;
-transition:.5s ease-out;
-opacity:0;
-`;
+    position:fixed;
+    left:0;
+    top:0;
+    transition:.5s ease-out;
+    opacity:0;
+    `;
 
 popupRows.forEach(row => {
     document.querySelectorAll(row.selectorWithInfo).forEach(rowInfo => {
         if (WINDOW_WIDTH > 769) {
-            rowInfo.addEventListener('mouseover', (evt) => {
+            // rowInfo.addEventListener('mouseover', (evt) => {
+            //     popup.querySelector(row.destinationShowSelector).innerHTML = rowInfo.dataset[row.name];
+            //     positioningPopup(popup, evt, true);
+            // });
+            rowInfo.addEventListener('mouseenter', (evt) => {
                 popup.querySelector(row.destinationShowSelector).innerHTML = rowInfo.dataset[row.name];
+                let int;
+                let currentNumber = +popup.querySelector(row.destinationShowSelector).innerHTML;
+                if (afterComaCount(currentNumber) > 0) {
+                    int = null;
+                } else {
+                    int = true;
+                }
+                animNum($(row.destinationShowSelector), currentNumber, int);
                 positioningPopup(popup, evt, true);
             });
-            rowInfo.closest('g').addEventListener('mouseleave', (evt) => {
+            rowInfo.closest('svg').addEventListener('mouseleave', (evt) => {
                 positioningPopup(popup, evt, false);
             });
         }
@@ -121,10 +133,7 @@ popupRows.forEach(row => {
                 /**Записывает первый клик  */
                 rowInfo.closest('a').firstClicked = false;
             });
-
         }
-
-
     })
 });
 
@@ -143,7 +152,6 @@ function mobileLinkLogic(link, paint = false) {
 
         return;
     } else {
-
         link.link.querySelector('polygon').style.fill = '';
         lnk.style.opacity = `0`;
     }
@@ -151,8 +159,6 @@ function mobileLinkLogic(link, paint = false) {
 
 
 function positioningPopup(popup, cords, vieved) {
-
-
     if (vieved) {
         popup.style.opacity = `1`;
         popup.style.visibility = `visible`;
@@ -226,3 +232,17 @@ let popupTransformValues = {
 }
 
 /**floor switche config end */
+
+
+/**Mobile Move elements */
+
+if (WINDOW_WIDTH < 576) {
+    let leftBlock = document.querySelector('.choose-flat-left'),
+        centerBlock = document.querySelector('.choose-flat-center');
+    console.log(leftBlock, centerBlock);
+    centerBlock.insertAdjacentElement('afterend', leftBlock);
+
+    document.querySelector('.flat-description-wrapper').insertAdjacentElement('afterend', document.querySelector('.floor-switcher'))
+
+}
+/**Mobile Move elements end */

@@ -38,6 +38,28 @@
             }
         }
     }
+    @include to(575px) {
+        .genplan-links-block {
+            li {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            a {
+                max-width: 2.5ch;
+                overflow: hidden;
+                display: inline-flex;
+                white-space: nowrap;
+                align-items: center;
+            }
+        }
+        .choose-build-button {
+            padding-left: 0;
+            margin-bottom: calc(var(--icon-width) - (var(--icon-width) * 2 + 20px));
+            .button-std__icon {
+                display: none;
+            }
+        }
+    }
 }
 
 .icon--range-icon {

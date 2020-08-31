@@ -227,10 +227,21 @@ function initMap() {
     });
 };
 let legendButton = document.querySelector('.legend-button-js'),
-    legend = document.querySelector('.legend-js');
+    legend = document.querySelector('.legend-js'),
+    buttonTextEl = legendButton.querySelector('span');
+let legendButtonTitles = (function() {
+    if (!legendButton.dataset.opened || !legendButton.dataset.close) {
+        return [buttonTextEl.innerText, buttonTextEl.innerText];
+    }
+    return [legendButton.dataset.opened, legendButton.dataset.close];
+})();
+
 legendButton.addEventListener('click', function(evt) {
     legend.classList.toggle('closed');
     if (!legend.classList.contains('closed')) animateLegendIcons();
+    legend.classList.contains('closed') ?
+        buttonTextEl.innerText = legendButtonTitles[0] :
+        buttonTextEl.innerText = legendButtonTitles[1];
 
 });
 

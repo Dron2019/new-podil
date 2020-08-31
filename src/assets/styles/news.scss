@@ -75,6 +75,21 @@
             object-fit: cover;
         }
     }
+    @include to(575px) {
+        --date-width: 47px;
+        padding-bottom: 20px;
+        &__title {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 29px;
+        }
+        &__date {
+            margin-top: 0;
+            vertical-align: top;
+            font-size: 10px;
+            line-height: 10px;
+        }
+    }
 }
 
 .icon--news-heart {
@@ -181,6 +196,13 @@
     }
     @include to(575px) {
         width: 100%;
+        padding: 0 28px;
+        margin: 15px auto 43px auto;
+        &__item {
+            width: 40px;
+            height: 31px;
+            margin: 0 3.5px;
+        }
     }
 }
 
@@ -203,5 +225,11 @@
     }
     .prev {
         transform: scaleX(-1);
+    }
+    @include to(575px) {
+        .next,
+        .prev {
+            height: 16px;
+        }
     }
 }
