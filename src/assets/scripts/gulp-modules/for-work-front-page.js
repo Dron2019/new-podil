@@ -10,7 +10,12 @@
 @@include('../libs/scroll-magic/plugins/debug.addIndicators.min.js')
 @@include('../libs/scroll-magic/plugins/animation.gsap.min.js')
 /* beautify preserve:end */;;;;;;;;;;;;;;
-
+const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
+const iconsEasing = BezierEasing(.15, .95, .15, .94);
+const ease_2 = BezierEasing(.25, .13, .2, 1.02);
+const ex = Expo.easeInOut;
+const exI = Expo.easeIn;
+const exO = Expo.easeOut;
 imagesLoaded(document.querySelectorAll('img'), () => {
     document.body.classList.remove('loading');
 });
@@ -79,8 +84,39 @@ let scenesArray = [];
 advBlocks.forEach(e => {
     let tween = new TimelineMax({ ease: "power4.out" });
     let blockImg = e.querySelector('img');
-    tween.set(blockImg, { scale: 1.2 })
-    tween.fromTo(blockImg, { y: 100 * Math.random() }, { y: 0 });
+    console.log(blockImg);
+    let imgHeight = 0;
+    if (blockImg !== null) {
+
+        imgHeight = blockImg.getBoundingClientRect().height || null;
+    }
+
+
+    if (imgHeight > document.documentElement.clientHeight * 0.6) {
+        console.log(imgHeight);
+    }
+    let fullScreenImg = imgHeight > document.documentElement.clientHeight * 0.6;
+    tween.set(blockImg, { scale: 1.3 })
+    tween.fromTo(blockImg, {
+        skewX: '3deg',
+        y: function() {
+            if (fullScreenImg) {
+
+                return imgHeight * 0.1
+                    // return 0;
+            };
+            return 100 * Math.random();
+        }
+    }, {
+        skewX: 0,
+        y: function() {
+            if (fullScreenImg) {
+                return imgHeight * 0.1 * -1
+                    // return 0;
+            };
+            return 0;
+        }
+    });
 
     let scene = new ScrollMagic.Scene({
         triggerElement: e,
@@ -90,7 +126,7 @@ advBlocks.forEach(e => {
         triggerHook: 1,
     });
     scene.setTween(tween);
-    scene /*.addIndicators()*/
+    scene /*. addIndicators()*/
         .addTo(controller); // assign the scene to the controller
     scenesArray.push(scene);
 
@@ -106,14 +142,14 @@ advBlocks.forEach(e => {
 
 
     let textTween = new TimelineMax({ /*ease: "power4.out"*/ });
-    textTween.fromTo(textBlockText, { autoAlpha: 0, y: -150 }, { autoAlpha: 1, y: 0 });
+    textTween.fromTo(textBlockText, { autoAlpha: 0, x: "-100%" }, { autoAlpha: 1, x: 0 });
     // textTween.fromTo(textBlockIcon, { scaleY: 0, y: -70 }, { scaleY: 1, y: 0 });
     textScene.setTween(textTween);
     textScene.addTo(controller);
 
     textScene.on('enter', function(e, target) {
         if (e.scrollDirection !== 'REVERSE') {
-            gsap.fromTo(textBlockIcon, { scaleY: 0 }, { delay: 0.5, scaleY: 1 })
+            gsap.fromTo(textBlockIcon, { skewX: 0.1, x: -100 }, { skewX: 0, duration: 2, ease: iconsEasing, delay: 0.5, x: 0 })
         }
     })
 });

@@ -74,8 +74,14 @@ class Smooth {
 const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 let body;
 // document.addEventListener('DOMContentLoaded',function () {
-body = new Smooth({ ignore: '#map' });
-body.key();
+
+function startSmoothScroll() {
+
+    body = new Smooth({ ignore: '#map' });
+    body.key();
+}
+// body = new Smooth({ ignore: '#map' });
+// body.key();
 // });
 
 function preventDefault(e) {
@@ -111,3 +117,83 @@ function enableScroll() {
     window.ontouchmove = null;
     document.onkeydown = null;
 };
+
+
+var scrolling = false;
+var oldTime = 0;
+var newTime = 0;
+var isTouchPad;
+var eventCount = 0;
+var eventCountStart;
+
+var mouseHandle = function(evt) {
+    var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
+    console.log(isTouchPadDefined);
+    if (!isTouchPadDefined) {
+        if (eventCount === 0) {
+            eventCountStart = new Date().getTime();
+        }
+
+        eventCount++;
+
+        if (new Date().getTime() - eventCountStart > 100) {
+            if (eventCount > 10) {
+                isTouchPad = true;
+            } else {
+                isTouchPad = false;
+            }
+            isTouchPadDefined = true;
+        }
+    }
+
+    if (isTouchPadDefined) {
+        // here you can do what you want
+        // i just wanted the direction, for swiping, so i have to prevent
+        // the multiple event calls to trigger multiple unwanted actions (trackpad)
+        if (!evt) evt = event;
+        var direction = (evt.detail < 0 || evt.wheelDelta > 0) ? 1 : -1;
+
+        if (isTouchPad) {
+            newTime = new Date().getTime();
+
+            if (!scrolling && newTime - oldTime > 550) {
+                scrolling = true;
+                if (direction < 0) {
+                    // swipe down
+                } else {
+                    // swipe up
+                }
+                setTimeout(function() {
+                    oldTime = new Date().getTime();
+                    scrolling = false
+                }, 500);
+            }
+        } else {
+            if (direction < 0) {
+                // swipe down
+            } else {
+                // swipe up
+            }
+        }
+    }
+};
+let detectMouse = new Event("mouseDetected", { "bubbles": true, "cancelable": false });
+window.handler = function(e) {
+    var isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+        // your code
+    console.log(this);
+
+    document.dispatchEvent(detectMouse);
+    console.log(isTouchPad ? "isTouchPad" : "isMouse");
+
+    // document.body.textContent = 
+}
+document.addEventListener("mousewheel", window.handler, false);
+document.addEventListener("DOMMouseScroll", window.handler, false);
+
+
+
+document.addEventListener('mouseDetected', evt => {
+    console.log(evt);
+    window.handler = function() {};
+})
