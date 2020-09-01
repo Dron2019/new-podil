@@ -29,7 +29,7 @@ nav.menu {
         pointer-events: none;
         // animation-direction: reverse;
         animation: flip-out-hor-top .5s 1 ease-in-out;
-        transition: opacity 1s, visibility 1s;
+        transition: opacity 0, visibility 1s;
     }
     &.opened {
         opacity: 1;

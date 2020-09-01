@@ -25,7 +25,7 @@
         .input-group.text
             span.error-span.text-error
             label.phone-label.common-label(for='telephone') &Vcy;&acy;&shcy; &tcy;&iecy;&lcy;&iecy;&fcy;&ocy;&ncy;:*
-            input.text-input.common-input(maxlength='13' type='text' name='tel' placeholder='Ваш телефон:*' autocomplete='off' data-required='true')
+            input.text-input.common-input(maxlength='13' inputmode="tel" type='text' name='tel' placeholder='Ваш телефон:*' autocomplete='off' data-required='true')
         .input-group.hidden(style='opacity:0;visibility:hidden; pointer-events:none')
             span.error-span.hidden-error
             input.hidden-input.common-input(type='hidden' value='1' name='typ' placeholder='false' autocomplete='off' data-required='false' hidden='null')

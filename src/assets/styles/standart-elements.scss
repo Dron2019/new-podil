@@ -953,6 +953,16 @@ section.forms {
     }
     @include to(575px) {
         // padding-left: 0;
+        &.mobile-no-icon {
+            padding-left: 0;
+            text-align: center;
+        }
+        &.mobile-no-icon &__icon {
+            display: none;
+        }
+        &.mobile-no-icon span {
+            white-space: initial;
+        }
         &__icon {
             // display: none;
         }

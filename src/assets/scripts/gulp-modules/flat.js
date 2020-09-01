@@ -81,65 +81,15 @@ function randomColorChange(array, element) {
 // document.querySelector('.page__content').append(bgElement);
 // randomColorChange(colors, bgElement);
 
+/**Mobile elements move */
+if (window.screen.width < 576) {
+    let floorPlan = document.querySelector('#floor'),
+        chooseFlatLink = document.querySelector('.flat-left .button-std'),
+        pageContent = document.querySelector('.page__content'),
+        flatPageWrapper = document.querySelector('.flat-wrapper');
+    console.log(chooseFlatLink, floorPlan);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var renderer = new THREE.WebGLRenderer({ antialias: true });
-// renderer.setSize(WIDTH, HEIGHT);
-// document.body.appendChild(renderer.domElement);
-
-// var scene = new THREE.Scene();
-
-// var camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT);
-// camera.position.z = 50;
-// scene.add(camera);
-
-// var boxGeometry = new THREE.BoxGeometry(10, 10, 10);
-
-// var shaderMaterial = new THREE.ShaderMaterial({
-//     vertexShader: vertex,
-//     fragmentShader: shader
-// });
-
-// var cube = new THREE.Mesh(boxGeometry, shaderMaterial);
-// scene.add(cube);
-
-// cube.rotation.set(0.4, 0.5, 0);
-
-// function render() {
-//     setTimeout(() => {
-//         requestAnimationFrame(render);
-
-//         console.log(color);
-//         scene.background = new THREE.Color(color);
-//         renderer.render(scene, camera);
-//     }, 1000);
-
-// }
-
-// console.log(renderer.domElement);
-
-// renderer.domElement.style.cssText = `
-// position:fixed;
-// left:0;
-// top:0;
-// `;
-// render();
+    pageContent.append(floorPlan)
+        // pageContent.prepend(chooseFlatLink)
+    flatPageWrapper.insertAdjacentElement('beforebegin', chooseFlatLink)
+}

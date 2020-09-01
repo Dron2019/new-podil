@@ -292,8 +292,8 @@ homeScreenVideo.addEventListener('click', function(evt) {
 
 
 
-const backgroundStagger = 0.05;
-const scroll_speed = 1600;
+const backgroundStagger = 0.1;
+const scroll_speed = 1900;
 
 let sections = [
     'section.main-screen',
@@ -332,6 +332,7 @@ if (window.screen.width > 769) {
         scrollSpeed: scroll_speed,
         standardScrollElements: '.screen6',
         easing: "easeOutExpo",
+
         before: function(e, list) {
             sectionsAnim[e].callback().play();
         },

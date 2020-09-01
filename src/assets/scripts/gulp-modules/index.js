@@ -18,6 +18,7 @@ document.querySelectorAll(openMenuSelector).forEach(button => {
 document.querySelectorAll(closeMenuSelector).forEach(button => {
     button.addEventListener('click', function(evt) {
         document.body.classList.remove('menu-opened');
+        menuCloseAnimation(menu, true)
         menuCloseAnimation(menu, true).play().add(function() {
             menu.classList.add('closed');
             menu.classList.remove('opened');

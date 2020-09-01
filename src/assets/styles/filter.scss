@@ -14,23 +14,17 @@
     .fixed-background-heart-mobile {
         display: none;
     }
+    @include to(575px) {
+        .page__content {
+            padding-bottom: 20px;
+        }
+    }
 }
 
 .filter-select {
     background-color: var(--blue);
     &.wide {
         width: 230px;
-    }
-    &:hover {
-        position: relative;
-        z-index: 5;
-        height: auto;
-    }
-    &:hover .langs {
-        height: auto;
-    }
-    .langs li:hover {
-        color: var(--violet1) !important;
     }
     .langs {
         background-color: var(--blue);
@@ -62,6 +56,33 @@
         background-color: var(--blue-light);
         z-index: 1;
         border-bottom-left-radius: 18px;
+    }
+    @include from(769px) {
+        &:hover {
+            position: relative;
+            z-index: 5;
+            height: auto;
+        }
+        &:hover .langs {
+            height: auto;
+        }
+        .langs li:hover {
+            color: var(--violet1) !important;
+        }
+    }
+    @include to(575px) {
+        border-radius: 18px;
+        &:hover {
+            position: relative;
+            z-index: 5;
+            height: auto;
+        }
+        &:hover .langs {
+            height: auto;
+        }
+        .langs li:hover {
+            color: var(--violet1) !important;
+        }
     }
 }
 
@@ -126,8 +147,14 @@
         // font-size: 26px;
         // line-height: 36px;
         // margin-right: 32px;
+        width: 26px;
+        height: 26px;
+        @include fontSizeLhToEm(14, 22);
         &:last-child {
-            margin-right: 0;
+            margin-right: 0px;
+        }
+        &:not(:last-child) {
+            margin-right: 7px;
         }
     }
 }
@@ -203,6 +230,18 @@
             margin-bottom: 25px;
         }
     }
+    @include to(575px) {
+        padding: 20px 16px 35px 16px;
+        .lang-block {
+            width: auto;
+        }
+        .lang-block .birdy {
+            display: block;
+        }
+        &>*:nth-child(-n + 2) {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .range-item {
@@ -212,11 +251,21 @@
         line-height: 22px;
         font-weight: 500;
     }
+    @include to(575px) {
+        width: 100%;
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .u-range-item-nav-wrap {
     display: flex;
     width: 50%;
+    @include to(575px) {
+        display: flex;
+        width: auto;
+    }
 }
 
 .u-range-item-nav {
@@ -224,6 +273,10 @@
     margin-top: 30px;
     @include to(768px) {
         margin-top: 10px;
+    }
+    @include to(575px) {
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -234,6 +287,9 @@
     padding: 3px 5%;
     text-align: center;
     margin: 0 10px;
+    @include to(575px) {
+        width: 66px;
+    }
 }
 
 .checkbox-block {
@@ -245,6 +301,10 @@
     }
     @include from-to(576px, 768px) {
         margin: 0 20px 0 auto;
+    }
+    @include to(575px) {
+        width: 50%;
+        margin-right: 0;
     }
 }
 
@@ -365,10 +425,17 @@
     @include to(768px) {
         width: 33%;
     }
+    @include to(575px) {
+        width: 50%;
+        margin-bottom: 20px;
+    }
 }
 
 .select-group {
     max-height: calc(22px + 36px);
+    @include to(575px) {
+        width: calc(50% - 8px);
+    }
 }
 
 .ranges-wrapper {
@@ -378,6 +445,11 @@
     margin: 20px 0;
     @include to(768px) {
         margin: 20px 0 30px 0;
+    }
+    @include to(575px) {
+        flex-direction: column;
+        margin-top: 12px;
+        margin-bottom: 20px;
     }
 }
 
@@ -392,6 +464,9 @@
     svg {
         margin-left: 10px;
     }
+    @include to(575px) {
+        margin-top: 10px;
+    }
 }
 
 .viewed-flats-count {
@@ -401,6 +476,9 @@
     }
     @include to(768px) {
         max-width: 30ch;
+    }
+    @include to(575px) {
+        margin-top: 20px;
     }
 }
 
@@ -457,6 +535,11 @@
     @include to(1060px) {
         padding: 25px 7.5%;
     }
+    @include to(575px) {
+        &-list {
+            padding: 0 5%;
+        }
+    }
 }
 
 .cards-wrapper {
@@ -499,5 +582,26 @@
     align-items: center;
     .text-large {
         margin-bottom: 10px;
+    }
+}
+
+.filter-nav-bottom-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include to(575px) {
+        flex-direction: column-reverse;
+    }
+}
+
+.viewed-flats:after {
+    content: ' ';
+}
+
+.irs--flat {
+    @include to(575px) {
+        height: 40px;
+        margin-top: -15px;
     }
 }

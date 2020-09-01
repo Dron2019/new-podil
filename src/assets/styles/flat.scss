@@ -28,12 +28,49 @@
             padding-right: 15px;
         }
     }
+    @include to(575px) {
+        .page__content>.button-std {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+        .page__content>#floor {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .flat-right {
+            width: calc(100% + (var(--side-fields) * 2));
+            margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+            margin-top: 0;
+            padding-top: 20px;
+            padding-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .flat-wrapper {
+            flex-wrap: wrap;
+        }
+        .breadcrumbs-block {
+            white-space: nowrap;
+            flex-wrap: nowrap;
+            text-overflow: ellipsis;
+            max-inline-size: 100%;
+            max-width: 100%;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            margin-bottom: 20px;
+        }
+        .breadcrumbs-block__item {
+            text-overflow: ellipsis;
+        }
+    }
 }
 
 .pdf-link {
     margin-top: 90px;
-    width: 128px;
-    height: 128px;
+    --self-width: 128px;
+    width: var(--self-width);
+    height: var(--self-width);
     padding: 5%;
     text-align: center;
     display: flex;
@@ -50,6 +87,13 @@
     }
     @include from-to(769px, 1024px) {
         padding: 10%;
+    }
+    @include to(575px) {
+        --self-width: 90px;
+        margin-top: 0;
+        svg {
+            display: none;
+        }
     }
 }
 
@@ -75,6 +119,17 @@
             margin-top: auto !important;
         }
     }
+    @include to(575px) {
+        @include size(9);
+        @include shift-left(1);
+        order: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 .flat-center {
@@ -91,6 +146,10 @@
     @include to(768px) {
         padding-right: 10px;
         padding-left: 10px;
+    }
+    @include to(575px) {
+        width: 100%;
+        order: 1;
     }
 }
 
@@ -110,6 +169,9 @@
     @include to(768px) {
         @include size(4.5);
     }
+    @include to(575px) {
+        order: 3;
+    }
 }
 
 .flat-wrapper {
@@ -126,6 +188,9 @@
 .floor-mini-plan-title {
     text-align: center;
     margin-bottom: 10px;
+    @include to(575px) {
+        display: none;
+    }
 }
 
 .main-flat-info {
@@ -190,6 +255,11 @@
         li span:last-child {
             width: 7ch;
         }
+    }
+    @include to(575px) {
+        max-height: none;
+        overflow: auto;
+        @include size(9);
     }
 }
 

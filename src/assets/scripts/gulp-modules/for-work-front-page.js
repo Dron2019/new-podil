@@ -26,7 +26,7 @@ console.log();
 
 /**
  * Подбор картинки для первого єкрана страниц преимуществ
- * Берется датасет mobile-src, при отсутсвии просто ссылку
+ * Берется датасет mobile-src, при отсутсвии просто сс
  */
 function getImgForFronBlock() {
     let desktopImage = document.querySelector('.front-block__bg').getAttribute('src');

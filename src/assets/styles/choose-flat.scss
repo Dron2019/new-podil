@@ -6,6 +6,7 @@
         .breadcrumbs-block {
             white-space: nowrap;
             flex-wrap: nowrap;
+            margin-bottom: 20px;
         }
         .breadcrumbs-block__item-current {
             overflow: hidden;
@@ -252,6 +253,11 @@
     @include to(768px) {
         justify-content: center;
     }
+    @include to(575px) {
+        width: 175px;
+        height: 175px;
+        font-size: 12px;
+    }
 }
 
 .floor-switcher {
@@ -325,5 +331,12 @@
         justify-content: center;
         width: 100%;
         margin-bottom: 15px;
+    }
+}
+
+.tablet-birdy {
+    @include to(575px) {
+        width: 25px !important;
+        height: 25px !important;
     }
 }

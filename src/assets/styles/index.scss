@@ -175,6 +175,15 @@ a[href] {
             text-align: right;
         }
     }
+    .desktop-main-screen-center-logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 3;
+        width: 180px;
+        height: 180px;
+        transform: translate(-50%, -50%);
+    }
     @include from(769px) {
         &__block:hover img {
             transition: 10s;
@@ -189,6 +198,9 @@ a[href] {
     }
     @include to(768px) {
         min-height: 100vh;
+        .desktop-main-screen-center-logo {
+            display: none;
+        }
         &__block {
             width: 100%;
             height: 25vh;
