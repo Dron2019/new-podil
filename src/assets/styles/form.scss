@@ -21,9 +21,10 @@
     margin-top: -70px;
     background-color: var(--white);
     font-weight: 500;
-    @include to(480px) {
+    @include to(575px) {
         padding: 40px 22px 30px 22px;
         width: calc(100% - 10px);
+        margin-top: 0;
     }
 }
 
@@ -32,9 +33,11 @@
     height: 140px;
     position: relative;
     z-index: 2;
-    @include to(480px) {
-        right: 5px;
+    @include to(575px) {
+        right: 15px;
         width: 70px;
+        height: 70px;
+        top: 35px;
     }
 }
 
@@ -73,7 +76,9 @@
     // font-weight: 500;
     color: var(--black);
     @include to(768px) {}
-    @include to(480px) {}
+    @include to(575px) {
+        font-size: 24px;
+    }
 }
 
 .common-input {
@@ -85,8 +90,10 @@
     font-size: 24px;
     line-height: 36px;
     margin-top: 40px;
-    @include to(480px) {
+    @include to(575px) {
         margin-top: 30px;
+        font-size: 18px;
+        line-height: 1.5em;
     }
 }
 

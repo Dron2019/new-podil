@@ -73,3 +73,47 @@ $(formCallSelector).magnificPopup({
         }
     })
     /**popup form END */
+
+
+
+
+
+
+
+
+function circleLinkEffect() {
+    let cursor = document.querySelector('.custom-cursor'),
+        cursorWidth = cursor.getBoundingClientRect().width,
+        cursorHeight = cursor.getBoundingClientRect().height;
+
+    function customMousePos(evt) {
+        var posX = evt.clientX - (cursorWidth / 2);
+        var posY = evt.clientY - (cursorHeight / 2);
+        gsap.to(cursor, { x: posX, y: posY });
+        // cursor.style.transform = `translate3d(${posX}px,${posY}px,0)`
+        console.log(evt);
+    }
+    window.addEventListener('mousemove', customMousePos);
+
+    document.querySelectorAll('a').forEach(el => {
+        el.addEventListener('mouseenter', cursorIncrease);
+        el.addEventListener('mouseout', cursorDecrease);
+    })
+
+    function cursorIncrease() {
+        // gsap.to(cursor.querySelector('feTurbulence'), attr: { baseFrequency: 0.05 });
+        gsap.to(cursor.querySelector('feTurbulence'), { duration: 1, attr: { baseFrequency: 0.05 * Math.random() }, ease: "none" });
+        gsap.to(cursor.querySelector('circle'), { r: 100 });
+    };
+
+    function cursorDecrease() {
+        // gsap.to(cursor.querySelector('feTurbulence'), attr: { baseFrequency: 0 });
+        gsap.to(cursor.querySelector('feTurbulence'), { duration: 1, attr: { baseFrequency: 0.0 }, ease: "none" });
+        gsap.to(cursor.querySelector('circle'), { r: 60 });
+    }
+}
+if (document.documentElement.clientWidth > 575) {
+
+    circleLinkEffect();
+}
+// cursor

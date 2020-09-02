@@ -160,15 +160,19 @@ function firstScreenAnim() {
     let mainScreen = document.querySelector('.main-screen');
     if (mainScreen.played) return new TimelineMax();
     const tl = new TimelineMax({ clearProps: 'all', repeat: 0, duration: 0.25, ease: ease_1, paused: true });
-    tl.from('.main-screen .main-screen__block:nth-child(1) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 });
-    tl.from('.main-screen .main-screen__block:nth-child(1) svg ,.main-screen .main-screen__block:nth-child(1) .home-block-title, .main-screen .main-screen__block:nth-child(1) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(2) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(2) svg ,.main-screen .main-screen__block:nth-child(2) .home-block-title, .main-screen .main-screen__block:nth-child(2) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(3) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(3) svg ,.main-screen .main-screen__block:nth-child(3) .home-block-title, .main-screen .main-screen__block:nth-child(3) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(4) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<');
-    tl.from('.main-screen .main-screen__block:nth-child(4) svg ,.main-screen .main-screen__block:nth-child(4) .home-block-title, .main-screen .main-screen__block:nth-child(4) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
-    tl.from('.main-screen  .hover-gradient', 0.2, { clearProps: 'all', ease: ex, opacity: 1 });
+    // tl.from('.main-screen .main-screen__block:nth-child(1) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 });
+    // tl.from('.main-screen .main-screen__block:nth-child(1) svg ,.main-screen .main-screen__block:nth-child(1) .home-block-title, .main-screen .main-screen__block:nth-child(1) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
+    // tl.from('.main-screen .main-screen__block:nth-child(2) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<');
+    // tl.from('.main-screen .main-screen__block:nth-child(2) svg ,.main-screen .main-screen__block:nth-child(2) .home-block-title, .main-screen .main-screen__block:nth-child(2) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
+    // tl.from('.main-screen .main-screen__block:nth-child(3) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<');
+    // tl.from('.main-screen .main-screen__block:nth-child(3) svg ,.main-screen .main-screen__block:nth-child(3) .home-block-title, .main-screen .main-screen__block:nth-child(3) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
+    // tl.from('.main-screen .main-screen__block:nth-child(4) .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: ease_2, scale: 1.5 }, '<');
+    // tl.from('.main-screen .main-screen__block:nth-child(4) svg ,.main-screen .main-screen__block:nth-child(4) .home-block-title, .main-screen .main-screen__block:nth-child(4) .slogan', 1.8, { autoAlpha: 0, ease: exO, stagger: 0.1, transformOrigin: "top", y: -30 }, '<');
+    tl.from('.main-screen .main-screen__block .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: exO, scale: 1.35 });
+    tl.from('.main-screen .main-screen__block svg ,.main-screen .main-screen__block .home-block-title', 0.5, { autoAlpha: 0, ease: exO, y: -30 }, '<');
+    tl.fromTo('.main-screen .main-screen__block .slogan', 0.8, { autoAlpha: 0, /*stagger: 0.1, transformOrigin: "top", */ y: -50 }, { ease: exO, autoAlpha: 1, y: 0 }, '<');
+
+    tl.from('.main-screen  .hover-gradient', 0.35, { clearProps: 'all', ease: ex, opacity: 1 });
 
     mainScreen.played = true;
     // console.log($('.digit-value span'));

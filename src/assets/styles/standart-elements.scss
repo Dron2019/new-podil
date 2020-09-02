@@ -1302,3 +1302,16 @@ section.forms {
 .front-block__slogan.yellow {
     color: var(--yellow);
 }
+
+.custom-cursor {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 100;
+    .cursor__inner {
+        fill: transparent;
+        stroke: var(--white);
+        stroke-width: 5;
+    }
+}
