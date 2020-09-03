@@ -179,6 +179,18 @@
 
 .contact-content-center {
     @include size(5);
+    @include from(769px) {
+        &:hover {
+            .icon--marker-in-circle {
+                transition: 1s;
+                fill: var(--violet1);
+            }
+            img {
+                transition: 7s;
+                transform: scale(1.2);
+            }
+        }
+    }
     @include to(1250px) {
         @include size(6);
     }

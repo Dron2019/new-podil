@@ -239,6 +239,7 @@ a[href] {
     font-size: 18px;
     line-height: 29px;
     text-transform: uppercase;
+    font-weight: 400;
     @include to(575px) {
         font-weight: 400;
         font-size: 14px;
@@ -438,6 +439,12 @@ section {
     background-position: center;
     background-size: cover;
     position: relative;
+    @include from(769px) {
+        &:hover {
+            transition: 5s;
+            transform: scale(1.1) !important;
+        }
+    }
 }
 
 .home-block-anim-gradient {
@@ -491,5 +498,30 @@ section {
             text-transform: none;
             margin-bottom: 5px;
         }
+    }
+}
+
+.scroll-ms {
+    animation-name: scroll;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.650, -0.550, 0.250, 1.500);
+    animation-iteration-count: infinite;
+    transform-origin: 50% 20.5px;
+    will-change: transform, opacity;
+    opacity: 1;
+}
+
+.mouse rect {
+    stroke-width: 6;
+}
+
+@keyframes scroll {
+    0%,
+    20% {
+        transform: translateY(0) scaleY(1);
+    }
+    100% {
+        transform: translateY(36px) scaleY(2);
+        opacity: 0;
     }
 }

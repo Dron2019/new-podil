@@ -87,6 +87,7 @@ header.header {
     align-items: center;
     font-size: 18px;
     line-height: 0.87em;
+    font-weight: 500;
     @include to(1120px) {
         display: none;
     }
@@ -257,6 +258,7 @@ header.header {
     display: flex;
     align-items: center;
     text-transform: uppercase;
+    font-weight: 500;
     @include from(769px) {
         position: absolute;
         left: 50%;

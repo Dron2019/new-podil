@@ -82,6 +82,7 @@
     width: 50%;
     height: 30vh;
     padding-right: 100px;
+    padding-left: 15px;
     align-items: center;
     @include from(1680px) {
         vertical-align: top;
@@ -109,7 +110,8 @@
     background-color: var(--violet2);
     width: calc(50% + var(--side-fields));
     margin-right: calc(var(--side-fields) - (var(--side-fields) * 2));
-    padding-left: 50px;
+    // padding-left: 50px;
+    padding-left: 65px;
     vertical-align: bottom;
     @include to(768px) {
         padding-left: 38px;

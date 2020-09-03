@@ -853,7 +853,8 @@ section.forms {
 .button-std {
     --icon-width: 36px;
     font-style: normal;
-    font-weight: 500;
+    // font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
     line-height: 1em;
     // border: 1px solid rgba(60, 60, 59, 0.2);
@@ -978,6 +979,9 @@ section.forms {
     width: auto;
     height: 100vh;
     pointer-events: none;
+    @include from(1720px) {
+        width: 100vw;
+    }
     @include to(768px) {
         height: auto;
         width: calc(200vw - (100vw / 12 * 2));
@@ -1112,8 +1116,10 @@ section.forms {
     position: relative;
     display: inline-block;
     background-size: cover;
+    overflow: hidden;
     .heart-mask-video-block {
-        padding-top: 79.9%;
+        // padding-top: 79.9%;
+        padding-top: 79%;
     }
     video {
         position: absolute;
@@ -1155,7 +1161,7 @@ section.forms {
     }
     .heart {
         position: absolute;
-        width: 100.5%;
+        width: 100.9%;
         height: 100.5%;
         top: -0.25%;
         left: -0.25%;

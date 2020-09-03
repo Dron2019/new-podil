@@ -100,15 +100,19 @@ function circleLinkEffect() {
         el.addEventListener('mouseout', cursorDecrease);
     })
 
+    let tl = new TimelineMax({ repeat: -1, paused: true });
+
     function cursorIncrease() {
         // gsap.to(cursor.querySelector('feTurbulence'), attr: { baseFrequency: 0.05 });
-        gsap.to(cursor.querySelector('feTurbulence'), { duration: 1, attr: { baseFrequency: 0.05 * Math.random() }, ease: "none" });
+        tl.to(cursor.querySelector('feTurbulence'), { duration: 1, attr: { baseFrequency: 0.05 * Math.random() }, ease: "none" }, '<');
+        tl.play();
         gsap.to(cursor.querySelector('circle'), { r: 100 });
     };
 
     function cursorDecrease() {
         // gsap.to(cursor.querySelector('feTurbulence'), attr: { baseFrequency: 0 });
-        gsap.to(cursor.querySelector('feTurbulence'), { duration: 1, attr: { baseFrequency: 0.0 }, ease: "none" });
+        tl.pause();
+        gsap.to(cursor.querySelector('feTurbulence'), { duration: 1, attr: { baseFrequency: 0.0 }, ease: "none" }, '<');
         gsap.to(cursor.querySelector('circle'), { r: 60 });
     }
 }

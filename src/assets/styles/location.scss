@@ -44,6 +44,9 @@
         .legend-wrapper .legend li:hover path[fill] {
             fill: var(--blue) !important;
         }
+        .text-large {
+            line-height: 1.3em;
+        }
     }
     @include to(768px) {
         .front-screen-text {
