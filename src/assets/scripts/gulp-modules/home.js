@@ -129,9 +129,9 @@ function getHeight(el) {
 
 const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
 const ease_2 = BezierEasing(.25, .13, .2, 1.02);
-const ex = Expo.easeInOut;
-const exI = Expo.easeIn;
-const exO = Expo.easeOut;
+// const ex = Expo.easeInOut;
+// const exI = Expo.easeIn;
+// const exO = Expo.easeOut;
 // const ease_1 = BezierEasing(0, 1.12, .94, 1);
 
 
@@ -277,7 +277,6 @@ function thirdScreenAnim() {
 
 
 
-
 let homeScreenVideo = document.querySelector('video'),
     homeVideoPlayButton = document.querySelector('.video-play-button');
 
@@ -292,7 +291,42 @@ homeScreenVideo.addEventListener('click', function(evt) {
     homeVideoPlayButton.style.visibility = `visible`;
 });
 
+var options = {
+    rootMargin: '0px',
+    threshold: 0.5
+}
 
+function playVideo(video) {
+    setTimeout(() => {
+        if (isInViewport(video)) {
+            video.play();
+            // console.log('In the viewport!');
+            homeVideoPlayButton.style.visibility = 'hidden';
+        } else {
+            video.pause();
+            // console.log('Not in the viewport... whomp whomp');
+            homeVideoPlayButton.style.visibility = `visible`;
+        }
+    }, 1000);
+
+    // console.log('Intersected');
+};
+
+function isInViewport(el) {
+    var bounding = el.getBoundingClientRect();
+    if (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    ) {
+        return true;
+    } else {
+        return false
+    }
+}
+var observer = new IntersectionObserver(playVideo.bind(this, homeScreenVideo), options);
+observer.observe(homeScreenVideo)
 
 
 
@@ -315,7 +349,7 @@ function gridScreensAnim(screenNum) {
     let flagElement = document.querySelector(`.screen${screenNum}`);
     if (flagElement.played) return new TimelineMax();
     let tl = new TimelineMax({ duration: 0.5, repeat: 0, paused: true });
-    tl.from(`.screen${screenNum}>a`, { duration: 1, stagger: backgroundStagger, scale: 1.1, y: '-10vh' }, '<');
+    tl.from(`.screen${screenNum}>a .home-block__bg`, { duration: 1, stagger: backgroundStagger, scale: 1.1, y: '-10vh' }, '<');
     tl.from(`.screen${screenNum}>a svg,.screen${screenNum}>a>div`, { stagger: 0.05, y: 100, autoAlpha: 0 }, '+0.5');
     flagElement.played = true;
     return tl;

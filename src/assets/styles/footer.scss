@@ -32,6 +32,8 @@
     align-items: center;
     padding-left: var(--side-fields);
     padding-right: var(--side-fields);
+    position: relative;
+    z-index: 2;
     .social-links {
         padding-top: 34px;
         padding-bottom: 34px;

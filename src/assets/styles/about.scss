@@ -25,6 +25,14 @@
             top: 0;
             background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), rgba(131, 82, 155, 0.25);
             mix-blend-mode: color;
+            z-index: 1;
+            pointer-events: none;
+        }
+        canvas {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 0;
         }
     }
     .slogan-large {
@@ -87,6 +95,12 @@
     @include from(1680px) {
         vertical-align: top;
     }
+    @include from(769px) {
+        width: calc(50% + var(--side-fields));
+        padding-left: calc(15px + var(--side-fields));
+        align-items: center;
+        margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+    }
     @include to(957px) {
         padding-right: 50px;
     }
@@ -113,6 +127,9 @@
     // padding-left: 50px;
     padding-left: 65px;
     vertical-align: bottom;
+    @include from(769px) {
+        margin-left: 0;
+    }
     @include to(768px) {
         padding-left: 38px;
     }

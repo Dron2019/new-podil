@@ -976,7 +976,8 @@ section.forms {
     transform: translateX(-50%);
     z-index: 52;
     top: 0;
-    width: auto;
+    // width: auto;
+    width: 100vw;
     height: 100vh;
     pointer-events: none;
     @include from(1720px) {
@@ -1061,7 +1062,8 @@ section.forms {
 }
 
 .text-medium {
-    font-weight: 500;
+    // font-weight: 500;
+    font-weight: 400;
     font-size: 24px;
     line-height: 38px;
     @include from-to(576px,
@@ -1116,7 +1118,7 @@ section.forms {
     position: relative;
     display: inline-block;
     background-size: cover;
-    overflow: hidden;
+    // overflow: hidden;
     .heart-mask-video-block {
         // padding-top: 79.9%;
         padding-top: 79%;
@@ -1225,7 +1227,7 @@ section.forms {
         background-color: var(--white);
         left: 0;
         top: 0;
-        pointer-events: none;
+        // pointer-events: none;
     }
     &__text svg {}
     @include to(768px) {
@@ -1245,14 +1247,20 @@ section.forms {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: calc(var(--header-height) + 37px) 50px 50px 50px;
-    @include size(4.5);
+    // padding: calc(var(--header-height) + 37px) 50px 50px 50px;
+    padding: calc(var(--header-height)) 50px 50px 50px;
+    @include size(4.15);
     justify-content: center;
     height: 100%;
     align-items: flex-start;
     margin-left: auto;
     @include from(1680px) {
         padding: calc(var(--header-height) + 37px) 73px 50px 73px;
+    }
+    @include from(769px) {
+        &>svg {
+            max-width: 300px;
+        }
     }
     @include to(1024px) {
         padding: calc(var(--header-height) + 37px) 25px 50px 25px;
@@ -1285,7 +1293,8 @@ section.forms {
 }
 
 .front-block__bottom-pattern {
-    margin-top: 12px;
+    // margin-top: 12px;
+    margin-top: 25px;
     width: 100%;
 }
 
@@ -1320,4 +1329,22 @@ section.forms {
         stroke: var(--white);
         stroke-width: 5;
     }
+    @include to(768px) {
+        display: none;
+    }
+}
+
+.icon--scroll-help-icon {
+    position: absolute;
+    bottom: calc(var(--side-fields) * 1.2);
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    right: 50%;
+    width: 16px;
+    height: 26px;
+    transform: translateX(50%);
 }

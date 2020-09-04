@@ -61,7 +61,8 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
+        // object-position: center;
+        object-position: top;
     }
     // v=1
     // &__text-block {
@@ -94,6 +95,8 @@
         padding-bottom: 25px;
     }
     &__text-block-icon {
+        position: relative;
+        z-index: 1;
         transform-origin: top;
         width: var(--text-block-height);
         min-height: var(--text-block-height);
@@ -111,11 +114,14 @@
         max-height: 50px;
     }
     &__text-block-text {
+        position: relative;
+        z-index: 0;
         width: calc(100% - var(--text-block-height));
         display: flex;
         align-items: center;
         padding-left: 30px;
         padding-right: 15%;
+        font-weight: 400;
     }
     &.plain-block-no-bg {
         background-color: var(--green);

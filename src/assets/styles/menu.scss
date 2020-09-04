@@ -70,6 +70,13 @@ nav.menu {
     .developers-block a:not(:last-child) {
         margin-right: 20px;
     }
+    @include from(769px) {
+        .menu__title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
     @include to(768px) {
         padding-top: 10px;
         padding-bottom: 10px;
@@ -177,6 +184,7 @@ nav.menu {
         color: inherit;
         transition: .5s;
         position: relative;
+        padding-right: var(--side-fields);
     }
     &__group-links li {
         display: flex;
@@ -256,6 +264,7 @@ nav.menu {
         }
         &__group-title {
             font-size: 14px;
+            padding-right: var(--side-fields);
         }
         &__group-links {
             font-size: 14px;

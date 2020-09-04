@@ -1,7 +1,21 @@
 /* beautify preserve:start */
 @@include('../libs/gsap/gsap.js')
 /* beautify preserve:end */
+var ex = "expo.inOut";
+var exI = "expo.in";
+var exO = "expo.out";
 
+var p4 = "power4.inOut";
+var p4I = "power4.in";
+var p4O = "power4.out";
+
+var p2 = "power2.inOut";
+var p2I = "power2.in";
+var p2O = "power2.out";
+
+var circ = "circ.inOut";
+var circO = "circ.out";
+var circI = "circ.in";
 /**Menu hover Effect */
 const openMenuSelector = '.js-menu-call',
     closeMenuSelector = '.js-menu-close',
@@ -37,7 +51,7 @@ function menuAnimation(menu, reversedStatus) {
     tl.fromTo('.nav-menu__group', { skewX: 10, y: -100, autoAlpha: 0, }, { skewX: 0, y: 0, autoAlpha: 1, }, '<')
     tl.fromTo('.nav-menu__group li, .nav-menu__group-title', { delay: 0.1, autoAlpha: 0, y: -150, }, { delay: 0.1, autoAlpha: 1, y: 0, }, '<')
         .fromTo(menu.querySelector('.menu__pattern-wheel'), { y: -500, rotate: 720, }, { y: 0, rotate: 0, }, '<')
-        .fromTo(menu.querySelector('.menu__pattern-bicycle'), { duration: 2, x: '50vw', }, { duration: 2, x: 0, }, '<');
+        .fromTo(menu.querySelector('.menu__pattern-bicycle'), { ease: exO, duration: 1, x: '50vw', }, { duration: 1, x: 0, }, '<');
 
     return tl;
 };
@@ -47,7 +61,7 @@ function menuCloseAnimation(menu) {
     tl.to('.nav-menu__group', { skewX: 10, y: -100, autoAlpha: 0, }, '<')
     tl.to('.nav-menu__group li, .nav-menu__group-title', { delay: 0.1, autoAlpha: 0, y: -150, }, '<')
         .to(menu.querySelector('.menu__pattern-wheel'), { y: -500, rotate: 720, }, '<')
-        .to(menu.querySelector('.menu__pattern-bicycle'), { duration: 2, x: '50vw', }, '<');
+        .to(menu.querySelector('.menu__pattern-bicycle'), { ease: exO, duration: 0.5, x: '50vw', }, '<');
     tl.timeScale(5);
     return tl;
 };
@@ -91,7 +105,7 @@ function circleLinkEffect() {
         var posY = evt.clientY - (cursorHeight / 2);
         gsap.to(cursor, { x: posX, y: posY });
         // cursor.style.transform = `translate3d(${posX}px,${posY}px,0)`
-        console.log(evt);
+        // console.log(evt);
     }
     window.addEventListener('mousemove', customMousePos);
 

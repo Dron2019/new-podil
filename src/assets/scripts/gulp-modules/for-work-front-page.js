@@ -10,12 +10,19 @@
 @@include('../libs/scroll-magic/plugins/debug.addIndicators.min.js')
 @@include('../libs/scroll-magic/plugins/animation.gsap.min.js')
 /* beautify preserve:end */;;;;;;;;;;;;;;
+
+
+
+
+document.querySelectorAll('.front-block__top-pattern,.front-block__bottom-pattern').forEach(el => {
+    elviewBoxWidth = el.getAttribute('viewBox').split(' ')[2];
+    el.style.maxWidth = elviewBoxWidth + 'px';
+    console.log(el);
+
+});
 const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
 const iconsEasing = BezierEasing(.15, .95, .15, .94);
 const ease_2 = BezierEasing(.25, .13, .2, 1.02);
-const ex = Expo.easeInOut;
-const exI = Expo.easeIn;
-const exO = Expo.easeOut;
 imagesLoaded(document.querySelectorAll('img'), () => {
     document.body.classList.remove('loading');
 });
@@ -23,7 +30,7 @@ let frontScreenEffect = undefined;
 
 
 function setImagesRatio() {
-    if (window.screen.width < 576) return (568 / 320);
+    if (window.screen.width < 576) return (568 / 380);
     if (window.screen.width < 769) return (window.screen.width / window.screen.height);
     return (9 / 16);
 }
@@ -40,7 +47,6 @@ function getImgForFronBlock() {
     return desktopImage;
 
 }
-console.log(getImgForFronBlock());
 Array.from(document.querySelectorAll('.front-block')).forEach((el) => {
     const img = document.querySelector('.front-block__bg');
     frontScreenEffect = new hoverEffect({
@@ -53,13 +59,30 @@ Array.from(document.querySelectorAll('.front-block')).forEach((el) => {
         easing: el.dataset.easing || undefined,
         hover: el.dataset.hover || undefined,
         // imagesRatio: 9 / 16,
-        imagesRatio: setImagesRatio(),
+        imagesRatio: setImagesRatio(img),
         image1: getImgForFronBlock(),
         image2: getImgForFronBlock(),
         displacementImage: el.dataset.displacement,
     });
 });
+frontScreenEffect.canvas = document.querySelector('canvas');
+frontScreenEffect.value = 1;
+frontScreenEffect.canvas.addEventListener('click', function(evt) {
+    if (frontScreenEffect.value <= 0) {
+        frontScreenEffect.next();
+        frontScreenEffect.value = !frontScreenEffect.value;
 
+    } else {
+
+        frontScreenEffect.value = !frontScreenEffect.value;
+        frontScreenEffect.previous();
+
+    }
+    // console.log(frontScreenEffect.value);
+
+
+});
+// console.log(frontScreenEffect);
 // frontScreenEffect.next();
 const firstScreenAnimation = function() {
     let tl = new TimelineMax({ duration: 1, paused: true });
@@ -87,35 +110,35 @@ advBlocks.forEach(e => {
     console.log(blockImg);
     let imgHeight = 0;
     if (blockImg !== null) {
-
         imgHeight = blockImg.getBoundingClientRect().height || null;
     }
-
-
-    if (imgHeight > document.documentElement.clientHeight * 0.6) {
-        console.log(imgHeight);
-    }
+    // if (imgHeight > document.documentElement.clientHeight * 0.6) {
+    //     console.log(imgHeight);
+    // }
     let fullScreenImg = imgHeight > document.documentElement.clientHeight * 0.6;
     tween.set(blockImg, { scale: 1.3 })
     tween.fromTo(blockImg, {
         skewX: '3deg',
-        y: function() {
-            if (fullScreenImg) {
+        x: 50
+            // y: function() {
+            //     if (window.screen.width < 576) return 0;
+            //     if (fullScreenImg) {
 
-                return imgHeight * 0.1
-                    // return 0;
-            };
-            return 100 * Math.random();
-        }
+        //         return imgHeight * 0.1
+        //             // return 0;
+        //     };
+        //     return 100 * Math.random();
+        // }
     }, {
         skewX: 0,
-        y: function() {
-            if (fullScreenImg) {
-                return imgHeight * 0.1 * -1
-                    // return 0;
-            };
-            return 0;
-        }
+        x: 0
+            // y: function() {
+            //     if (fullScreenImg) {
+            //         return imgHeight * 0.1 * -1
+            //             // return 0;
+            //     };
+            //     return 0;
+            // }
     });
 
     let scene = new ScrollMagic.Scene({
