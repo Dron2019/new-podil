@@ -16,8 +16,11 @@
 
 document.querySelectorAll('.front-block__top-pattern,.front-block__bottom-pattern').forEach(el => {
     elviewBoxWidth = el.getAttribute('viewBox').split(' ')[2];
+    if (document.documentElement.clientWidth > 1719) {
+        elviewBoxWidth = +el.getAttribute('viewBox').split(' ')[2] * 1.35;
+    }
     el.style.maxWidth = elviewBoxWidth + 'px';
-    console.log(el);
+    // console.log(el);
 
 });
 const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
@@ -116,7 +119,7 @@ advBlocks.forEach(e => {
     //     console.log(imgHeight);
     // }
     let fullScreenImg = imgHeight > document.documentElement.clientHeight * 0.6;
-    tween.set(blockImg, { scale: 1.3 })
+    tween.set(blockImg, { scale: 1.15 })
     tween.fromTo(blockImg, {
         skewX: '3deg',
         x: 50

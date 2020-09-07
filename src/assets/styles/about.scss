@@ -159,6 +159,9 @@
         pointer-events: none;
     }
     @include from(1680px) {
+        & .genplan-svg-wrapper>svg {
+            margin-bottom: -20px;
+        }
         &>svg {
             margin-bottom: -20px;
         }

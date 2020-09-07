@@ -40,24 +40,40 @@ $('.construction__popup').html('').append(
 
 );
 $('.slide').on('click', async function() {
+    //     let current = this.dataset.num - 1;
+    //     let response = await `
+    //     <a data-num="1" href = "./assets/images/build-progress/test1.jpg"></a>
+    //     <a data-num="2" href = "./assets/images/build-progress/test1.jpg"></a>
+    //     <a data-num="3" href = "./assets/images/build-progress/test1.jpg"></a>
+    //     <a data-num="4" href = "./assets/images/build-progress/test1.jpg"></a>
+    //     <a data-num="5" href = "./assets/images/build-progress/test1.jpg"></a>
+    //     <a data-num="6" href = "./assets/images/build-progress/test1.jpg"></a>
+    //     <a data-num="7" href = "./assets/images/build-progress/test1.jpg"></a>
+    //     <a data-num="8" href = "./assets/images/build-progress/test1.jpg"></a>
+    //    `;
+    //     $('.build-progress-popup').html('').append(response);
+    //     $('.build-progress-popup a').magnificPopup({
+    //         type: 'image',
+    //         gallery: {
+    //             enabled: true
+    //         },
+    //     }).magnificPopup('open', current);
+
     let current = this.dataset.num - 1;
-    let response = await `
-    <a data-num="1" href = "./assets/images/build-progress/test1.jpg"></a>
-    <a data-num="2" href = "./assets/images/build-progress/test1.jpg"></a>
-    <a data-num="3" href = "./assets/images/build-progress/test1.jpg"></a>
-    <a data-num="4" href = "./assets/images/build-progress/test1.jpg"></a>
-    <a data-num="5" href = "./assets/images/build-progress/test1.jpg"></a>
-    <a data-num="6" href = "./assets/images/build-progress/test1.jpg"></a>
-    <a data-num="7" href = "./assets/images/build-progress/test1.jpg"></a>
-    <a data-num="8" href = "./assets/images/build-progress/test1.jpg"></a>
-   `;
-    $('.build-progress-popup').html('').append(response);
-    $('.build-progress-popup a').magnificPopup({
-        type: 'image',
-        gallery: {
-            enabled: true
-        },
-    }).magnificPopup('open', current);
+    $.ajax({
+        url: '/wp-admin/admin-ajax.php',
+        method: 'POST',
+        data: { action: 'construction', id: $(this).data('id') },
+        success: function(response) {
+            $('.build-progress-popup').html('').append(response);
+            $('.build-progress-popup a').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+            }).magnificPopup('open', current);
+        }
+    })
 });
 
 

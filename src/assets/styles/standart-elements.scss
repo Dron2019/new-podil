@@ -974,7 +974,8 @@ section.forms {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 52;
+    // z-index: 52;
+    z-index: 49;
     top: 0;
     // width: auto;
     width: 100vw;
@@ -1026,7 +1027,7 @@ section.forms {
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
-        z-index: 52;
+        z-index: 49;
         top: 0;
         width: auto;
         height: 100vh;
@@ -1035,14 +1036,25 @@ section.forms {
 }
 
 .fixed-background-heart-mobile {
+    // position: fixed;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // z-index: 49;
+    // top: 0;
+    // width: auto;
+    // height: 100vh;
+    // pointer-events: none;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 52;
+    z-index: 49;
     top: 0;
-    width: auto;
+    width: 100vw;
     height: 100vh;
     pointer-events: none;
+    path {
+        transform: translateY(25%);
+    }
     line {
         // display: none;
     }
@@ -1252,7 +1264,8 @@ section.forms {
     @include size(4.15);
     justify-content: center;
     height: 100%;
-    align-items: flex-start;
+    // align-items: flex-start;
+    align-items: center;
     margin-left: auto;
     @include from(1680px) {
         padding: calc(var(--header-height) + 37px) 73px 50px 73px;
@@ -1303,8 +1316,17 @@ section.forms {
     font-weight: normal;
     font-size: 36px;
     line-height: 42px;
+    // margin-left: auto;
+    margin-right: auto;
+    @include from(1720px) {
+        font-size: 60px;
+        line-height: 60px;
+        margin-left: 0;
+        margin-left: auto;
+    }
     @include to(575px) {
-        font-weight: 500;
+        // font-weight: 500;
+        font-weight: 400;
         font-size: 18px;
         line-height: 18px;
     }

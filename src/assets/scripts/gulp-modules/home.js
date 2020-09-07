@@ -10,7 +10,21 @@
 /* @@include('../libs/artem-scroll/scroll.js')*/
 
 /* beautify preserve:end */
+var ex = "expo.inOut";
+var exI = "expo.in";
+var exO = "expo.out";
 
+var p4 = "power4.inOut";
+var p4I = "power4.in";
+var p4O = "power4.out";
+
+var p2 = "power2.inOut";
+var p2I = "power2.in";
+var p2O = "power2.out";
+
+var circ = "circ.inOut";
+var circO = "circ.out";
+var circI = "circ.in";
 /**
  * Обводка svg елемента 
  */
@@ -129,10 +143,7 @@ function getHeight(el) {
 
 const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
 const ease_2 = BezierEasing(.25, .13, .2, 1.02);
-// const ex = Expo.easeInOut;
-// const exI = Expo.easeIn;
-// const exO = Expo.easeOut;
-// const ease_1 = BezierEasing(0, 1.12, .94, 1);
+
 
 
 
@@ -381,6 +392,11 @@ if (window.screen.width > 769) {
 
 
 document.querySelector('.scroll-help-icon').addEventListener('click', function(evt) {
-
     $.scrollify.next();
 });
+
+document.querySelectorAll('svg.mouse').forEach(el => {
+    el.addEventListener('click', function(evt) {
+        $.scrollify.next();
+    });
+})

@@ -173,7 +173,7 @@
 		</symbol>
 	
 		<symbol id="icon-scroll-help-icon" viewBox="0 0 76 130">
-			<g fill="none" fill-rule="evenodd"><rect width="70" height="118" x="1.5" y="1.5" stroke="#FFF" stroke-width="3" rx="36"></rect><circle class="scroll-ms" cx="36.5" cy="31.5" r="4.5" fill="#FFF"></circle></g>
+			<g fill="none" fill-rule="evenodd"><rect width="70" height="118" x="1.5" y="1.5" stroke="#FFF" stroke-width="5" rx="36"></rect><circle class="scroll-ms" cx="36.5" cy="31.5" r="4.5" fill="#FFF"></circle></g>
 		</symbol>
 	
 		<symbol id="icon-scroll-marker" viewBox="0 0 14 27">

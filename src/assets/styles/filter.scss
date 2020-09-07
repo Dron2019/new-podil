@@ -67,7 +67,7 @@
             height: auto;
         }
         .langs li:hover {
-            color: var(--violet1) !important;
+            color: var(--yellow) !important;
         }
     }
     @include to(575px) {
@@ -174,8 +174,8 @@
 }
 
 .irs--flat .irs-handle {
-    width: 12px;
-    height: 10px;
+    width: 14px;
+    height: 12px;
     background-color: transparent;
     transform: translateY(-50%);
 }
@@ -529,7 +529,7 @@
     }
     @include from(769px) {
         &:hover {
-            background-color: var(--blue);
+            background-color: var(--yellow);
         }
     }
     @include to(1060px) {

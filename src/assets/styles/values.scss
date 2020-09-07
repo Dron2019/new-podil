@@ -69,6 +69,16 @@
     &__text.brown {
         background-color: rgba(174, 127, 71, 0.9);
     }
+    @include from(1720px) {
+        &__text {
+            padding-right: var(--side-fields);
+            font-size: 36px;
+            line-height: 56px;
+        }
+        &__text-on-gradient>ul {
+            width: 28%;
+        }
+    }
     @include to(1024px) {
         &__text {
             @include size(5);

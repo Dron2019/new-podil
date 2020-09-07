@@ -28,6 +28,18 @@
         justify-content: space-between;
         align-items: flex-end;
     }
+    @include from(1720px) {
+        .heart-mask-video-block-wrapper {
+            margin-bottom: 50px;
+        }
+    }
+    @media screen and (min-width:769px) and (max-height:700px) {
+        // height: calc(100vh - var(--header-height) - 122px);
+        .heart-mask-video-block-wrapper {
+            margin-bottom: 30px;
+            width: 38%
+        }
+    }
     @include to(768px) {
         .patterns-wrapper {
             position: static;
@@ -56,6 +68,14 @@
 .web-camera-left-pattern {
     width: 335px;
     height: 320px;
+    @include from(1720px) {
+        height: auto;
+        width: 20%;
+    }
+    @media screen and (min-width: 769px) and (max-height: 700px) {
+        width: 15%;
+        height: auto;
+    }
     @include to(768px) {
         @include size(5);
         height: auto;
@@ -68,6 +88,14 @@
 .web-camera-right-pattern {
     width: 340px;
     height: 356px;
+    @include from(1720px) {
+        height: auto;
+        width: 20%;
+    }
+    @media screen and (min-width: 769px) and (max-height: 700px) {
+        width: 15%;
+        height: auto;
+    }
     @include to(768px) {
         @include size(5);
         height: auto;

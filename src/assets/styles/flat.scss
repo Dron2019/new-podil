@@ -85,6 +85,10 @@
     svg {
         margin-bottom: 10px;
     }
+    @media screen and (min-width:769px) and (max-height:700px) {
+        margin-top: 30px;
+        --self-width: 100px;
+    }
     @include from-to(769px, 1024px) {
         padding: 10%;
     }
@@ -107,6 +111,13 @@
         margin: 0 auto;
         // margin-top: 20px;
         // margin-right: auto;
+    }
+    @media screen and (min-width:769px) and (max-height:700px) {
+        &>#floor {
+            max-height: 100px;
+            margin-left: 0;
+            width: auto;
+        }
     }
     @include from-to(576px, 768px) {
         display: flex;
@@ -136,6 +147,12 @@
     @include size(6);
     @include shift-padding(0.5);
     max-height: 600px;
+    @media screen and (min-width: 769px) and (max-height: 700px) {
+        max-height: 50vh;
+        img {
+            object-fit: contain;
+        }
+    }
     @include from-to(576px, 768px) {
         display: flex;
         align-items: flex-start;
@@ -245,6 +262,9 @@
     li span:last-child {
         width: 9ch;
         text-align: left;
+    }
+    @media screen and (min-width: 769px) and (max-height: 700px) {
+        max-height: calc(29px * 4);
     }
     @include from-to(769px, 1024px) {
         li span:last-child {

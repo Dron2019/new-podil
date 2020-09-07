@@ -50,9 +50,8 @@ function menuAnimation(menu, reversedStatus) {
     let tl = new TimelineMax({ delay: 0.25, ease: BezierEasing(.17, 1.04, .62, .96), paused: true });
     tl.fromTo('.nav-menu__group', { skewX: 10, y: -100, autoAlpha: 0, }, { skewX: 0, y: 0, autoAlpha: 1, }, '<')
     tl.fromTo('.nav-menu__group li, .nav-menu__group-title', { delay: 0.1, autoAlpha: 0, y: -150, }, { delay: 0.1, autoAlpha: 1, y: 0, }, '<')
-        .fromTo(menu.querySelector('.menu__pattern-wheel'), { y: -500, rotate: 720, }, { y: 0, rotate: 0, }, '<')
-        .fromTo(menu.querySelector('.menu__pattern-bicycle'), { ease: exO, duration: 1, x: '50vw', }, { duration: 1, x: 0, }, '<');
-
+        .fromTo(menu.querySelector('.menu__pattern-wheel'), { y: -500, rotate: 720, }, { y: '-50%', rotate: 0, }, '<')
+        .fromTo(menu.querySelector('.menu__pattern-bicycle'), { ease: exO, duration: 1, x: '50vw', }, { duration: 1, x: '-50%', }, '<');
     return tl;
 };
 
@@ -103,7 +102,7 @@ function circleLinkEffect() {
     function customMousePos(evt) {
         var posX = evt.clientX - (cursorWidth / 2);
         var posY = evt.clientY - (cursorHeight / 2);
-        gsap.to(cursor, { x: posX, y: posY });
+        gsap.to(cursor, { x: posX, y: posY, z: 100 });
         // cursor.style.transform = `translate3d(${posX}px,${posY}px,0)`
         // console.log(evt);
     }

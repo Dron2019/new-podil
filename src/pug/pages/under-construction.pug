@@ -1,0 +1,41 @@
+extends ../layout/main
+	
+block meta
+	title= '404'
+	meta(name='description', content='')
+block head
+		link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+	script(src='./assets/scripts/index.js')
+
+block content
+	section(class="page404-wrap" style="background-color:var(--violet1)")
+		div(class="page404")
+			h1(class="page404__title" style="animation:none; color:var(--white);") Страница в разработке
+				//- span(class="page404__title-small") упс...
+			//- p(class="page404__subtitle") Что-то пошло не так, страница не найдена
+			div(class="link-wrap")
+				a(onclick="window.history.go(-1);" class="button-std text-white blue blue-light-icon" href="choose-build.html")
+					span Назад
+					.button-std__icon
+						<svg class="icon--arrow choose-flat-icon-arrow" role="presentation">
+							<use xlink:href="#icon-arrow"></use>
+						</svg>
+				a(onclick="window.history.go(-1);" class="button-std text-white green green-light-icon" href="choose-build.html")
+					span На главную
+					.button-std__icon
+						<svg class="icon--arrow choose-flat-icon-arrow" role="presentation">
+							<use xlink:href="#icon-arrow"></use>
+						</svg>
+				//- a(class="button-fill"  onclick="window.history.go(-1);")
+				//- 	span.button-fill__text Назад
+				//- a(class="button-fill" href="/")
+				//- 	span.button-fill__text На главную
+block footer
+	footer.footer
+		include ../includes/footer.pug
+
+block header
+	header.header
+		include ../includes/header.pug
+

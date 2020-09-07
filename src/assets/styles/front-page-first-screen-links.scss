@@ -138,6 +138,11 @@
         background-color: transparent;
         width: 100%;
     }
+    @include from(1720px) {
+        .page-sngl-block__text-block-icon svg {
+            stroke-width: 0;
+        }
+    }
     @include to(1180px) {
         &__text-block-text {
             padding-right: var(--side-fields);

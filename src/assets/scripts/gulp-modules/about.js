@@ -18,7 +18,7 @@
 function setImagesRatio() {
     if (window.screen.width < 576) return (375 / 406);
     if (window.screen.width < 769) return (window.screen.width / window.screen.height);
-    return (9 / 16);
+    return (450 / 1360);
 }
 /**
  * Подбор картинки для первого єкрана страниц преимуществ

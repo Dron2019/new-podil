@@ -20,6 +20,17 @@
     img {
         @include shift-padding(3.5);
         margin-bottom: 45px;
+        transition: .5s;
+    }
+    @include from(769px) {
+        &:hover &__name {
+            transition: .5s ease-out;
+            color: var(--yellow);
+        }
+        &:hover img {
+            transition: .5s ease-out;
+            transform: scale(1.2);
+        }
     }
     @include to(1024px) {
         @include size(4);

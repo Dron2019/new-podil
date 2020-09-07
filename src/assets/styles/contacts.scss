@@ -3,6 +3,9 @@
         display: flex;
         flex-direction: column;
     }
+    .heart-mask-video-block-wrapper {
+        overflow: hidden;
+    }
     @include to(1024px) {
         .fixed-background-heart {
             display: none;
@@ -44,6 +47,10 @@
     height: 43px;
     fill: transparent;
     stroke: var(--violet1);
+    @include from(1720px) {
+        width: 72px;
+        height: 72px;
+    }
 }
 
 .contact-heart-link {
@@ -130,6 +137,39 @@
         background-color: var(--gray);
         pointer-events: none;
     }
+    @include from(1720px) {
+        width: 90%;
+        margin-left: auto;
+        padding: 40px 40px 53px 40px;
+        legend {
+            @include fontSizeLhToEm(36, 38);
+            margin-bottom: 30px;
+        }
+        input,
+        textarea {
+            @include fontSizeLhToEm(18, 22);
+        }
+        .input-group {
+            padding-bottom: 20px;
+        }
+        .input-group svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 20px;
+            align-self: center;
+        }
+        textarea {
+            resize: none;
+            height: calc(1.6em * 2);
+        }
+        button {
+            --icon-width: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            width: 210px;
+        }
+    }
     @include from-to(576px, 768px) {
         display: grid;
         grid-template-columns: repeat(2, 50%);
@@ -185,6 +225,11 @@
                 transition: 1s;
                 fill: var(--violet1);
             }
+            .video-play-button svg,
+            .video-play-button {
+                stroke: var(--white) !important;
+                color: var(--violet1);
+            }
             img {
                 transition: 7s;
                 transform: scale(1.2);
@@ -217,6 +262,7 @@
 }
 
 .contact-content-right {
+    @include from(1720px) {}
     @include to(1024px) {
         @include size(6);
         margin-top: 20px;

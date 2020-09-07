@@ -379,6 +379,9 @@
             width: max-content;
             z-index: 1;
         }
+        &__group.first &__group-title {
+            position: relative;
+        }
         &__group-links a:before {
             content: '';
             position: absolute;
@@ -392,6 +395,9 @@
             transform: scaleX(0);
             transition: .5s;
             z-index: -1;
+        }
+        &__group.first &__group-title:hover {
+            color: var(--yellow);
         }
         &__group-links a:hover {
             color: var(--white);

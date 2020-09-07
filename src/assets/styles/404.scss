@@ -15,7 +15,7 @@
         text-align: center;
         animation: tada 3s infinite;
         @include to(578px) {
-            font-size: 70px;
+            font-size: 48px;
             margin-bottom: 30px;
         }
         &-small {
@@ -46,9 +46,10 @@
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            border: 1px solid var(--blue);
+            // border: 1px solid #ffffff;
+            color: white;
             span {
-                z-index: 1;
+                // z-index: 1;
             }
             &::before {
                 z-index: 0;

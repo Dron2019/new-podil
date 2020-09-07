@@ -22,6 +22,7 @@ nav.menu {
         justify-content: space-between;
         margin-bottom: 30px;
         max-height: 48px;
+        height: 36px;
     }
     &.closed {
         opacity: 0;
@@ -55,6 +56,10 @@ nav.menu {
         right: 0;
         transform: translate(50%, -50%);
     }
+    .menu__pattern-wheel path {
+        animation: rotation 5s infinite linear;
+        transform-origin: center;
+    }
     .menu__pattern-bicycle {
         position: absolute;
         pointer-events: none;
@@ -75,6 +80,10 @@ nav.menu {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
+        }
+        .developers-block a:hover {
+            transition: .7s ease-out;
+            transform: scale(1.2);
         }
     }
     @include to(768px) {
@@ -211,6 +220,13 @@ nav.menu {
         &__group:nth-child(-n+4) {
             margin-bottom: 60px;
         }
+        &__group-links a:hover {
+            transition: .7s;
+            color: var(--yellow);
+        }
+        &__group.first &__group-title:hover {
+            color: var(--yellow);
+        }
     }
     @media screen and (orientation:landscape) and (max-height:720px) and (min-width:769px) {
         margin-top: 0;
@@ -308,5 +324,83 @@ nav.menu {
     body.menu-opened {
         height: 100vh;
         overflow: hidden;
+    }
+}
+
+.menu-net {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    &__line {
+        // border: 1px solid rgba(188, 188, 188, 0.4);
+        background-color: rgba(188, 188, 188, 0.4);
+    }
+    &__heart {
+        position: absolute;
+        width: 50%;
+        left: calc(25% + var(--side-fields) / 2);
+        top: 10%;
+        right: 25%;
+        height: 80%;
+        stroke-width: 1;
+        width: calc(50% - var(--side-fields));
+    }
+    &__line.hor {
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        left: 0;
+    }
+    &__line.vert {
+        position: absolute;
+        height: 100%;
+        width: 1px;
+        top: 0;
+    }
+    .hor1 {
+        top: 0;
+    }
+    .hor2 {
+        top: calc(50% - 0.5px);
+    }
+    .hor3 {
+        bottom: 0;
+        left: 0;
+    }
+    .vert1 {
+        left: 0;
+    }
+    .vert2 {
+        left: calc(25% + var(--side-fields) / 2);
+    }
+    .vert3 {
+        left: 50%;
+    }
+    .vert4 {
+        left: calc(75% - var(--side-fields) / 2);
+    }
+    @include to(575px) {
+        .vert2,
+        .vert4,
+        &__line.hor {
+            display: none;
+        }
+        &__heart {
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
