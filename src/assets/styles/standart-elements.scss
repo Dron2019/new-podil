@@ -1370,3 +1370,18 @@ section.forms {
     height: 26px;
     transform: translateX(50%);
 }
+
+#menu-infra-pages h1 {
+    // display: none;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    width: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.u-svg-plan--active {
+    opacity: 1;
+}

@@ -558,4 +558,7 @@ section:not(.main-screen) .mouse {
     bottom: 50px;
     transform: translateX(-50%);
     z-index: 2;
+    @include to(769px) {
+        display: none;
+    }
 }

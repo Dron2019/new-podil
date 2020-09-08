@@ -89,16 +89,18 @@ popupRows.forEach(row => {
             //     positioningPopup(popup, evt, true);
             // });
             rowInfo.addEventListener('mouseenter', (evt) => {
-                popup.querySelector(row.destinationShowSelector).innerHTML = rowInfo.dataset[row.name];
-                let int;
-                let currentNumber = +popup.querySelector(row.destinationShowSelector).innerHTML;
-                if (afterComaCount(currentNumber) > 0) {
-                    int = null;
-                } else {
-                    int = true;
+                if (popup.querySelector(row.destinationShowSelector) !== null) {
+                    popup.querySelector(row.destinationShowSelector).innerHTML = rowInfo.dataset[row.name];
+                    let int;
+                    let currentNumber = +popup.querySelector(row.destinationShowSelector).innerHTML;
+                    if (afterComaCount(currentNumber) > 0) {
+                        int = null;
+                    } else {
+                        int = true;
+                    }
+                    animNum($(row.destinationShowSelector), currentNumber, int);
+                    positioningPopup(popup, evt, true);
                 }
-                animNum($(row.destinationShowSelector), currentNumber, int);
-                positioningPopup(popup, evt, true);
             });
             rowInfo.closest('svg').addEventListener('mouseleave', (evt) => {
                 positioningPopup(popup, evt, false);

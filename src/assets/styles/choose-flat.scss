@@ -72,6 +72,10 @@
     fill: var(--green);
 }
 
+.icon--choose-flat-heart.brown {
+    fill: var(--brown);
+}
+
 .choose-flat-center,
 .choose-flat-left {
     display: inline-block;
@@ -216,6 +220,10 @@
     fill: var(--blue);
 }
 
+[data-flats="5"] polygon {
+    fill: var(--brown);
+}
+
 [data-flats="3"] polygon {
     fill: var(--yellow);
 }
@@ -285,6 +293,7 @@
     position: relative;
     width: max-content;
     margin: 0 auto;
+    margin: 30px auto 0 auto;
     .current {
         font-weight: 500;
         font-size: 18px;

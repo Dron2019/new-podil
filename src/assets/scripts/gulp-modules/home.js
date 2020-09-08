@@ -6,25 +6,8 @@
 @@include('../libs/scrollify/scrollify.js')
 @@include('../libs/count-up/countup.min.js')
 @@include('../libs/animate-numbers/jquery.animateNumber.min.js')
-
-/* @@include('../libs/artem-scroll/scroll.js')*/
-
 /* beautify preserve:end */
-var ex = "expo.inOut";
-var exI = "expo.in";
-var exO = "expo.out";
 
-var p4 = "power4.inOut";
-var p4I = "power4.in";
-var p4O = "power4.out";
-
-var p2 = "power2.inOut";
-var p2I = "power2.in";
-var p2O = "power2.out";
-
-var circ = "circ.inOut";
-var circO = "circ.out";
-var circI = "circ.in";
 /**
  * Обводка svg елемента 
  */
@@ -49,11 +32,8 @@ function simulatePathDrawing(path, strokeWidth = '1') {
     path.style.strokeWidth = strokeWidth;
     path.done = true;
 }
-let tl = gsap.timeline();
-tl.fromTo('.heart-vertical', 1.2, { scaleY: 0 }, { scaleY: 1 })
-    .fromTo('.heart-horizontal', 1.2, { scaleX: 0 }, { scaleX: 1 })
-    .fromTo('.fixed-background-heart path', 1.2, { opacity: 0 }, { opacity: 1 })
-    .add(simulatePathDrawing.bind(null, document.querySelector('.fixed-background-heart path')), '<');
+const afterComaCount = x => ~(x + '').indexOf('.') ? (x + '').split('.')[1].length : 0;
+
 
 function throttle(func, ms) {
     let isThrottled = false,
@@ -77,6 +57,36 @@ function throttle(func, ms) {
         }, ms);
     }
     return wrapper;
+}
+
+function animNum(elem, num, int = null) {
+    var decimal_places = 1;
+    var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
+    let numberStep = '';
+    if (int) { // если число целое тисячи разделяются пробелом
+        numberStep = $.animateNumber.numberStepFactories.separator(' ');
+    } else { // если число с плавающей точкой 
+        numberStep = function(now, tween) {
+            // var floored_number = Math.floor(now) / decimal_factor,
+
+            if (int === null) {
+                var floored_number = now.toFixed(1).toString().replace('.', '.');
+            } else {
+                var floored_number = now.toFixed();
+                return $.animateNumber.numberStepFactories.separator(' ');
+            }
+            var target = $(tween.elem);
+            target.text(floored_number);
+
+        }
+    }
+    elem.animateNumber({
+        number: num,
+        numberStep: numberStep,
+    }, {
+        easing: 'swing',
+        duration: 2500,
+    });
 }
 
 function checkHeader() {
@@ -147,12 +157,100 @@ const ease_2 = BezierEasing(.25, .13, .2, 1.02);
 
 
 
+
+
+
+
+
+
+
+
+
+let homeScreenVideo = document.querySelector('video'),
+    homeVideoPlayButton = document.querySelector('.video-play-button');
+
+homeVideoPlayButton.addEventListener('click', function(evt) {
+    homeScreenVideo.play();
+    homeVideoPlayButton.style.visibility = 'hidden';
+});
+
+homeScreenVideo.addEventListener('click', function(evt) {
+    homeScreenVideo.pause();
+    homeVideoPlayButton.style.visibility = `visible`;
+});
+
+var options = {
+    rootMargin: '0px',
+    threshold: 0.5
+}
+
+function playVideo(video) {
+    setTimeout(() => {
+        if (isInViewport(video)) {
+            video.play();
+            homeVideoPlayButton.style.visibility = 'hidden';
+        } else {
+            video.pause();
+            homeVideoPlayButton.style.visibility = `visible`;
+        }
+    }, 1000);
+};
+
+function isInViewport(el) {
+    var bounding = el.getBoundingClientRect();
+    if (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    ) {
+        return true;
+    } else {
+        return false
+    }
+}
+var observer = new IntersectionObserver(playVideo.bind(this, homeScreenVideo), options);
+observer.observe(homeScreenVideo)
+
+
+/**Анимация и постраничный скролл */
+
+const backgroundStagger = 0.1;
+const scroll_speed = 1900;
+let sections = [
+    'section.main-screen',
+    'section.screen.home-second-screen',
+    'section.screem.home-third-screen',
+    'section.screen4',
+    'section.screen5',
+    'section.screen6'
+];
+let sectionsAnim = [
+    { callback: firstScreenAnim },
+    { callback: secondScreenAnim },
+    { callback: thirdScreenAnim },
+    { callback: gridScreensAnim.bind(null, 4) },
+    { callback: gridScreensAnim.bind(null, 5) },
+    { callback: gridScreensAnim.bind(null, 6) },
+];
+
+
+
+function gridScreensAnim(screenNum) {
+    let flagElement = document.querySelector(`.screen${screenNum}`);
+    if (flagElement.played) return new TimelineMax();
+    let tl = new TimelineMax({ duration: 0.5, repeat: 0, paused: true });
+    tl.from(`.screen${screenNum} .home-block__bg`, { duration: 0.5, stagger: backgroundStagger, scale: 2, y: '-10vh' }, '<');
+    tl.from(`.screen${screenNum}>a svg,.screen${screenNum}>a>div`, { stagger: 0.05, y: 100, autoAlpha: 0 }, '+0.5');
+    flagElement.played = true;
+    return tl;
+};
+
 function secondScreenAnim() {
     const tl = new TimelineMax({ repeat: 0, duration: 0.5, ease: ease_1, paused: true });
     tl.fromTo('.home-second-screen__image path,.home-second-screen__image circle', 1.75, {
         ease: ease_2,
         x: function(e, target) {
-            // console.log(target);
             return target.getBoundingClientRect().width;
         },
         autoAlpha: 0,
@@ -182,46 +280,18 @@ function firstScreenAnim() {
     tl.from('.main-screen .main-screen__block .main-screen__block__bg-image', 0.8, { clearProps: 'all', ease: exO, scale: 1.35 });
     tl.from('.main-screen .main-screen__block svg ,.main-screen .main-screen__block .home-block-title', 0.5, { autoAlpha: 0, ease: exO, y: -30 }, '<');
     tl.fromTo('.main-screen .main-screen__block .slogan', 0.8, { autoAlpha: 0, /*stagger: 0.1, transformOrigin: "top", */ y: -50 }, { ease: exO, autoAlpha: 1, y: 0 }, '<');
-
     tl.from('.main-screen  .hover-gradient', 0.35, { clearProps: 'all', ease: ex, opacity: 1 });
-
     mainScreen.played = true;
-    // console.log($('.digit-value span'));
-    // thirdScreenNumberAnimate();
     return tl;
 }
+let tl = gsap.timeline();
+tl.fromTo('.heart-vertical', 1.2, { scaleY: 0 }, { scaleY: 1 })
+    .fromTo('.heart-horizontal', 1.2, { scaleX: 0 }, { scaleX: 1 })
+    .fromTo('.fixed-background-heart path', 1.2, { opacity: 0 }, { opacity: 1 })
+    .add(simulatePathDrawing.bind(null, document.querySelector('.fixed-background-heart path')), '<');
 
-const afterComaCount = x => ~(x + '').indexOf('.') ? (x + '').split('.')[1].length : 0;
 
-function animNum(elem, num, int = null) {
-    var decimal_places = 1;
-    var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
-    let numberStep = '';
-    if (int) { // если число целое тисячи разделяются пробелом
-        numberStep = $.animateNumber.numberStepFactories.separator(' ');
-    } else { // если число с плавающей точкой 
-        numberStep = function(now, tween) {
-            // var floored_number = Math.floor(now) / decimal_factor,
 
-            if (int === null) {
-                var floored_number = now.toFixed(1).toString().replace('.', '.');
-            } else {
-                var floored_number = now.toFixed();
-                return $.animateNumber.numberStepFactories.separator(' ');
-            }
-            var target = $(tween.elem);
-            target.text(floored_number);
-
-        }
-    }
-    elem.animateNumber({
-        number: num,
-        numberStep: numberStep,
-    }, {
-        easing: 'swing',
-        duration: 2500,
-    });
-}
 
 function thirdScreenNumberAnimate() {
     let digits = document.querySelectorAll('.digit-value span');
@@ -265,7 +335,6 @@ function thirdScreenAnim() {
                 } else {
                     return target.getBoundingClientRect().width;
                 }
-                // return target.getBoundingClientRect().width;
             },
         })
         .from('.home-third-screen-left .home-third-screen__part', 2, { ease: textEase, stagger: 0.1, autoAlpha: 0, x: -200 }, '<')
@@ -273,109 +342,14 @@ function thirdScreenAnim() {
     tl.add(thirdScreenNumberAnimate, '<');
     mainScreen.played = true;
 
-    // const countUp = new CountUp('.digit-value', 5234, options);
     return tl;
-    // .from('.home-third-screen video', 1, { autoAlpha: 0 }, '<')
-    //     .from('.digit-value', 1, { y: -50, x: -50, color: 'rgb(23, 152, 213)' })
-    //     .from('.home-third-screen__part .text', 1, { y: -50, x: 50, color: 'rgb(23, 152, 213)', }, '<')
 };
 // thirdScreenAnim();
 
 
 
 
-
-
-
-
-let homeScreenVideo = document.querySelector('video'),
-    homeVideoPlayButton = document.querySelector('.video-play-button');
-
-homeVideoPlayButton.addEventListener('click', function(evt) {
-    // console.log('ew');
-    homeScreenVideo.play();
-    homeVideoPlayButton.style.visibility = 'hidden';
-});
-
-homeScreenVideo.addEventListener('click', function(evt) {
-    homeScreenVideo.pause();
-    homeVideoPlayButton.style.visibility = `visible`;
-});
-
-var options = {
-    rootMargin: '0px',
-    threshold: 0.5
-}
-
-function playVideo(video) {
-    setTimeout(() => {
-        if (isInViewport(video)) {
-            video.play();
-            // console.log('In the viewport!');
-            homeVideoPlayButton.style.visibility = 'hidden';
-        } else {
-            video.pause();
-            // console.log('Not in the viewport... whomp whomp');
-            homeVideoPlayButton.style.visibility = `visible`;
-        }
-    }, 1000);
-
-    // console.log('Intersected');
-};
-
-function isInViewport(el) {
-    var bounding = el.getBoundingClientRect();
-    if (
-        bounding.top >= 0 &&
-        bounding.left >= 0 &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    ) {
-        return true;
-    } else {
-        return false
-    }
-}
-var observer = new IntersectionObserver(playVideo.bind(this, homeScreenVideo), options);
-observer.observe(homeScreenVideo)
-
-
-
-const backgroundStagger = 0.1;
-const scroll_speed = 1900;
-
-let sections = [
-    'section.main-screen',
-    'section.screen.home-second-screen',
-    'section.screem.home-third-screen',
-    'section.screen4',
-    'section.screen5',
-    'section.screen6'
-];
-
-
-
-
-function gridScreensAnim(screenNum) {
-    let flagElement = document.querySelector(`.screen${screenNum}`);
-    if (flagElement.played) return new TimelineMax();
-    let tl = new TimelineMax({ duration: 0.5, repeat: 0, paused: true });
-    tl.from(`.screen${screenNum}>a .home-block__bg`, { duration: 1, stagger: backgroundStagger, scale: 1.1, y: '-10vh' }, '<');
-    tl.from(`.screen${screenNum}>a svg,.screen${screenNum}>a>div`, { stagger: 0.05, y: 100, autoAlpha: 0 }, '+0.5');
-    flagElement.played = true;
-    return tl;
-}
-let sectionsAnim = [
-    { callback: firstScreenAnim },
-    { callback: secondScreenAnim },
-    { callback: thirdScreenAnim },
-    { callback: gridScreensAnim.bind(null, 4) },
-    { callback: gridScreensAnim.bind(null, 5) },
-    { callback: gridScreensAnim.bind(null, 6) },
-];
-
 if (window.screen.width > 769) {
-
     $.scrollify({
         section: 'section',
         scrollSpeed: scroll_speed,
@@ -388,7 +362,6 @@ if (window.screen.width > 769) {
         after: function(e, next) {},
     });
 }
-//  $.scrollify.destroy();
 
 
 document.querySelector('.scroll-help-icon').addEventListener('click', function(evt) {
@@ -399,4 +372,7 @@ document.querySelectorAll('svg.mouse').forEach(el => {
     el.addEventListener('click', function(evt) {
         $.scrollify.next();
     });
-})
+});
+
+
+/**Анимация и постраничный скролл END */

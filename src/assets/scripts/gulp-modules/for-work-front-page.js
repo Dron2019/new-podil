@@ -13,16 +13,18 @@
 
 
 
-
+/**Регулировка ширины SVG на первом экране */
 document.querySelectorAll('.front-block__top-pattern,.front-block__bottom-pattern').forEach(el => {
     elviewBoxWidth = el.getAttribute('viewBox').split(' ')[2];
     if (document.documentElement.clientWidth > 1719) {
         elviewBoxWidth = +el.getAttribute('viewBox').split(' ')[2] * 1.35;
     }
     el.style.maxWidth = elviewBoxWidth + 'px';
-    // console.log(el);
-
 });
+
+
+
+
 const ease_1 = BezierEasing(.25, 1.84, .43, 1.02);
 const iconsEasing = BezierEasing(.15, .95, .15, .94);
 const ease_2 = BezierEasing(.25, .13, .2, 1.02);
@@ -41,7 +43,7 @@ console.log();
 
 /**
  * Подбор картинки для первого єкрана страниц преимуществ
- * Берется датасет mobile-src, при отсутсвии просто сс
+ * Берется датасет mobile-src, при отсутсвии просто src
  */
 function getImgForFronBlock() {
     let desktopImage = document.querySelector('.front-block__bg').getAttribute('src');
@@ -74,22 +76,13 @@ frontScreenEffect.canvas.addEventListener('click', function(evt) {
     if (frontScreenEffect.value <= 0) {
         frontScreenEffect.next();
         frontScreenEffect.value = !frontScreenEffect.value;
-
     } else {
-
         frontScreenEffect.value = !frontScreenEffect.value;
         frontScreenEffect.previous();
-
     }
-    // console.log(frontScreenEffect.value);
-
-
 });
-// console.log(frontScreenEffect);
-// frontScreenEffect.next();
 const firstScreenAnimation = function() {
     let tl = new TimelineMax({ duration: 1, paused: true });
-
     tl.add(frontScreenEffect.next, )
         .from('.front-block svg path', {
             autoAlpha: 0,
@@ -105,7 +98,6 @@ firstScreenAnimation().play();
 
 var controller = new ScrollMagic.Controller();
 const advBlocks = document.querySelectorAll('.page-sngl-block');
-// console.log(document.querySelectorAll('.page-sngl-block'));
 let scenesArray = [];
 advBlocks.forEach(e => {
     let tween = new TimelineMax({ ease: "power4.out" });
@@ -115,9 +107,6 @@ advBlocks.forEach(e => {
     if (blockImg !== null) {
         imgHeight = blockImg.getBoundingClientRect().height || null;
     }
-    // if (imgHeight > document.documentElement.clientHeight * 0.6) {
-    //     console.log(imgHeight);
-    // }
     let fullScreenImg = imgHeight > document.documentElement.clientHeight * 0.6;
     tween.set(blockImg, { scale: 1.15 })
     tween.fromTo(blockImg, {

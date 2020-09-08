@@ -158,6 +158,12 @@
     &>svg path:not(.heart) {
         pointer-events: none;
     }
+    & svg g g>path {
+        pointer-events: none;
+    }
+    .heart {
+        pointer-events: all;
+    }
     @include from(1680px) {
         & .genplan-svg-wrapper>svg {
             margin-bottom: -20px;
