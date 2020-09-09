@@ -5,13 +5,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: var(--side-fields);
         color: var(--blue);
     }
     &__title {
         margin-bottom: 50px;
         font-weight: 700;
         line-height: normal;
-        font-size: 150px;
+        font-size: 120px;
         text-align: center;
         animation: tada 3s infinite;
         @include to(578px) {
@@ -61,4 +62,11 @@
             }
         }
     }
+}
+
+.message-page-subtitle {
+    color: var(--white);
+    text-align: center;
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
 }

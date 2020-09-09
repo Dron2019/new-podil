@@ -1385,3 +1385,26 @@ section.forms {
 .u-svg-plan--active {
     opacity: 1;
 }
+
+.page404-wrap {
+    flex-direction: column;
+    height: calc(100vh - var(--header-height));
+}
+
+.page404-wrap .patterns-wrapper {
+    position: absolute;
+    margin-top: auto;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    @include to(575px) {
+        display: none;
+    }
+}
+
+.under-construction-center-element {
+    max-width: 100%;
+}

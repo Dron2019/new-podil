@@ -95,7 +95,7 @@
     @include from(1680px) {
         vertical-align: top;
     }
-    @include from(769px) {
+    @include from(767px) {
         width: calc(50% + var(--side-fields));
         padding-left: calc(15px + var(--side-fields));
         align-items: center;
@@ -127,7 +127,7 @@
     // padding-left: 50px;
     padding-left: 65px;
     vertical-align: bottom;
-    @include from(769px) {
+    @include from(767px) {
         margin-left: 0;
     }
     @include to(768px) {
