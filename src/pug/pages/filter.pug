@@ -4,14 +4,14 @@ block variable
     - var version = "ua";
     -
         var radiosRange = [
-            {
-                name:'balcony',
-                label:'Балкон',
-                variants: [
-                    'так',
-                    'ні',
-                ],
-            },
+            //- {
+            //-     name:'balcony',
+            //-     label:'Балкон',
+            //-     variants: [
+            //-         'так',
+            //-         'ні',
+            //-     ],
+            //- },
             {
                 name:'terrace',
                 label:'Тераса',
@@ -198,6 +198,10 @@ block content
                 input(type="checkbox" value='3' data-key="room").js-room
             .filter-checkbox( data-value="4" data-key="room")
                 input(type="checkbox" value='4' data-key="room").js-room
+            .filter-checkbox( data-value="5" data-key="room")
+                input(type="checkbox" value='5' data-key="room").js-room
+            .filter-checkbox( data-value="6" data-key="room")
+                input(type="checkbox" value='6' data-key="room").js-room
             
         each v,index in radiosRange
             .radio-wrapper

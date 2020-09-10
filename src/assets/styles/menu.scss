@@ -203,7 +203,8 @@ nav.menu {
         margin-top: 10px;
     }
     .nav-menu__logo {
-        max-width: 233px;
+        max-width: Min(90%, 233px);
+        // max-width: 233px;
         max-height: 233px;
     }
     @include from(1720px) {

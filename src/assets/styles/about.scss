@@ -38,7 +38,8 @@
     .slogan-large {
         position: relative;
         z-index: 1;
-        margin-top: calc(70vh - var(--header-height) - 1.17em - 80px - 58px);
+        // margin-top: calc(70vh - var(--header-height) - 1.17em - 80px - 58px);
+        margin-top: calc(70vh - var(--header-height) - 1.17em - 120px - 58px);
         max-width: 20ch;
         text-align: center;
         margin-left: auto;
@@ -52,6 +53,11 @@
             &:hover {
                 fill: var(--blue);
             }
+        }
+    }
+    @include from(1720px) {
+        .slogan-large {
+            margin-top: calc(70vh - var(--header-height) - 1.17em - 123px - 58px);
         }
     }
     @include to(768px) {
