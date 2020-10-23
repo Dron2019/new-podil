@@ -332,6 +332,13 @@ section {
             margin-top: 10px;
         }
     }
+    @include from(1680px) {
+        &__part {
+            .text {
+                padding: 0 10%;
+            }
+        }
+    }
     @include to(1024px) {
         padding-left: var(--side-fields);
         padding-right: var(--side-fields);
@@ -388,6 +395,7 @@ section {
     font-size: 48px;
     line-height: 48px;
     color: var(--white);
+    white-space: nowrap;
     @include to(575px) {
         font-weight: 500;
         font-size: 24px;

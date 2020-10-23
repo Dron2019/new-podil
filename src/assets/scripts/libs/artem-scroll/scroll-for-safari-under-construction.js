@@ -197,3 +197,85 @@ document.addEventListener('mouseDetected', evt => {
     console.log(evt);
     window.handler = function() {};
 })
+
+
+
+// var mouseHandle = function(evt) {
+//     var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
+//     console.log(isTouchPadDefined);
+//     if (!isTouchPadDefined) {
+//         if (eventCount === 0) {
+//             eventCountStart = new Date().getTime();
+//         }
+
+//         eventCount++;
+
+//         if (new Date().getTime() - eventCountStart > 100) {
+//             if (eventCount > 10) {
+//                 isTouchPad = true;
+//             } else {
+//                 isTouchPad = false;
+//             }
+//             isTouchPadDefined = true;
+//         }
+//     }
+
+//     if (isTouchPadDefined) {
+//         // here you can do what you want
+//         // i just wanted the direction, for swiping, so i have to prevent
+//         // the multiple event calls to trigger multiple unwanted actions (trackpad)
+//         if (!evt) evt = event;
+//         var direction = (evt.detail < 0 || evt.wheelDelta > 0) ? 1 : -1;
+
+//         if (isTouchPad) {
+//             newTime = new Date().getTime();
+
+//             if (!scrolling && newTime - oldTime > 550) {
+//                 scrolling = true;
+//                 if (direction < 0) {
+//                     // swipe down
+//                 } else {
+//                     // swipe up
+//                 }
+//                 setTimeout(function() {
+//                     oldTime = new Date().getTime();
+//                     scrolling = false
+//                 }, 500);
+//             }
+//         } else {
+//             if (direction < 0) {
+//                 // swipe down
+//             } else {
+//                 // swipe up
+//             }
+//         }
+//     }
+// };
+
+// window.handler = function(e) {
+//     var isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+
+//     console.log(isTouchPad ? "isTouchPad" : "isMouse");
+//     if (isTouchPad) {
+
+//         document.removeEventListener("mousewheel", window.handler);
+//         document.removeEventListener("DOMMouseScroll", window.handler);
+//         window.handler = function() {
+
+//         }
+
+//     } else {
+
+//         body = new Smooth({ ignore: '#map' });
+//         body.key();
+//         disableScroll()
+//         document.removeEventListener("mousewheel", window.handler);
+//         document.removeEventListener("DOMMouseScroll", window.handler);
+//         // enableScroll();
+
+
+//     }
+//     // document.body.textContent = 
+// }
+// document.addEventListener("mousewheel", window.handler, false);
+// document.addEventListener("DOMMouseScroll", window.handler, false);

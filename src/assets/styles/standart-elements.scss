@@ -414,6 +414,9 @@
     &.variable-line-height {
         line-height: 1.67em;
     }
+    & p:not(:first-child) {
+        margin-top: 1.6em;
+    }
     @include from(1720px) {
         font-size: 24px;
         &.variable-line-height {
@@ -1177,7 +1180,7 @@ section.forms {
         position: absolute;
         width: 100.9%;
         height: 100.5%;
-        top: -0.25%;
+        top: -0.15%;
         left: -0.25%;
         z-index: 3;
         pointer-events: none;
@@ -1346,6 +1349,7 @@ section.forms {
     top: 0;
     pointer-events: none;
     z-index: 100;
+    display: none;
     .cursor__inner {
         fill: transparent;
         stroke: var(--white);
@@ -1407,4 +1411,12 @@ section.forms {
 
 .under-construction-center-element {
     max-width: 100%;
+}
+
+.mfp-auto-cursor .mfp-content {
+    text-align: center;
+}
+
+.mfp-auto-cursor .mfp-content legend {
+    text-align: left;
 }

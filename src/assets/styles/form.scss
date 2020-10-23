@@ -61,6 +61,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.5s ease-out;
+    @include from(769px) {
+        &:hover {
+            background: var(--blue);
+        }
+    }
     @include to(480px) {
         margin-top: 20px;
         width: 120px;
@@ -71,13 +77,13 @@
 }
 
 .form-legend {
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.3em;
     // font-weight: 500;
     color: var(--black);
     @include to(768px) {}
     @include to(575px) {
-        font-size: 24px;
+        font-size: 22px;
     }
 }
 
@@ -141,7 +147,7 @@
     border: 2px solid var(--white);
     position: absolute;
     width: 420px;
-    height: 530px;
+    height: calc(100% - 65px);
     left: 70px;
     top: 60px;
     z-index: 1;

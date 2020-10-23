@@ -1,0 +1,227 @@
+#byu-conditions {
+    .breadcrumbs-block {
+        margin-top: 30px;
+    }
+    .page__content {
+        font-size: 0;
+    }
+    .title {
+        position: relative;
+        text-align: center;
+        margin-top: 0.5em;
+        z-index: 5;
+    }
+    .front-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), rgba(131, 82, 155, 0.25);
+            mix-blend-mode: color;
+            z-index: 1;
+            pointer-events: none;
+        }
+        canvas {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+    }
+    .slogan-large {
+        position: relative;
+        z-index: 1;
+        // margin-top: calc(70vh - var(--header-height) - 1.17em - 80px - 58px);
+        margin-top: calc(70vh - var(--header-height) - 1.17em - 120px - 58px);
+        max-width: 20ch;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+    }
+    .heart {
+        fill: var(--violet1);
+        transition: .4s;
+        @include from(769px) {
+            &:hover {
+                fill: var(--blue);
+            }
+        }
+    }
+    .front-block-left-side {
+        @include shift-padding-right(1);
+    }
+    .subtitle {
+        text-transform: none;
+        font-weight: 400;
+        line-height: 1.6em;
+    }
+    .front-block-left-side .subtitle {
+        padding-top: 60px;
+    }
+    @include from(1720px) {
+        .slogan-large {
+            margin-top: calc(70vh - var(--header-height) - 1.17em - 123px - 58px);
+        }
+    }
+    @include to(768px) {
+        .text-large {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 29px;
+        }
+    }
+    @include to(575px) {
+        .subtitle {
+            font-size: 14px;
+        }
+        .front-block-left-side .subtitle {
+            padding-top: 1.6em;
+        }
+        .slogan-large {
+            margin-top: calc(50vh - var(--header-height) - 1em - 80px - 58px);
+        }
+        .front-block-left-side {
+            padding-left: var(--side-fields);
+            padding-right: var(--side-fields);
+        }
+    }
+}
+
+.front-block-left-side {
+    position: relative;
+    background: rgba(23, 152, 213, 0.9);
+    padding-left: var(--side-fields);
+    margin-left: calc(var(--side-fields) - (var(--side-fields) * 2));
+    @include size(4.5);
+    padding-top: calc(var(--header-height) + 48px + 33px);
+    margin-top: calc((calc(var(--header-height) + 48px + 20px)) - (calc(var(--header-height) + 48px + 33px)) * 2);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    @include from(1680px) {
+        margin-top: calc((calc(var(--header-height) + 48px + 18px)) - (calc(var(--header-height) + 48px + 33px)) * 2);
+    }
+    @include to(950px) {
+        @include size(6);
+    }
+    @include to(768px) {
+        @include size(8);
+    }
+    @include to(575px) {
+        @include size(10);
+    }
+}
+
+.byu-conditions-double-block {
+    &>* {
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+    .double-part-block__left {
+        // height: 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        picture {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .double-part-block__right {
+        position: relative;
+        @include shift-padding(2);
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+        .subtitle {
+            padding: 0 5ch;
+            margin-bottom: 1.6em;
+        }
+    }
+    .decor-pattern {
+        position: absolute;
+        pointer-events: none;
+        right: 0;
+        bottom: 0;
+    }
+    ul {
+        position: relative;
+        z-index: 1;
+        position: relative;
+        z-index: 2;
+        padding-left: 50px;
+        padding-bottom: 50px;
+        padding-top: 115px;
+        width: 100%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    li.text-semi-large:before {
+        content: '•';
+        margin-right: 15px;
+    }
+    @include from(951px) {
+        .double-part-block__left {
+            height: 100%;
+        }
+    }
+    @include to(1200px) {
+        .double-part-block__right {
+            @include shift-padding(1);
+        }
+    }
+    @include to(950px) {
+        .decor-pattern {
+            width: 150px;
+            height: 65px;
+        }
+    }
+    @include to(768px) {
+        &>* {
+            height: 50vh;
+        }
+    }
+    @include to(575px) {
+        &>* {
+            height: 100vh;
+        }
+        .double-part-block__right {
+            padding-left: var(--side-fields);
+            padding-right: var(--side-fields);
+        }
+        .double-part-block__right .button-std {
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        ul {
+            padding: var(--side-fields);
+            padding-bottom: 20px;
+        }
+    }
+}

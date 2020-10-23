@@ -109,8 +109,8 @@ function circleLinkEffect() {
     window.addEventListener('mousemove', customMousePos);
 
     document.querySelectorAll('a').forEach(el => {
-        el.addEventListener('mouseenter', cursorIncrease);
-        el.addEventListener('mouseout', cursorDecrease);
+        // el.addEventListener('mouseenter', cursorIncrease);
+        // el.addEventListener('mouseout', cursorDecrease);
     })
 
     let tl = new TimelineMax({ repeat: -1, paused: true });

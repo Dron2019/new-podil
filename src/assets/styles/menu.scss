@@ -143,8 +143,9 @@ nav.menu {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 60px;
-    margin-bottom: 87px;
+    // margin-top: 60px;
+    margin-top: 8px;
+    margin-bottom: 60px;
     width: 100%;
     --footer-links-color: #ffffff;
     &__group {
@@ -153,6 +154,7 @@ nav.menu {
     &__group .icon--wave-pattern {
         width: 104px;
         height: 61px;
+        margin-left: 65px;
     }
     &__group.first {
         display: flex;
@@ -166,9 +168,10 @@ nav.menu {
     }
     &__group-title {
         // font-weight: bold;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 18px;
+        // font-weight: 500;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 24px;
         text-transform: uppercase;
         color: #B1D5FF;
         margin-bottom: 20px;
@@ -180,7 +183,7 @@ nav.menu {
         color: var(--footer-links-color);
     }
     &__group-links li:not(:last-child) {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
     &__group-links.non-uppercase {
         text-transform: none;
@@ -219,7 +222,7 @@ nav.menu {
     }
     @include from(769px) {
         &__group:nth-child(-n+4) {
-            margin-bottom: 60px;
+            margin-bottom: 68px;
         }
         &__group-links a:hover {
             transition: .7s;
