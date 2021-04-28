@@ -16,7 +16,7 @@
         left: 0;
         top: 0;
         width: 100vw;
-        height: 100vh;
+        height: calc(100vh + 30px);
         z-index: 0;
         img {
             width: 100%;
@@ -109,7 +109,7 @@
     @include size(4.5);
     padding-top: calc(var(--header-height) + 48px + 33px);
     margin-top: calc((calc(var(--header-height) + 48px + 20px)) - (calc(var(--header-height) + 48px + 33px)) * 2);
-    height: 100vh;
+    height: calc(100vh + 30px);
     display: flex;
     flex-direction: column;
     @include from(1680px) {
@@ -138,6 +138,8 @@
         display: flex;
         align-items: flex-start;
         @include shift-padding(2);
+        background-repeat: no-repeat;
+        background-size: cover;
         picture {
             position: absolute;
             left: 0;
@@ -194,6 +196,10 @@
         content: '•';
         margin-right: 15px;
     }
+    .decor-pattern.left-oriented{
+        right: auto;
+        left: 0;
+    }
     @include from(951px) {
         .double-part-block__left {
             height: 100%;
@@ -208,6 +214,11 @@
         .decor-pattern {
             width: 150px;
             height: 65px;
+        }
+        .decor-pattern {
+            max-width: 30vw;
+            width: auto;
+            height: auto;
         }
     }
     @include to(768px) {
@@ -240,11 +251,7 @@
             padding: var(--side-fields);
             padding-bottom: 20px;
         }
-        .decor-pattern {
-            max-width: 30vw;
-            width: auto;
-            height: auto;
-        }
+        
     }
 }
 
@@ -254,6 +261,9 @@
     min-height: 100vh;
     margin-left: calc(var(--side-padding) * -1);
     margin-right: calc(var(--side-padding) * -1);
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
     p~p {
         margin-top: 1.25em;
     }
@@ -281,6 +291,15 @@
     }
     &__img {
         position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-size: 18px;
+        line-height: 1.6em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        @include shift-padding(1);
         img {
             position: absolute;
             left: 0;
@@ -295,6 +314,7 @@
             width: 100%;
             min-height: 50vh;
         }
+        &__img,
         &__text {
             @include shift-padding(1);
             padding-left: 15px;
@@ -307,6 +327,105 @@
         }
         &__text {
             font-size: 14px;
+        }
+    }
+}
+
+
+.front-decor-pattern {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    max-width: 320px;
+}
+
+.front-block-left-side {
+    position: relative;
+}
+
+.tech-grid-block {
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 50vh 50vh;
+    gap: 0px 0px;
+    margin-left: calc(var(--side-padding) * -1);
+    margin-right:  calc(var(--side-padding) * -1);
+    .image1 { 
+        grid-area: 1 / 1 / 2 / 2; 
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .image2 {
+        grid-area: 1 / 2 / 2 / 3; 
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .text1 { 
+        grid-area: 2 / 1 / 3 / 2; 
+        @include shift-padding(1);
+        // display: flex;
+        padding-top: 90px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .text { 
+        grid-area: 2 / 2 / 3 / 3; 
+    }
+    .text2 { 
+        grid-area: 2 / 2 / 3 / 3; 
+        @include shift-padding(1);
+        // display: flex;
+        padding-top: 90px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        position: relative;
+    }
+    .tech-block-pattern {
+        position: absolute;
+        right: 0%;
+        bottom: 0;
+        max-width: 320px;
+    }
+    .subtitle {
+        font-size: 24px;
+        line-height: 1.8em;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 18px;
+        line-height: 1.6em;
+    }
+    @include to(950px){
+        
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 0px 0px;
+        grid-template-areas:
+            "image1 image1"
+            "text1 text1"
+            "image2 image2"
+            "text2 text2";
+        .image1 { grid-area: image1; }
+        .text1 { grid-area: text1; }
+        .image2 { grid-area: image2; }
+        .text2 { grid-area: text2; }
+        .text1,
+        .text2 {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    }
+    @include to(575px){
+        .subtitle {
+            font-size: 18px;
+        }
+        .tech-block-pattern {
+            display: none;
         }
     }
 }

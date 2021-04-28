@@ -1,0 +1,54 @@
+extends ../layout/main
+block variable
+    -pageName = 'technical-characteristics';
+    - var version = "ua";
+        
+block meta
+    title= 'Технічні характеристики квартир Новий Поділ'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    script(defer src="./assets/scripts/libs.js")
+    script(defer src="./assets/scripts/index.js")
+    script(defer src="./assets/scripts/forms-handler.js")
+block content
+    .front-bg(data-displacement="./assets/images/byu-conditions/front-bg.jpg")
+        +img('technical-characteristics/front-bg.jpg')
+        .gradient
+    .title.white Технічні характеристики квартир
+    .front-block-left-side
+        .breadcrumbs-block
+            a(href="index.html").breadcrumbs-block__item 
+                span Головна
+            a(href="#").breadcrumbs-block__item.breadcrumbs-block__item-current Умови придбання
+        .subtitle 
+            p При купівлі квартири важливо отримати максимум інформації про майбутнє помешкання. 	Яка товщина міжквартирних стін? З якої цегли закладені міжкімнатні перегородки? Які будуть вікна та двері? На ці та інші питання про технічні характеристики квартир зібрали відповіді нижче. 
+        +img('commercial-pages-boat-pattern.svg').front-decor-pattern
+    .block-with-image.bg-violet1
+        .block-with-image__text
+            .subtitle Стіни
+            p Всі будинки у Новому Подолі зводяться з використанням монолітно-каркасної технології. Це один з найпоширеніших та найпопулярніших способів будівництва, оскільки дозволяє робити перепланування квартир на будь-якому етапі — як у процесі зведення будівлі, так і після його завершення. 
+            p Також серед переваг монолітно-каркасної технології — це міцність, довговічність і сейсмостійкість конструкцій. Зовнішні стіни закладаються повнотілою керамічною цеглою 1NF М100. Вона має волого- та морозостійкі якості, а маркування “М100” вказує на міцність матеріалу. 1 см² цегли витримує навантаження до 100 кг.
+        .block-with-image__img(style="background-image:url('assets/images/technical-characteristics/second-block-bg.jpg')")
+            p Для оздоблення зовнішніх стін обрані вентильовані фасади з мінераловатним утеплювачем, якість якого відповідає теплотехнічному розрахунку. 
+            p Для внутрішніх міжквартирних стін використовуватиметься армована кладка товщиною 250 мм з керамічного блоку, а для внутрішніх міжкімнатних стін — також керамоблок, але меншою товщиною — 100 мм. Після введення будинку в експлуатацію квартири здаються без оздоблення стін штукатуркою.
+    .tech-grid-block
+        .text1.bg-blue
+            .subtitle Вікна 
+            p Щоб взимку у будинках зберігалося тепло, а влітку — прохолода, вікна у квартирах та вітражі у комерційних приміщеннях будуть виконані зі світлопрозорих конструкцій з алюмінієвого профілю та енергозберігаючих склопакетів.
+        .text2 
+            .subtitle Двері
+            p Ми піклуємося про безпеку мешканців Нового Подолу, тому у всіх квартирах будуть встановлені вогнетривкі вхідні двері.
+        +img('technical-characteristics/tech-block2-1.jpg').image1
+        +img('technical-characteristics/tech-block2-2.jpg').image2
+    .tech-grid-block
+        .text1.bg-violet1
+            .subtitle Стеля
+            p Висота стель — 2,8 м.
+        .text2.bg-green
+            p Детальніше про квартири у Новому Подолі ви можете дізнатися у менеджерів відділу продажу. Завітайте до нас за адресою: вул. Набережно-Крещатицька. Також телефонуйте за номером, вказаним на сайті.
+            +img('technical-characteristics/tech-block-pattern.svg').tech-block-pattern
+        +img('technical-characteristics/tech-block3-1.jpg').image1
+        +img('technical-characteristics/tech-block3-2.jpg').image2
+
